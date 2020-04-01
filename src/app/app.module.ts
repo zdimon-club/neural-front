@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 
 import { SocketService } from './socket/socket.service';
 
+import {MatButtonModule} from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule
   ],
   providers: [SocketService],
   bootstrap: [AppComponent]
