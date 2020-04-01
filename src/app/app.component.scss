@@ -6,13 +6,15 @@
 	
 	.box {		
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
         justify-content: center;
         margin: 5px;
         padding: 5px;
 	}
 	
 	.header {
+		display: flex;
+		flex-direction: row;
 		background-color: green;
 		height: 60px;
 	}
