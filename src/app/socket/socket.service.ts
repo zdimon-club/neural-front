@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { Observable } from "rxjs";
 
 import { interval, timer, pipe } from 'rxjs';
@@ -6,6 +6,8 @@ import { interval, timer, pipe } from 'rxjs';
 import {filter} from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 
+import {isPlatformBrowser} from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 
 
 @Injectable({
@@ -13,14 +15,20 @@ import { ReplaySubject } from 'rxjs';
 })
 export class SocketService {
   private socket;
-
+  isBrowser = false;
   /// Event observables
 
   chat$ = new ReplaySubject<Object>();
   notifications$ = new ReplaySubject<Object>();
 
-  constructor() {
-    this.connect();
+  constructor(
+    @Inject(PLATFORM_ID) protected _platformId: Object,
+
+  ) {
+    if(this.isBrowser) {
+      this.connect();
+    }
+    const isBrowser = isPlatformBrowser(this._platformId);
   }
 
   connect() {

@@ -15,17 +15,17 @@
 	.header {
 		display: flex;
 		flex-direction: row;
-		background-color: green;
 		height: 60px;
 	}
 	
 	.content {
-		background-color: blue;
+		border: 1px solid silver;
+		border-radius: 10px;
 		flex: 1;
 	}
 	
 	.footer {
-		background-color: red;
+		
 		height: 60px;
 	}
 }
