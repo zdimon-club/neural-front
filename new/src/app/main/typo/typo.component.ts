@@ -9,6 +9,8 @@ export class TypoComponent implements OnInit {
 
 
   message = "";
+  messages = [];
+
   constructor() { }
 
   ngOnInit() {
