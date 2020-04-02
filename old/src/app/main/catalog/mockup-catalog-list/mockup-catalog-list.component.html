@@ -1,0 +1,33 @@
+<div id="masonry" class="masonry">
+  <div class="masonry__sizer"></div>
+  <div class="masonry__gutter"></div>
+  <div class="masonry__card"
+       *ngFor="let user of users | async">
+    <div class="card">
+      <div class="card__header">
+        <div class="flex-shrink-0">
+          <div  class="card__avatar"></div>
+        </div>
+        <div class="text-muted mx-2 overflow-hidden">
+          <div class="text-truncate font--size-14 card__user-main-info"></div>
+          <div class="d-flex align-items-center card__user-from"></div>
+        </div>
+      </div>
+      <div class="card__body none-select"></div>
+      <div class="card__footer flex flex-column align-items-start">
+        <div class="flex-shrink-0 card__date"></div>
+        <div class="text-truncate card__title"></div>
+        <div class="text-truncate card__title2"></div>
+        <div class="text-truncate card__hashtags"></div>
+        <div class="d-flex justify-content-between full-width">
+          <div class="card__geo"></div>
+          <div class="flex">
+            <div class="card__footer-icon"></div>
+            <div class="card__footer-icon"></div>
+            <div class="card__footer-icon"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

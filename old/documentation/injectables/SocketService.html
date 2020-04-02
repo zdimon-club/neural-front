@@ -1,0 +1,1137 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>SocketService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/socket/socket.service.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#answer_emmiter$">answer_emmiter$</a>
+                            </li>
+                            <li>
+                                <a href="#chat_message$">chat_message$</a>
+                            </li>
+                            <li>
+                                <a href="#get_answer$">get_answer$</a>
+                            </li>
+                            <li>
+                                <a href="#get_ice$">get_ice$</a>
+                            </li>
+                            <li>
+                                <a href="#get_offer$">get_offer$</a>
+                            </li>
+                            <li>
+                                <a href="#hide_cam$">hide_cam$</a>
+                            </li>
+                            <li>
+                                <a href="#ice_emmiter$">ice_emmiter$</a>
+                            </li>
+                            <li>
+                                <a href="#offer_emmiter$">offer_emmiter$</a>
+                            </li>
+                            <li>
+                                <a href="#photo_moderation$">photo_moderation$</a>
+                            </li>
+                            <li>
+                                <a href="#ping$">ping$</a>
+                            </li>
+                            <li>
+                                <a href="#show_billing_dialog$">show_billing_dialog$</a>
+                            </li>
+                            <li>
+                                <a href="#show_cam$">show_cam$</a>
+                            </li>
+                            <li>
+                                <a href="#timer">timer</a>
+                            </li>
+                            <li>
+                                <a href="#update_contacts$">update_contacts$</a>
+                            </li>
+                            <li>
+                                <a href="#update_room$">update_room$</a>
+                            </li>
+                            <li>
+                                <a href="#update_session$">update_session$</a>
+                            </li>
+                            <li>
+                                <a href="#user_online$">user_online$</a>
+                            </li>
+                            <li>
+                                <a href="#video_moderation$">video_moderation$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#reconnect">reconnect</a>
+                            </li>
+                            <li>
+                                <a href="#sendOffer">sendOffer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(socket: Socket, session_store: Store<SessionState>, user_store: Store<UserState>, session_service: <a href="../injectables/SessionService.html">SessionService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/socket/socket.service.ts:74</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>socket</td>
+                                                  
+                                                        <td>
+                                                                    <code>Socket</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>session_store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store&lt;SessionState&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>user_store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store&lt;UserState&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>session_service</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SessionService.html" target="_self" >SessionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reconnect"></a>
+                    <span class="name">
+                        <b>
+                            reconnect
+                        </b>
+                        <a href="#reconnect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>reconnect()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="133"
+                            class="link-to-prism">src/app/socket/socket.service.ts:133</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendOffer"></a>
+                    <span class="name">
+                        <b>
+                            sendOffer
+                        </b>
+                        <a href="#sendOffer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sendOffer(data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">src/app/socket/socket.service.ts:128</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="answer_emmiter$"></a>
+                        <span class="name">
+                            <b>
+                            answer_emmiter$</b>
+                            <a href="#answer_emmiter$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/socket/socket.service.ts:69</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="chat_message$"></a>
+                        <span class="name">
+                            <b>
+                            chat_message$</b>
+                            <a href="#chat_message$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(&#x27;server-action:chat_message&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/socket/socket.service.ts:52</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="get_answer$"></a>
+                        <span class="name">
+                            <b>
+                            get_answer$</b>
+                            <a href="#get_answer$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(&#x27;server-action:put_answer&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/socket/socket.service.ts:41</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="get_ice$"></a>
+                        <span class="name">
+                            <b>
+                            get_ice$</b>
+                            <a href="#get_ice$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(&#x27;server-action:put_ice&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/socket/socket.service.ts:42</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="get_offer$"></a>
+                        <span class="name">
+                            <b>
+                            get_offer$</b>
+                            <a href="#get_offer$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(&#x27;server-action:put_offer&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/socket/socket.service.ts:40</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hide_cam$"></a>
+                        <span class="name">
+                            <b>
+                            hide_cam$</b>
+                            <a href="#hide_cam$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(&#x27;server-action:hide_cam&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/socket/socket.service.ts:58</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ice_emmiter$"></a>
+                        <span class="name">
+                            <b>
+                            ice_emmiter$</b>
+                            <a href="#ice_emmiter$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/socket/socket.service.ts:70</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="offer_emmiter$"></a>
+                        <span class="name">
+                            <b>
+                            offer_emmiter$</b>
+                            <a href="#offer_emmiter$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/socket/socket.service.ts:68</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="photo_moderation$"></a>
+                        <span class="name">
+                            <b>
+                            photo_moderation$</b>
+                            <a href="#photo_moderation$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:moderate:photo&#x27;,
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/socket/socket.service.ts:61</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ping$"></a>
+                        <span class="name">
+                            <b>
+                            ping$</b>
+                            <a href="#ping$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(&#x27;server-action:ping&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/socket/socket.service.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="show_billing_dialog$"></a>
+                        <span class="name">
+                            <b>
+                            show_billing_dialog$</b>
+                            <a href="#show_billing_dialog$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:show_billing_dialog&#x27;,
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/socket/socket.service.ts:44</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="show_cam$"></a>
+                        <span class="name">
+                            <b>
+                            show_cam$</b>
+                            <a href="#show_cam$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(&#x27;server-action:show_cam&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/socket/socket.service.ts:57</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="timer"></a>
+                        <span class="name">
+                            <b>
+                            timer</b>
+                            <a href="#timer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/socket/socket.service.ts:74</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="update_contacts$"></a>
+                        <span class="name">
+                            <b>
+                            update_contacts$</b>
+                            <a href="#update_contacts$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:update_contacts&#x27;,
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/socket/socket.service.ts:53</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="update_room$"></a>
+                        <span class="name">
+                            <b>
+                            update_room$</b>
+                            <a href="#update_room$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:update_current_room&#x27;,
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/socket/socket.service.ts:47</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="update_session$"></a>
+                        <span class="name">
+                            <b>
+                            update_session$</b>
+                            <a href="#update_session$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(&#x27;server-action:update_session&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/socket/socket.service.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user_online$"></a>
+                        <span class="name">
+                            <b>
+                            user_online$</b>
+                            <a href="#user_online$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(&#x27;server-action:update_user_online&#x27;)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/socket/socket.service.ts:37</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="video_moderation$"></a>
+                        <span class="name">
+                            <b>
+                            video_moderation$</b>
+                            <a href="#video_moderation$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Observable&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:moderate:video&#x27;,
+  )</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/socket/socket.service.ts:64</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Socket } from &#x27;ngx-socket-io&#x27;;
+import { Observable, timer, Subscribable, pipe, Subscription } from &#x27;rxjs&#x27;;
+
+import { Store } from &#x27;@ngrx/store&#x27;;
+import { environment } from &#x27;../../environments/environment&#x27;;
+
+import { SocketIoConfig } from &#x27;ngx-socket-io&#x27;;
+export const SOCKET_CONFIG: SocketIoConfig &#x3D; {
+  url: environment.socketUrl,
+  options: { path: &#x27;/websocket&#x27; },
+};
+
+/// session store
+import * as sessionActions from &#x27;../auth/store/session.action&#x27;;
+import { SessionState } from &#x27;../auth/store/session.store&#x27;;
+import { getSessionStateSelector, selectUser } from &#x27;../auth/store/session.selector&#x27;;
+////
+
+/// User store
+import { UserState, User } from &#x27;../main/users/store/users.store&#x27;;
+import { UpdateUsers } from &#x27;../main/users/store/users.action&#x27;;
+
+///
+import { SessionService } from &#x27;../auth/session.service&#x27;;
+import { ReplaySubject } from &#x27;rxjs&#x27;;
+// import { GalleryState } from &#x27;../store/gallery/gallery.store&#x27;;
+// import * as galleryActions from &#x27;../store/gallery/gallery.action&#x27;;
+// import { RoomState } from &#x27;../chat/store/chat.store&#x27;;
+// import * as roomActions from &#x27;../chat/store/chat.action&#x27;;
+// import { getRooms } from &#x27;../chat/store/chat.selector&#x27;;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;,
+})
+export class SocketService {
+  user_online$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(&#x27;server-action:update_user_online&#x27;);
+
+  ping$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(&#x27;server-action:ping&#x27;);
+  get_offer$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(&#x27;server-action:put_offer&#x27;);
+  get_answer$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(&#x27;server-action:put_answer&#x27;);
+  get_ice$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(&#x27;server-action:put_ice&#x27;);
+  update_session$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(&#x27;server-action:update_session&#x27;);
+  show_billing_dialog$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:show_billing_dialog&#x27;,
+  );
+  update_room$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:update_current_room&#x27;,
+  );
+
+  // Chat
+  chat_message$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(&#x27;server-action:chat_message&#x27;);
+  update_contacts$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:update_contacts&#x27;,
+  );
+
+  show_cam$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(&#x27;server-action:show_cam&#x27;);
+  hide_cam$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(&#x27;server-action:hide_cam&#x27;);
+  ///// Moderation
+
+  photo_moderation$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:moderate:photo&#x27;,
+  );
+  video_moderation$: Observable&lt;any&gt; &#x3D; this.socket.fromEvent&lt;string&gt;(
+    &#x27;server-action:moderate:video&#x27;,
+  );
+
+  offer_emmiter$ &#x3D; new ReplaySubject();
+  answer_emmiter$ &#x3D; new ReplaySubject();
+  ice_emmiter$ &#x3D; new ReplaySubject();
+
+  // current_user: User;
+
+  timer: any;
+
+  constructor(
+    private socket: Socket,
+    // private online_service: OnlineService,
+    private session_store: Store&lt;SessionState&gt;,
+    // private gallery_store: Store&lt;GalleryState&gt;,
+    private user_store: Store&lt;UserState&gt;,
+    // private room_store: Store&lt;RoomState&gt;,
+    private session_service: SessionService,
+  ) {
+    //  console.log(&#x27;socket constructor&#x27;);
+    this.session_store.select(getSessionStateSelector);
+
+    this.ping$.subscribe((data) &#x3D;&gt; {
+      this.socket.emit(&#x27;ng-action&#x27;, {
+        action: &#x27;pong&#x27;,
+        socket_id: socket.ioSocket.id,
+        token: this.session_service.getToken(),
+      });
+    });
+
+    this.user_online$.subscribe((data) &#x3D;&gt; {
+      // update gallery store
+      if (data) {
+        // set user
+        this.user_store.dispatch(new UpdateUsers(data.user));
+      }
+    });
+
+    this.get_offer$.subscribe((data: any) &#x3D;&gt; {
+      this.offer_emmiter$.next(data);
+    });
+
+    this.get_answer$.subscribe((data: any) &#x3D;&gt; {
+      this.answer_emmiter$.next(data);
+    });
+
+    this.get_ice$.subscribe((data: any) &#x3D;&gt; {
+      this.ice_emmiter$.next(data);
+    });
+
+    this.socket.on(&#x27;connect&#x27;, () &#x3D;&gt; {
+      this.session_service.setSid(socket.ioSocket.id);
+      console.log(&#x27;connnection update sid&#x27; + socket.ioSocket.id);
+      this.session_store.dispatch(
+        new sessionActions.SetSid({
+          token: this.session_service.getToken(),
+          socket_id: socket.ioSocket.id,
+        }),
+      );
+    });
+  }
+
+  sendOffer(data: any) {
+    const payload &#x3D; { action: &#x27;MESSAGE:sending-offer&#x27;, data };
+    this.socket.emit(&#x27;ng-action&#x27;, payload);
+  }
+
+  reconnect() {
+    this.socket.disconnect();
+    this.socket.connect();
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'SocketService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

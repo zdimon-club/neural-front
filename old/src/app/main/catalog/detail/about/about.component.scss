@@ -1,0 +1,134 @@
+.main-info-container {
+	padding: 35px 50px 30px;
+	border-radius: 10px;
+	font-size: 16px;
+	line-height: 19px;
+	box-sizing: border-box;
+	color: #000000;
+	background: #FFFFFF;
+	border: 1px solid #E3E4E8;
+
+	.main-info-title {
+		font-weight: bold;
+		font-size: 30px;
+		color: #29333F;
+
+		img {
+			margin-right: 12px;
+			vertical-align: middle;
+		}
+	}
+
+	.main-info-subtitle{
+		font-weight: bold;
+		font-size: 14px;
+		color: #C5C5C5;
+		padding-top: 5px;
+
+		@media screen and (min-width: 768px) {
+			padding-top: 10px;
+		}
+	}
+
+	.show-details-btn {
+		border: 2px solid #A4A4A4;
+		color: #A4A4A4;
+		border-radius: 10px;
+		width: 219px;
+		height: 40px;
+	}
+
+	.main-info-header {
+		padding-bottom: 15px;
+		border-bottom: 0.5px solid #E4E4E4;
+	}
+
+	.personal-message-title {
+		font-weight: bold;
+		font-size: 18px;
+		line-height: 21px;
+		color: #000000;
+	}
+
+	.profile-settings{
+		li{
+			display: inline-block;
+			margin-left: 25px;
+			min-height: 30px;
+			line-height: 30px;
+		}
+		.user-online{
+			color: #86C07F;
+		}
+	}
+}
+
+.main-info {
+	&__content {
+		padding-bottom: 40px;
+
+		@media screen and (min-width: 768px) {
+			padding-bottom: 60px;
+		}
+
+		@media screen and (min-width: 1024px) {
+			padding-bottom: 80px;
+		}
+	}
+
+	&__title {
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 18px;
+		color: #000000;
+		padding-bottom: 10px;
+
+		@media screen and (min-width: 1024px) {
+			font-size: 18px;
+			line-height: 21px;
+		}
+	}
+
+	&__row {
+		padding: 15px 10px 10px;
+		font-size: 12px;
+		line-height: 14px;
+
+		@media screen and (min-width: 768px) {
+			padding: 20px 10px;
+			font-size: 14px;
+			line-height: 16px;
+		}
+
+		@media screen and (min-width: 1024px) {
+			padding: 30px 15px;
+			font-size: 16px;
+			line-height: 20px;
+		}
+	}
+}
+
+@media only screen and (max-width: 1097px) {
+
+}
+
+@media only screen and (max-width: 992px) {
+	.main-content{
+		margin-top: 30px!important;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.main-info-container {
+		padding: 20px 15px 15px !important;
+	}
+	.profile-settings{
+		padding-left: 5px!important;
+		li {
+			margin-left: 15px!important;
+		}
+	}
+}
+@media only screen and (max-width: 320px) {
+
+}

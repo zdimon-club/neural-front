@@ -1,0 +1,89 @@
+<div class="transactions-history">
+  <div class="transactions-history__header flex justify-content-between align-items-center">
+    <div class="transactions-history__main-title">Transaction history</div>
+    <div class="calendar">
+      <input
+        (click)="trasactionsDate.open()"
+        class="calendar__input"
+        [matDatepicker]="trasactionsDate"
+        placeholder="Selected date"
+        readonly
+      />
+
+      <img
+        src="../../../../assets/icons/calendar.svg"
+        alt="Calendar icon"
+        class="calendar__image"
+      />
+
+      <div class="mat-datepicker-wrapper">
+        <mat-datepicker #trasactionsDate touchUi></mat-datepicker>
+      </div>
+    </div>
+  </div>
+  <div class="transactions-history-list__blur">
+    <div class="transactions-history-list__overflow">
+      <div class="transactions-history-list__wrapper">
+        <div
+          class="transactions-history-list__header flex justify-content-between align-items-center"
+        >
+          <div class="transactions-history-list__first-row">
+            <p>№</p>
+            <p>Service</p>
+            <p>User</p>
+          </div>
+          <div class="transactions-history-list__second-row">
+            <p>Date</p>
+            <p>Price</p>
+          </div>
+        </div>
+        <div class="transactions-history-list">
+          <div
+            *ngFor="let item of data; let i = index"
+            class="transactions-history-list__item flex justify-content-between align-items-center"
+          >
+            <div class="transactions-history-list__first-row flex align-items-center full-height">
+              <p class="transactions-history-list__item-index">
+                {{ item.id }}
+              </p>
+
+              {{ item.type }}
+
+              <div class="flex align-items-center">
+                <app-user-item
+                  [photo]="item.reciver.main_photo"
+                  [isOnline]="item.reciver.is_online"
+                  [cam]="item.reciver.is_camera"
+                ></app-user-item>
+                <a
+                  [routerLink]="['/profile', item.reciver.id]"
+                  class="text-dark transactions-history-list__item-name"
+                  >{{ item.reciver.username }},&nbsp;
+                </a>
+                <p class="transactions-history-list__item-age">
+                  {{ item.reciver.age }}
+                </p>
+              </div>
+              <p class="transactions-history-list__item-description">
+                {{ item.description }}
+              </p>
+            </div>
+            <div class="transactions-history-list__second-row flex align-items-center full-height">
+              <p class="transactions-history-list__item-date">
+                {{ item.created_at }}
+              </p>
+              <div>
+                <span class="transactions-history-list__item-price-value">
+                  {{ item.ammount }}
+                </span>
+                <span class="transactions-history-list__item-currency">
+                  CRD
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

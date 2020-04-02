@@ -1,0 +1,8 @@
+<div class="user-item">
+  <span class="img user-item" [class.count]="cnt">
+    <span class="online" *ngIf="isOnline && !cam"></span>
+    <span class="cam" *ngIf="cam"></span>
+    <span class="unread" *ngIf="cnt > 0">{{ cnt }}</span>
+    <img src="{{ photo }}" alt="" />
+  </span>
+</div>

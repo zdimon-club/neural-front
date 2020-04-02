@@ -1,0 +1,107 @@
+<div id="photo" class="page-layout carded fullwidth inner-scroll">
+
+        <!-- TOP BACKGROUND -->
+        <div class="top-bg accent"></div>
+        <!-- / TOP BACKGROUND -->
+
+        <!-- CENTER -->
+        <div class="center">
+
+            <!-- HEADER -->
+            <div class="header accent"
+                 fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+
+
+                <!-- APP TITLE -->
+                <div class="logo mb-24 mb-md-0"
+                     fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                            duo
+                    </mat-icon>
+                    <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        Feed
+                    </span>
+                </div>
+                <!-- / APP TITLE -->
+
+
+
+                <!-- ADD BUTTON -->
+                <div style="float: right">
+                       
+                    <button mat-raised-button
+                         [routerLink]="'/main/feed/edit/new'"
+                         class="add-product-button fuse-white mt-14 mt-md-0">
+                     <span>{{ 'BUTTON_ADD_FEED' | translate }}</span>
+                    </button>
+                   
+
+                </div>
+
+                <!-- / ADD BUTTON -->
+
+            </div>
+            <div class="content-card">
+                
+
+
+                <!--  Feed table    -->
+
+                <mat-table class="products-table"
+                #table [dataSource]="feed"
+                matSort
+                [@animateStagger]="{value:'50'}"
+                fusePerfectScrollbar>
+
+
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let feed" fxHide fxShow.gt-xs>
+                        {{ feed.id  }}
+                    </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="photos">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Image</mat-header-cell>
+                    <mat-cell *matCellDef="let feed" fxHide fxShow.gt-xs>
+                            <img class="img" *ngFor="let ph of feed.photos" [src]="ph.get_small_url_port" />
+                    </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="videos">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Video</mat-header-cell>
+                    <mat-cell *matCellDef="let feed" fxHide fxShow.gt-xs>
+                            <img  class="img" *ngFor="let ph of feed.videos" [src]="ph.get_small_url_land" />
+                    </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="title">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Title</mat-header-cell>
+                        <mat-cell *matCellDef="let feed" fxHide fxShow.gt-xs>
+                                {{ feed.title }}
+                        </mat-cell>
+                </ng-container>
+
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let feed; columns: displayedColumns;"
+                class="product"
+                [routerLink]="'/main/feed/edit/'+feed.id"
+                matRipple
+                >
+                </mat-row>
+
+                </mat-table>
+
+
+
+            </div>
+        </div>
+</div>
+

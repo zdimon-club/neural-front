@@ -1,0 +1,421 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content module">
+                   <div class="content-data">
+
+
+
+<ol class="breadcrumb">
+    <li>Modules</li>
+    <li>BlogRoutingModule</li>
+</ol>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li  class="active" >
+        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li >
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>tmp/unice/src/app/blog/blog-routing.module.ts</code>
+        </p>
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
+import { ColumnNoSidebarComponent } from &#x27;./blog-grid/column-no-sidebar/column-no-sidebar.component&#x27;;
+import { ColumnLeftSidebarComponent } from &#x27;./blog-grid/column-left-sidebar/column-left-sidebar.component&#x27;;
+import { ColumnRightSidebarComponent } from &#x27;./blog-grid/column-right-sidebar/column-right-sidebar.component&#x27;;
+import { ClassicNoSidebarComponent } from &#x27;./blog-grid/classic-no-sidebar/classic-no-sidebar.component&#x27;;
+import { ClassicRightSidebarComponent } from &#x27;./blog-grid/classic-right-sidebar/classic-right-sidebar.component&#x27;;
+import { ClassicLeftSidebarComponent } from &#x27;./blog-grid/classic-left-sidebar/classic-left-sidebar.component&#x27;;
+
+import { ListNoSidebarComponent } from &#x27;./blog-list/list-no-sidebar/list-no-sidebar.component&#x27;;
+import { ListLeftSidebarComponent } from &#x27;./blog-list/list-left-sidebar/list-left-sidebar.component&#x27;;
+import { ListRightSidebarComponent } from &#x27;./blog-list/list-right-sidebar/list-right-sidebar.component&#x27;;
+import { SplitNoSidebarComponent } from &#x27;./blog-list-creative/split-no-sidebar/split-no-sidebar.component&#x27;;
+import { SplitLeftSidebarComponent } from &#x27;./blog-list-creative/split-left-sidebar/split-left-sidebar.component&#x27;;
+import { SplitRightSidebarComponent } from &#x27;./blog-list-creative/split-right-sidebar/split-right-sidebar.component&#x27;;
+
+import { BigpostSplitComponent } from &#x27;./blog-mix-layout/bigpost-split/bigpost-split.component&#x27;;
+import { BigpostSplitNoSidebarComponent } from &#x27;./blog-mix-layout/bigpost-split-no-sidebar/bigpost-split-no-sidebar.component&#x27;;
+import { BigpostListComponent } from &#x27;./blog-mix-layout/bigpost-list/bigpost-list.component&#x27;;
+import { BigpostListNoSidebarComponent } from &#x27;./blog-mix-layout/bigpost-list-no-sidebar/bigpost-list-no-sidebar.component&#x27;;
+import { BigpostColumnNoSidebarComponent } from &#x27;./blog-mix-layout/bigpost-column-no-sidebar/bigpost-column-no-sidebar.component&#x27;;
+import { BigpostColumnComponent } from &#x27;./blog-mix-layout/bigpost-column/bigpost-column.component&#x27;;
+
+import { TwoColMasonaryComponent } from &#x27;./blog-masonary/full-width-two-column/full-width-two-column.component&#x27;;
+import { FullwidthThreeColumnComponent } from &#x27;./blog-masonary/fullwidth-three-column/fullwidth-three-column.component&#x27;;
+import { FullwidthFourColumnComponent } from &#x27;./blog-masonary/fullwidth-four-column/fullwidth-four-column.component&#x27;;
+import { MasonaryLeftSidebarComponent } from &#x27;./blog-masonary/masonary-left-sidebar/masonary-left-sidebar.component&#x27;;
+import { MasonaryRightSidebarComponent } from &#x27;./blog-masonary/masonary-right-sidebar/masonary-right-sidebar.component&#x27;;
+import { MasonaryNoSidebarComponent } from &#x27;./blog-masonary/masonary-no-sidebar/masonary-no-sidebar.component&#x27;;
+
+import { DetailComponent } from &#x27;./blog-detail/detail/detail.component&#x27;;
+import { DetailGalleryComponent } from &#x27;./blog-detail/detail-gallery/detail-gallery.component&#x27;;
+import { DetailVideoComponent } from &#x27;./blog-detail/detail-video/detail-video.component&#x27;;
+import { DetailNoSidebarComponent } from &#x27;./blog-detail/detail-no-sidebar/detail-no-sidebar.component&#x27;;
+import { DetailLeftSidebarComponent } from &#x27;./blog-detail/detail-left-sidebar/detail-left-sidebar.component&#x27;;
+
+const routes: Routes &#x3D; [
+  {
+    path: &#x27;&#x27;,
+    children: [
+      {
+        path: &#x27;blog-grid/column-no-sidebar&#x27;,
+        component: ColumnNoSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH LEFT-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Grid View / No Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-grid/column-left-sidebar&#x27;,
+        component: ColumnLeftSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH LEFT-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Grid View / Left Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-grid/column-right-sidebar&#x27;,
+        component: ColumnRightSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH RIGHT-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Grid View / Right Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-grid/classic-no-sidebar&#x27;,
+        component: ClassicNoSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH FULL WIDTH No-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Grid View / Full Width No Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-grid/classic-right-sidebar&#x27;,
+        component: ClassicRightSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH FULL WIDTH Right-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Grid View / Full Width Right Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-grid/classic-left-sidebar&#x27;,
+        component: ClassicLeftSidebarComponent,
+         data: {
+          title: &quot;BLOG WITH LEFT-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Grid View / Left Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-list/list-no-sidebar&#x27;,
+        component: ListNoSidebarComponent,
+         data: {
+          title: &quot;BLOG WITH No -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog List View / No Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-list/list-left-sidebar&#x27;,
+        component: ListLeftSidebarComponent,
+         data: {
+          title: &quot;BLOG WITH LEFT-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog List View / Left Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-list/list-right-sidebar&#x27;,
+        component: ListRightSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH Right-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog List View / Right Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-list-creative/split-no-sidebar&#x27;,
+        component: SplitNoSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH No -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog List Creative / No Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-list-creative/split-left-sidebar&#x27;,
+        component: SplitLeftSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH LEFT-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog List Creative / Left Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-list-creative/split-right-sidebar&#x27;,
+        component: SplitRightSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH Right-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog List Creative / Right Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-mix-layout/bigpost-list&#x27;,
+        component: BigpostListComponent,
+        data: {
+          title: &quot;BLOG WITH Left -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Mix Layout / Left Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-mix-layout/bigpost-split&#x27;,
+        component: BigpostSplitComponent,
+        data: {
+          title: &quot;BLOG WITH Right-SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Mix Layout / Right Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-mix-layout/bigpost-split-no-sidebar&#x27;,
+        component: BigpostSplitNoSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH No -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Mix Layout / No Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-mix-layout/bigpost-list-no-sidebar&#x27;,
+        component: BigpostListNoSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH Full width No -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Mix Layout / No Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-mix-layout/bigpost-column-no-sidebar&#x27;,
+        component: BigpostColumnNoSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH No -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Mix Layout / No Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-mix-layout/bigpost-column&#x27;,
+        component: BigpostColumnComponent,
+        data: {
+          title: &quot;BLOG WITH Right -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Mix Layout / Grid Mix With Right Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-detail/detail-left-sidebar&#x27;,
+        component: DetailLeftSidebarComponent ,
+        data: {
+          title: &quot;BLOG WITH Left -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Details / Left Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-detail/detail&#x27;,
+        component: DetailComponent,
+        data: {
+          title: &quot;BLOG WITH Right -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Details / Right Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-detail/detail-no-sidebar&#x27;,
+        component: DetailNoSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH No -SIDEBAR&quot;,
+          breadcrumb: &quot;Blog Details / No Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-detail/detail-gallery&#x27;,
+        component: DetailGalleryComponent,
+        data: {
+          title: &quot;BLOG WITH Gallery&quot;,
+          breadcrumb: &quot;Blog Details / Detail With Gallery&quot;
+        }
+      },
+      {
+        path: &#x27;blog-detail/detail-video&#x27;,
+        component: DetailVideoComponent,
+        data: {
+          title: &quot;BLOG WITH Video&quot;,
+          breadcrumb: &quot;Blog Details / Detail With Video&quot;
+        }
+      },
+      {
+        path: &#x27;blog-masonary/fullwidth-2&#x27;,
+        component: TwoColMasonaryComponent,
+        data: {
+          title: &quot;BLOG WITH 2-COLUMNS&quot;,
+          breadcrumb: &quot;Blog Masonry / 2 Columns&quot;
+        }
+      },
+      {
+        path: &#x27;blog-masonary/fullwidth-3&#x27;,
+        component: FullwidthThreeColumnComponent,
+        data: {
+          title: &quot;BLOG WITH 3-COLUMNS&quot;,
+          breadcrumb: &quot;Blog Masonry / 3 Columns&quot;
+        }
+      },
+      {
+        path: &#x27;blog-masonary/fullwidth-4&#x27;,
+        component: FullwidthFourColumnComponent,
+        data: {
+          title: &quot;BLOG WITH 4-COLUMNS&quot;,
+          breadcrumb: &quot;Blog Masonry / 4 Columns&quot;
+        }
+      },
+      {
+        path: &#x27;blog-masonary/masonary-left-sidebar&#x27;,
+        component: MasonaryLeftSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH Left Sidebar&quot;,
+          breadcrumb: &quot;Blog Masonry / Left Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-masonary/masonary-right-sidebar&#x27;,
+        component: MasonaryRightSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH Right Sidebar&quot;,
+          breadcrumb: &quot;Blog Masonry / Right Sidebar&quot;
+        }
+      },
+      {
+        path: &#x27;blog-masonary/masonary-no-sidebar&#x27;,
+        component: MasonaryNoSidebarComponent,
+        data: {
+          title: &quot;BLOG WITH No Sidebar&quot;,
+          breadcrumb: &quot;Blog Masonry / No Sidebar&quot;
+        }
+      }      
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class BlogRoutingModule { }
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'BlogRoutingModule.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<div
+  class="header__notifications-menu position-absolute header__dropdown-menu"
+  [class.active]="isNotificationsOpened"
+  [class.small]="isHeaderSmall"
+  [class.mobile]="isMobile"
+>
+  <div class="header__notifications-triangle" (click)="clickTriangle()"></div>
+  <h3 class="header__notifications-title">Notifications <span *ngIf="(cnt_notifications | async) > 0">{{ cnt_notifications | async }}</span></h3>
+  <div class="header__notifications-list flex flex-column">
+    <div
+      class="header__notifications-item flex align-items-center"
+      *ngFor="let notification of (notificationsList | async);let index = index"
+    >
+      <div class="flex justify-content-between header__notifications-item-inner fluid">
+        <div class="flex align-items-center header__notifications-item-info fluid">
+          <div class="header__notifications-avatar">
+            <!-- <app-user-item
+              [photo]="user.main_photo"
+              [isOnline]="
+                notification.type !== 'like' &&
+                notification.type === 'comment' &&
+                notification.type === 'write'
+                  ? user.is_online
+                  : false
+              "
+              [cam]="false"
+            ></app-user-item> -->
+
+
+            <ng-container *ngIf="notification.user_obj">
+              <app-user-item
+              [photo]="notification.user_obj.main_photo"
+              [isOnline]="true"
+              [cam]="false"
+              ></app-user-item>
+            </ng-container>
+
+            <div
+              class="header__notifications-icon header__notifications-icon_like"
+              *ngIf="notification.type === 'like'"
+            >
+              <img src="/assets/icons/svg-icons/notification-heart.svg" />
+            </div>
+            <div
+              class="header__notifications-icon header__notifications-icon_comment"
+              *ngIf="notification.type === 'comment'"
+            >
+              <img src="/assets/icons/svg-icons/notification-comment.svg" />
+            </div>
+            <div
+              class="header__notifications-icon header__notifications-icon_write"
+              *ngIf="notification.type === 'write'"
+            >
+              <img src="/assets/icons/svg-icons/notification-profile.svg" />
+            </div>
+          </div>
+          <p class="header__notifications-text">
+            <a [routerLink]="['/profile', notification.id]" (click)="readNotification(index, notification.id)" class="text-dark font-weight-bold"
+              >{{ notification.message }},
+            </a>
+            <span class="header__notifications-age">{{ notification.id }}</span>
+            {{ notification.created }}
+          </p>
+        </div>
+        <div
+          class="header__notifications-image-block"
+          *ngIf="notification.photo || notification.is_video"
+        >
+          <img
+            *ngIf="notification.photo"
+            class="header__notifications-photo"
+            [src]="notification.photo"
+            width="100%"
+            height="100%"
+          />
+          <img
+            src="/assets/icons/svg-icons/video-play.svg"
+            class="video"
+            width="15"
+            height="15"
+            *ngIf="notification.is_video"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

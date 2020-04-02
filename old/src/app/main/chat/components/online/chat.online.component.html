@@ -1,0 +1,24 @@
+<div>
+    <div 
+    class="message-card"  
+    fxLayout="row" 
+    fxLayoutAlign="space-between center" 
+    *ngFor="let user of online | sort: 'activity'" 
+    [ngClass]="{'c-active': user.is_current }" 
+    (click)="select_emmiter.emit(user)">
+
+        <div class="user-img storis tottils" fxLayout="row">
+            <img class="" [src]="user.abonent.main_photo" alt="">
+            <div class="tottil" fxLayout><span>9</span></div>
+            <div class="play" fxLayout><span></span></div>
+        </div>
+        <div class="message-card-value" fxFlex="">
+            <div><span class="user-details">{{ user.username }}</span> ,<span class="age">29</span></div>
+            <div class="card-message">Lorem ipsum dolor sit amet</div>
+        </div>
+        <div class="message-card-mode" fxLayout="column">
+            <div class="data">11.30 PM</div>
+            <i class="material-icons s-active">star</i>
+        </div>
+    </div>
+</div>

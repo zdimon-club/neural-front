@@ -1,0 +1,22 @@
+<app-popup (handleClose)="handleClosePopup()" [isOpened]="isOpened">
+  <app-register-suggestion-popup-desktop
+    *ngIf="!isMobile && !isAuth"
+    [form]="form"
+    [allUsers] = "allUsers"
+    [currentGender]="currentGender"
+    (emitHandleClickGender)="handleClickGender($event)"
+    (emitHandleClosePopup)="handleClosePopup()"
+    (emitSubmitLogin)="handleSubmitLogin()"
+    (emitSubmitGoogleLogin)="handleSubmitGoogleLogin(form)"
+    (emitSubmitLoginAs)="handleSubmitLoginAs($event)"
+    class="wrapper"
+  ></app-register-suggestion-popup-desktop>
+  <app-register-suggestion-popup-mobile
+    *ngIf="isMobile && !isAuth"
+    [email]="email"
+    [currentGender]="currentGender"
+    (emitHandleClickGender)="handleClickGender($event)"
+    (emitHandleClosePopup)="handleClosePopup()"
+    (emitSubmitLogin)="handleSubmitLogin()"
+  ></app-register-suggestion-popup-mobile>
+</app-popup>

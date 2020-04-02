@@ -1,0 +1,104 @@
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$extra-large: 1200px;
+
+
+.footer {
+  padding-top: 45px;
+  padding-bottom: 37px;
+
+  .logo {
+
+    a {
+
+      img {
+
+      }
+    }
+  }
+
+
+  .navigation-links {
+
+    .links-column {
+
+      &.dating-site {
+
+      }
+
+      &.about-us {
+
+      }
+
+      &.start-dating {
+
+      }
+
+      .list-title {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        text-transform: uppercase;
+        color: #29333F;
+      }
+
+      a {
+        line-height: 27px;
+      }
+    }
+
+    @media screen and (max-width: $small) {
+      .links-column {
+
+        .list-title {
+          min-height: 38px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .wrapper-social {
+    justify-content: flex-end;
+
+    .social-links {
+
+      .social-links-title {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        text-transform: uppercase;
+        color: #29333F;
+      }
+
+      .socials {
+
+        a {
+
+          .social-icon {
+
+          }
+        }
+      }
+    }
+
+    .language {
+
+      .languages-links-title {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        text-transform: uppercase;
+        color: #29333F;
+      }
+
+      &__icon {
+        &_selected {
+          border: 2px solid #2E99E9;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}

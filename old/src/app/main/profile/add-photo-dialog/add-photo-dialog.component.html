@@ -1,0 +1,113 @@
+<div class="dialog-container" fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="flex-end flex-start" fxFlex="0 0 auto">
+    <mat-icon class="close-icon" (click)="dialogClose()">close</mat-icon>
+  </div>
+  <div class="add-photo-container" fxLayout="column">
+
+    <div fxLayoutAlign="center center" class="title-modal">
+      Add photos
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" class="text-center" fxFlexOffset="20px">
+      <p class="m-0">The selected area will be displayed on Your page.</p>
+      <p class="m-0">If the image is oriented incorrectly, the photo can be rotated.</p>
+    </div>
+
+    <div class="cropper-container">
+      <image-cropper
+          [imageBase64]="base64Image"
+          [aspectRatio]="4 / 4"
+          [cropper]="croperPosition_square"
+          format="png"
+          (imageCropped)="imageCroppedSquere($event)"
+      ></image-cropper>
+    </div>
+
+
+    <form [formGroup]="photoForm" class="mt-5">
+      <div class="form-group row">
+        <label for="headerField" class="col-md-3 col-lg-2 col-form-label text-uppercase">header</label>
+        <div class="col-md-9 col-lg-10">
+          <input type="text" formControlName="header" id="headerField" class="form-control" name="header" placeholder="PHOTO TITILE">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="headerField" class="col-md-3 col-lg-2 col-form-label text-uppercase">description</label>
+        <div class="col-md-9 col-lg-10">
+          <textarea class="form-control"
+                    placeholder="THE DESCRIPTION OF THE PHOTO"
+                    name="description"
+                    formControlName="description">
+          </textarea>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="geolocationField" class="col-md-3 col-lg-2 col-form-label text-uppercase">geolocation</label>
+        <div class="col-md-9 col-lg-10">
+          <input type="text" formControlName="geolocation" id="geolocationField" class="form-control" name="header" placeholder="ENTER THE GEOLOCATION">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="geolocationField" class="col-md-3 col-lg-2 col-form-label text-uppercase">Publication</label>
+        <div class="col-md-9 col-lg-10">
+          <div class="form-group row mb-0">
+            <div class="radio-container status col-auto">
+              <input type="radio"
+                     value="public"
+                     name='role_media'
+                     id="personal"
+                     formControlName="role_media"
+                     (change)="publicationChanged()"
+                     class="radio-input">
+              <label for="personal" class="status-label radio-label">
+                For personal use
+              </label>
+            </div>
+
+            <div class="radio-container status col-auto">
+              <input type="radio"
+                     value="private"
+                     name='role_media'
+                     id="sale"
+                     formControlName="role_media"
+                     (change)="publicationChanged()"
+                     class="radio-input">
+              <label for="sale" class="status-label radio-label">
+                For sale
+              </label>
+            </div>
+
+            <!-- 
+
+            <div class="price col-auto">
+              <input class="form-control"
+                     placeholder="PRICE"
+                     name="price"
+                     formControlName="price">
+            </div>
+            -->
+
+            <div class="radio-container status col-auto">
+              <input type="radio"
+                     value="buffer"
+                     name='role_media'
+                     id="gallery"
+                     formControlName="role_media"
+                     (change)="publicationChanged()"
+                     class="radio-input">
+              <label for="gallery" class="status-label radio-label">
+                For the gallery
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="edit-form-btns mb-5" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px" fxFlexOffset="30px">
+      <button mat-stroked-button class="cancel-btn" (click)="dialogClose()"> Cancel</button>
+      <button mat-stroked-button class="save-btn" (click)="onSave()"> Save</button>
+    </div>
+  </div>
+</div>

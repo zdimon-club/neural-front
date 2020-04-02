@@ -1,0 +1,38 @@
+<div class="container-fluid user-profile-content" *ngIf="user">
+<!--@todo uncomment stories later-->
+<!--  <div class="row">-->
+<!--    <app-stories></app-stories>-->
+<!--  </div>-->
+  <div class="row">
+    <div class="uploaded-photo-component col-xl-3 col-lg-5">
+      <div class="row">
+        <app-uploaded-photo class="col-12" [mainPhoto]="user.user.middle_photo"></app-uploaded-photo>
+        <div class="mt-32 col-12 ">
+          <div class="row mb-2">
+            <div class="col-6">
+              <button class="contact-btn">write a message</button>
+            </div>
+            <div class="col-6">
+              <button class="contact-btn">subscribe</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 col-12">
+          <div class="row mb-2">
+            <div class="col-9"><button class="contact-btn">Give a gift</button></div>
+            <div class="col-3"><button class="contact-btn"><img src="/assets/icons/svg-icons/galery.svg" alt=""></button></div>
+          </div>
+        </div>
+        <app-favorites class="col-12"></app-favorites>
+        <app-subscription class="col-12"></app-subscription>
+      </div>
+    </div>
+    <div class="col-xl-9 col-lg-7 mt-md-0 main-content">
+      <div class="row">
+        <app-about-profile class="col-12" [user]="user"></app-about-profile>
+        <app-gallery-profile [gallery]="user.gallery" class="col-12 gallery-component"></app-gallery-profile>
+        <app-feed-profile class="col-12" [user]="user.user"></app-feed-profile>
+      </div>
+    </div>
+  </div>
+</div>

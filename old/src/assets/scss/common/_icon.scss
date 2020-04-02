@@ -1,0 +1,58 @@
+.icon {
+    display: inline-block;
+
+    width: 14px;
+    height: 14px;
+
+    &--size-8 {
+        width: 8px;
+        height: 8px;
+    }
+
+    &--size-10 {
+        width: 10px;
+        height: 10px;
+    }
+
+    &--size-12 {
+        width: 12px;
+        height: 12px;
+    }
+
+    &--size-14 {
+        width: 14px;
+        height: 14px;
+    }
+
+    &--size-16 {
+        width: 16px;
+        height: 16px;
+    }
+
+    &--size-18 {
+        width: 18px;
+        height: 18px;
+    }
+
+    &--size-20 {
+        width: 20px;
+        height: 20px;
+    }
+
+    &--size-24 {
+        width: 24px;
+        height: 24px;
+    }
+
+    &--color-white {
+        * {
+            fill: white;
+        }
+    }
+
+    &--color-orange {
+        * {
+            fill: $color-orange;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<div class="snackbar" fxFlex fxLayout="row" fxLayoutGap="15px" (click)="goToChat()">
+  <div fxFlex="1 1 50px">
+    <img [src]="options.toastClass" *ngIf="options.toastClass" alt="User image">
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <div class="snackbar__message-wrap" fxLayout="column" fxLayoutGap="10px">
+      <div class=" snackbar__title" >
+        {{ title }}
+      </div>
+
+      <div aria-live="polite" class="snackbar__message">
+        {{ message }}
+      </div>
+    </div>
+
+    <div class="snackbar__close" (click)="remove()">
+      <mat-icon class="snackbar__close__icon">close</mat-icon>
+    </div>
+  </div>
+</div>

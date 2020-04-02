@@ -1,0 +1,15 @@
+<div id="main">
+  <app-header-navbar *ngIf="!(ui | async).hide_header"></app-header-navbar>
+
+  <div
+    id="layout-main-container"
+    class="content"
+    [ngClass]="{ 'with-padding': !(ui | async).hide_header }"
+  >
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer
+    [ngClass]="{ 'footer-hidden': (ui | async).hide_footer }"
+    *ngIf="!(ui | async).hide_footer"
+  ></app-footer>
+</div>

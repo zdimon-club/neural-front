@@ -1,0 +1,215 @@
+<div id="product" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent"
+                fxLayout="column" fxLayoutAlign="center center"
+                fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+                <div style="float: right; padding-top: 20px">
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/main/feed'">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>            
+                    <mat-icon>duo</mat-icon>
+        
+                    <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                            New Feed
+                    </span>    
+                </div>
+
+    
+
+            <div class="logo mb-24 mb-md-0"
+            fxLayout="row" fxLayoutAlign="start center">
+            
+                
+            </div>
+
+
+
+            <!-- ADD BUTTON -->
+            <div style="float: right">
+               
+            <button mat-raised-button
+                    class="save-product-button"
+                    [disabled]="(form.invalid || form.pristine) && !ready_to_save"
+                    *ngIf="pageType ==='new'" (click)="saveFeed()">
+                <span>ADD</span>
+            </button>
+                    
+            <button mat-raised-button
+                    class="save-product-button"
+                    [disabled]="(form.invalid || form.pristine) && !ready_to_save"
+                    *ngIf="pageType ==='edit'" (click)="saveFeed()">
+                <span>SAVE</span>
+            </button>
+                
+
+            </div>
+
+            <!-- / ADD BUTTON -->
+
+        </div>
+        <div class="content-card" fxLayout="column">
+            
+            <form class="product w-100-p" name="form" [formGroup]="form" novalidate fxLayout="column" fxLayoutGap="10px" fxFlex>
+
+                <mat-tab-group>
+
+                    <mat-tab label="Basic Info">
+                        <div class="tab-content p-24" fusePerfectScrollbar>
+
+                            <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                <mat-label>Title</mat-label>
+                                <input type="text" matInput formControlName="title">
+                                <mat-error *ngIf="form.get('title').hasError('required')">
+                                    Title is required
+                                </mat-error>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                <mat-label>Content</mat-label>
+                                <textarea formControlName="text" matInput rows="5"> </textarea>
+                                <mat-error *ngIf="form.get('text').hasError('required')">
+                                    Text is required
+                                </mat-error>
+                            </mat-form-field>
+
+                        </div>
+                    </mat-tab>
+
+
+
+                    <mat-tab label="Images">
+
+                        <div class="tab-content p-24" fusePerfectScrollbar>
+                            <div fxLayout="row wrap" fxLayoutAlign="start start">
+
+                                <div *ngIf="feed.photos.length === 0"
+                                        class="product-image" fxlayout="row" fxLayoutAlign="center center">
+                                    no images
+                                </div>
+
+                                <div *ngFor="let image of feed.photos">
+                                    <div *ngIf="feed.photos.length > 0"
+                                            class="product-image" fxlayout="row" fxLayoutAlign="center center">
+                                        <img class="media" [src]="image.get_middle_url_port">
+                                    </div>
+                                </div>
+
+                                <p>
+
+                                    <input
+                                    style="display: none"
+                                    type="file"
+                                    (change)="onImageChanged($event)"
+                                    name="myFile"
+                                    #imageInput>
+                                    <button mat-raised-button
+                                        *ngIf="feed.photos.length < 4"
+                                        (click)="imageInput.click()"
+                                         class="add-product-button fuse-white mt-14 mt-md-0">
+                                     <span>{{ 'BUTTON_ADD_PIC_FROM_COMP' | translate }}</span>
+                                    </button>
+
+                                    <button mat-raised-button
+                                    class="save-product-button"
+                                    *ngIf="feed.photos.length < 4"
+                                    (click)="addImgFromCam()">
+                                    <span>{{ 'BUTTON_ADD_FROM_CAM' | translate }}</span>
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+
+                    </mat-tab>         
+                    
+                    <mat-tab label="Videos">
+
+                        <div class="tab-content p-24" fusePerfectScrollbar>
+                            <div fxLayout="row wrap" fxLayoutAlign="start start">
+
+                                <div *ngIf="feed.videos.length === 0"
+                                        class="product-image" fxlayout="row" fxLayoutAlign="center center">
+                                    no images
+                                </div>
+
+                                <div *ngFor="let video of feed.videos">
+                                    <div *ngIf="feed.videos.length > 0"
+                                            class="product-image" fxlayout="row" fxLayoutAlign="center center">
+                                        <img class="link" (click)="showVideo(video)"  [src]="video.get_middle_url_land">
+                                    </div>
+                                </div>
+                                <div slyle="clear: both"></div>
+                                
+
+                                <p>
+
+                                        <input
+                                        style="display: none"
+                                        type="file"
+                                        (change)="onVideoChanged($event)"
+                                        name="myFile"
+                                        #videoInput>
+                                        <button mat-raised-button
+                                            (click)="videoInput.click()"
+                                            *ngIf="feed.videos.length < 4"
+                                             class="add-product-button fuse-white mt-14 mt-md-0">
+                                         <span>{{ 'BUTTON_ADD_VIDEO_FROM_COMP' | translate }}</span>
+                                        </button>
+
+                                    <button mat-raised-button
+                                    class="save-product-button"
+                                    *ngIf="feed.videos.length < 4"
+                                    (click)="addVideoFromCam()">
+                                    <span>{{ 'BUTTON_ADD_FROM_CAM' | translate }}</span>
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+
+                    </mat-tab>    
+
+
+                    <mat-tab label="Location">
+
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <div fxLayout="column" fxLayoutAlign="start start">
+                                        
+                                        <div fxFlex="100%">
+                                            lon: {{ feed.lon }}
+                                        </div>
+                                            
+                                        <div fxFlex="100%">
+                                            lat: {{ feed.lat }}
+                                        </div>
+                                        <div fxFlex="100%">
+                                            city: {{ feed.city }}
+                                        </div>
+                                        <div fxFlex="100%">
+                                            country: {{ feed.country }}
+                                        </div>
+                                                                               
+                                </div>
+                            </div>
+    
+                        </mat-tab>                        
+
+                </mat-tab-group>
+                
+            
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,341 @@
+<!-- {{ user.user | json }}  -->
+<div class="container-fluid profile-container" *ngIf="user">
+
+    <div class="row justify-content-center">
+
+        <div class="col-12 left-sidebar transaction-history">
+         <!--   <button class="btn btn-outline-warning btn-lg text-uppercase transaction-history-btn">Transaction History</button> -->
+        </div>
+
+        <!--LEFT SIDE START-->
+        <div class="col-lg-3 col-md-4 left-sidebar">
+            <div class="row p-0">
+                <app-my-photo-profile class="col-12" [mainPhoto]="(current_user | async).main_photo"></app-my-photo-profile>
+                <app-profile-favorites class="col-12" [favorites]="favorites"></app-profile-favorites>
+                <app-profile-subscriptions class="col-12" [subscribers]="subscribers"></app-profile-subscriptions>
+                <div class="col-12 mt-4" fxLayoutAlign="center center">
+                    <button style="margin-top: 10px;" mat-stroked-button class="verify-btn" (click)="replanishPopup()"> Replanish account</button>
+                </div>
+            </div>
+        </div>
+        <!--LEFT SIDE END-->
+        <div class="col-lg-9 col-md-8 mt-md-0 main-content">
+            <div class="row">
+                <!--CENTER NOT EDIT STATE START-->
+                <div class="col-12" *ngIf="pageState === 'main'">
+                    <div class="row m-0">
+                        <app-info class="col-12" [current_user]="current_user | async" (OnEditPage)="onEdit($event)" [user]="user"></app-info>
+                        <app-profile-gallery [gallery]="gallery" class="col-12 gallery-component"></app-profile-gallery>
+
+                        <app-feed class="col-12"
+                          [posts]="(posts | async)"
+                          (changePage)="changePage($event)"
+                          (onDeletePost)="doDeletePost($event)"
+                          (onAddComment)="doAddComment($event)"
+                          (onAddLike)="doAddLike($event)"
+                        >
+                        </app-feed>
+                    </div>
+                </div>
+
+                <div class="col-md-9 profile-center-edit order-md-1 order-2" *ngIf="pageState === 'addFeed'">
+                    <div class="row m-0">
+                        <app-feed-form class="col-12" (changePage)="changePage($event)" (saved)="feedSaved($event)"></app-feed-form>
+                    </div>
+                </div>
+                <!--CENTER NOT EDIT STATE END-->
+
+                <!--CENTER EDIT STATE START-->
+
+
+
+                <div class="col-md-9 profile-center-edit order-md-1 order-2" *ngIf="pageState === 'detail'">
+                    <div class="row m-0">
+                        <app-detail-form [user]="user" (saved)="detailSaved($event)"></app-detail-form>
+                    </div>
+                </div>
+
+                <div class="col-md-9 profile-center-edit order-md-1 order-2" *ngIf="pageState === 'edit'">
+                    <div class="row m-0">
+                        <div class="verify-attention-container col-12" *ngIf="(current_user | async).gender == 'female'">
+                            <div class="row" *ngIf="!user.user.is_verified">
+                                <div class="attention-text col-12">
+                                    Attention!
+                                    <br>
+                                    Your profile is not verified!
+                                </div>
+                                <div class="verify-btn-content col-12">
+                                    <button mat-stroked-button class="verify-btn" (click)="onVerify()"> Verify</button>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="user.user.is_verified">
+                                <div class="attention-text col-12" style="color: green">
+                                    Your profile is verified!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="edit-form col-12">
+
+                            <div class="edit-form-title">
+                                Basic
+                            </div>
+
+                            <form class="edit-form-container mt-3" [formGroup]="basicForm" fxLayout="column" fxLayoutGap="20px">
+
+                                <div class="form-group row">
+                                    <label for="nameField" class="col-sm-3 col-form-label text-uppercase">YOUR NAME</label>
+                                    <div class="col-sm-9">
+                                        <input [ngClass]="{'is-invalid': basicForm.get('username').invalid,
+                                                            'is-valid': !basicForm.get('username').invalid && basicForm.get('username').touched}"
+                                        type="text" placeholder="YOUR NAME" class="form-control-plaintext" id="nameField" name="username" formControlName="username">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="nameField" class="col-sm-3 col-form-label text-uppercase">Last name</label>
+                                    <div class="col-sm-9">
+                                        <input [ngClass]="{'is-invalid': basicForm.get('lastName').invalid,
+                                                            'is-valid': !basicForm.get('lastName').invalid && basicForm.get('lastName').touched}"
+                                               type="text" placeholder="YOUR LAST NAME" class="form-control-plaintext" id="lastName" name="name" formControlName="lastName">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="nameField" class="col-sm-3 col-form-label text-uppercase">your gender</label>
+                                    <div class="col-sm-9">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <div class="radio-container gender">
+
+                                                    <label for="man-radio" class="gender-label radio-label">
+                                                        <img *ngIf="user.user.gender == 'male'" src="/assets/icons/svg-icons/gender-icon-2.svg">
+                                                        <img *ngIf="user.user.gender == 'female'" src="/assets/icons/svg-icons/gender-icon-2.svg">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <!--
+                                            <div class="col-auto pl-0">
+                                                <div class="radio-container gender col-auto">
+                                                    <input type="radio" value="woman" name='gender' id="woman-radio"
+                                                           formControlName="gender"
+                                                           class="radio-input">
+                                                    <label for="woman-radio" class="gender-label radio-label">
+                                                        <img src="/assets/icons/svg-icons/gender-icon-1.svg">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="nameField" class="col-sm-3 col-form-label text-uppercase"> marital status</label>
+                                    <div class="col-sm-9">
+                                        <div class="row" [ngClass]="{'is-invalid': basicForm.get('status').invalid,
+                                        'is-valid': !basicForm.get('status').invalid && basicForm.get('status').touched}" >
+                                            <div class="col-auto">
+                                                <div class="radio-container status">
+                                                    <input  type="radio" name='status' value="Married" id="married-radio"
+                                                           formControlName="status"
+                                                           class="radio-input">
+                                                    <label for="married-radio" class="status-label radio-label">
+                                                        Married
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="radio-container status">
+                                                    <input type="radio" value="Single" name='status' id="single-radio"
+                                                           formControlName="status"
+                                                           class="radio-input">
+                                                    <label for="single-radio" class="status-label radio-label">
+                                                        Single
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" [ngClass]="{'is-invalid': basicForm.get('birthday').invalid,
+                                'is-valid': !basicForm.get('birthday').invalid && basicForm.get('birthday').touched}">
+                                    <label for="nameField" class="col-sm-3 col-form-label text-uppercase"> birthday</label>
+                                    <div class="col-sm-9">
+                                        <div class="row" formGroupName="birthday">
+                                            <div class="form-group col-md-4">
+                                                <select formControlName="day" class="form-control">
+                                                    <option *ngFor="let opt of days" [value]="opt" >{{opt}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <select formControlName="month" class="form-control">
+                                                    <option *ngFor="let opt of months" [value]="opt.value">{{opt.name}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <select formControlName="year" class="form-control">
+                                                    <option *ngFor="let opt of years" [value]="opt">{{opt}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="country" class="col-sm-3 col-form-label text-uppercase">country</label>
+                                    <div class="col-sm-9">
+                                        <select formControlName="country" class="form-control" [ngClass]="{'is-invalid': basicForm.get('country').invalid,
+                                        'is-valid': !basicForm.get('country').invalid && basicForm.get('country').touched}">
+                                            <option *ngFor="let c of countries" [ngValue]="c.value" >{{c.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="city" class="col-sm-3 col-form-label text-uppercase">City</label>
+                                    <div class="col-sm-9">
+                                        <input [ngClass]="{'is-invalid': basicForm.get('city').invalid,
+                                                            'is-valid': !basicForm.get('city').invalid && basicForm.get('city').touched}"
+                                               type="text" placeholder="City" class="form-control-plaintext" id="city" name="city" formControlName="city">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="city" class="col-sm-3 col-form-label text-uppercase">About me</label>
+                                    <div class="col-sm-9">
+                                        <textarea name="about_me" formControlName="about_me"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="city" class="col-sm-3 col-form-label text-uppercase">Looking for</label>
+                                    <div class="col-sm-9">
+                                        <textarea name="lookingfor" formControlName="lookingfor"></textarea>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <div class="edit-form-btns mt-4" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+                                <button mat-stroked-button class="cancel-btn" (click)="cancel()"> Cancel</button>
+                                <button mat-stroked-button class="save-btn" [ngClass]="{'is-invalid': basicForm.invalid}" [disabled]="basicForm.invalid" (click)="onSave()" > Save</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--CENTER EDIT STATE END-->
+
+                <!--CENTER VERIFY STATE START-->
+                <div class="col-md-9 profile-center-verify order-md-1 order-2" *ngIf="pageState === 'verify'">
+                    <div class="row profile-verify-container m-0">
+                        <div class="verify-title col-12">
+                            Upload document
+                        </div>
+
+                        <form class="mt-4 col-12" [formGroup]="verifyForm" fxLayout="column" fxLayoutGap="20px">
+
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-3 col-form-label text-uppercase">your name</label>
+                                <div class="col-sm-9">
+                                    <input [ngClass]="{'is-invalid': verifyForm.get('name').invalid && verifyForm.get('name').touched,
+                                                            'is-valid': !verifyForm.get('name').invalid && verifyForm.get('name').touched}"
+                                           type="text" placeholder="YOUR NAME" class="form-control-plaintext" id="name" name="name" formControlName="name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lastNameVerify" class="col-sm-3 col-form-label text-uppercase">your last name</label>
+                                <div class="col-sm-9">
+                                    <input [ngClass]="{'is-invalid': verifyForm.get('lastName').invalid && verifyForm.get('lastName').touched,
+                                                            'is-valid': !verifyForm.get('lastName').invalid && verifyForm.get('lastName').touched}"
+                                           type="text" placeholder="YOUR LAST NAME" class="form-control-plaintext" id="lastNameVerify" name="lastName" formControlName="lastName">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="city" class="col-sm-5 col-form-label text-uppercase">copy of passport</label>
+                                <div class="col-sm-7">
+                                    <div>
+                                        <input
+                                                hidden
+                                                formControlName="passport"
+                                                type="file"
+                                                class="form-control"
+                                                (change)="onFileChange($event, 'passport')"
+                                                #passportInput
+                                                onclick="this.value = null"
+                                        />
+                                        <button mat-stroked-button class="file-btn" (click)="passportInput.click()">
+                                            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+                                                <img src="/assets/icons/svg-icons/link.svg" alt="">
+                                                <span>
+                                      Add a photo
+                                    </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="mt-2" *ngIf="passportImage" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+                                        <img [src]="passportImage" width="100px" height="100%"/>
+                                        <button mat-stroked-button color="warn" (click)="deleteImg('passport')">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="city" class="col-sm-5 col-form-label text-uppercase">A copy of the psychiatrist's report</label>
+                                <div class="col-sm-7">
+                                    <div>
+                                        <input
+                                                hidden
+                                                formControlName="psychReport"
+                                                type="file"
+                                                class="form-control"
+                                                onclick="this.value = null"
+                                                (change)="onFileChange($event, 'report')"
+                                                #psychInput
+                                        />
+                                        <button mat-stroked-button class="file-btn" (click)="psychInput.click()">
+                                            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+                                                <img src="/assets/icons/svg-icons/link.svg" alt="">
+                                                <span>
+                                      Add a photo
+                                    </span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="psychImage" fxLayout="row"
+                                         class="mt-2"
+                                         fxLayoutAlign="flex-start center"
+                                         fxLayoutGap="5px">
+                                        <img [src]="psychImage" width="100px" height="100%"/>
+                                        <button mat-stroked-button color="warn" (click)="deleteImg('report')">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="edit-form-btns mt-5 col-12 justify-content-center" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+                            <button mat-stroked-button class="verify-cancel-btn" (click)="cancel()">Cancel</button>
+                            <button mat-stroked-button class="save-verify-btn" (click)="onVerifySave()">Verify</button>
+                        </div>
+                    </div>
+                </div>
+                <!--CENTER VERIFY STATE END-->
+
+                <!--RIGHT SIDE START-->
+                <div class="col-md-3 right-side order-1"  *ngIf="pageState !== 'main'">
+                    <ul fxLayout="column" class="sections-list">
+                        <li class="section-item active" [ngClass]="{'active': pageState == 'edit'}" (click)="changePage('edit')">
+                            Basic
+                        </li>
+                        <li class="section-item" [ngClass]="{'active': pageState == 'detail'}" (click)="changePage('detail')">
+                            Detail
+                        </li>
+
+                    </ul>
+
+                    <div class="banner mt-5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

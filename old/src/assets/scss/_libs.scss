@@ -1,0 +1,23 @@
+// Normalize
+@import '~normalize.css/normalize';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Angular Material
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+// Swiper
+@import '~swiper/dist/css/swiper.min.css';
+
+// Owl carousel
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+// Animate
+@import '~animate-scss/animate.css';
+@import '~animate.css/animate.min.css';
+
+// Toastr
+@import '~ngx-toastr/toastr';

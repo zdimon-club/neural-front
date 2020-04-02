@@ -1,0 +1,162 @@
+<div id="photo" class="page-layout carded fullwidth inner-scroll">
+
+        <!-- TOP BACKGROUND -->
+        <div class="top-bg accent"></div>
+        <!-- / TOP BACKGROUND -->
+
+        <!-- CENTER -->
+        <div class="center">
+
+            <!-- HEADER -->
+            <div class="header accent"
+                 fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+
+
+                <!-- APP TITLE -->
+                <div class="logo mb-24 mb-md-0"
+                     fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                        desktop_windows
+                    </mat-icon>
+                    <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        Video
+                    </span>
+                </div>
+                <!-- / APP TITLE -->
+
+
+
+                <!-- ADD BUTTON -->
+                <div style="float: right">
+                        <input
+                        style="display: none"
+                        type="file"
+                        (change)="onFileChanged($event)"
+                        name="myFile"
+                        #fileInput>
+                    <button mat-raised-button
+                        (click)="fileInput.click()"
+                         class="add-product-button fuse-white mt-14 mt-md-0">
+                     <span>{{ 'BUTTON_ADD_VIDEO_FROM_COMP' | translate }}</span>
+                    </button>
+                    <button mat-raised-button
+                        (click)="openCamDialog()"
+                         class="add-product-button fuse-white mt-14 mt-md-0">
+                     <span>{{ 'BUTTON_ADD_VIDEO_FROM_CAM' | translate }}</span>
+                    </button>
+
+                </div>
+
+                <!-- / ADD BUTTON -->
+
+            </div>
+            <div class="content-card">
+                    <!-- {{ videos | async | json }} -->
+
+                    <mat-table class="products-table"
+                    #table [dataSource]="videos"
+                    matSort
+                    [@animateStagger]="{value:'50'}"
+                    fusePerfectScrollbar>
+
+
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>ID</mat-header-cell>
+                        <mat-cell *matCellDef="let video" fxHide fxShow.gt-xs>
+                            {{ video.id  }}
+                        </mat-cell>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="image_thumb_url">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Image</mat-header-cell>
+                        <mat-cell *matCellDef="let video" fxHide fxShow.gt-xs>
+                            
+                        </mat-cell>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="video">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>ID</mat-header-cell>
+                        <mat-cell *matCellDef="let video" fxHide fxShow.gt-xs>
+
+                           
+                            <img [src]="video.get_small_url_land" />
+
+                        </mat-cell>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="is_deleted">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Is deleted</mat-header-cell>
+                        <mat-cell *matCellDef="let video" fxHide fxShow.gt-xs>
+                            <mat-icon *ngIf="video.is_deleted" class="active-icon green-600 s-16">check</mat-icon>
+                            <mat-icon *ngIf="!video.is_deleted" class="active-icon red-500 s-16">close</mat-icon>
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="is_approved">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Is approved</mat-header-cell>
+                        <mat-cell *matCellDef="let video" fxHide fxShow.gt-xs>
+                            <mat-icon *ngIf="video.is_approved" class="active-icon green-600 s-16">check</mat-icon>
+                            <mat-icon *ngIf="!video.is_approved" class="active-icon red-500 s-16">close</mat-icon>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                    <mat-row *matRowDef="let video; columns: displayedColumns;"
+                    class="product"
+                    [routerLink]="'/main/video/detail/'+video.id"
+                    matRipple
+                    >
+                    </mat-row>
+
+                    </mat-table>
+            </div>
+        </div>
+</div>
+
+
+
+
+<!--
+<div class="page-layout carded">
+    <div class="header p-3 p-sm-24">
+        <h2>Photo</h2>
+
+    </div>
+    <div>
+
+    <button mat-raised-button color="accent" class="submit-button" (click)="getVideo()" aria-label="CREATE AN ACCOUNT">
+            {{ 'BUTTON_TURNVIDEO' | translate }}
+    </button>
+    <button mat-raised-button color="accent" *ngIf="is_video" class="btn btn-danger" (click)="stopStream()">
+            {{'BUTTON_STOPVIDEO' | translate}}
+          </button>
+    <button mat-raised-button color="accent" *ngIf="is_video" class="btn btn-warning" (click)="takePic()">
+        {{ 'BUTTON_TAKEPIC' | translate }}
+    </button>
+    </div>
+
+    <table mat-table [dataSource]="photos" class="mat-elevation-z8">
+
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="image_small">
+                    <th mat-header-cell *matHeaderCellDef> Image </th>
+                    <td mat-cell *matCellDef="let element"> {{element.image_small}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
+-->

@@ -1,0 +1,318 @@
+<div
+  class="modal fade"
+  tabindex="-1"
+  [class.show]="is_opened"
+  [class.disabled]="!is_displayed"
+  (click)="emitClickOutside($event)"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div
+      class="modal-content modal-content-fixed overflow-hidden full-height"
+      [ngStyle]="{
+        'max-height': popupHeight
+      }"
+    >
+      <div
+        class="modal__loader loader-wrapper full-width full-height"
+        [class.hidden]="!is_loading && is_first_video_downloaded"
+      >
+        <div id="loader">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="loading"></div>
+        </div>
+      </div>
+      <div class="row flex-lg-nowrap no-gutters h-100 overflow-auto" *ngIf="is_displayed">
+        <div
+          class="card__header modal__header-mobile p-0 d-flex d-lg-none align-items-center justify-content-between"
+        >
+          <div class="flex align-items-center justify-content-between fluid">
+            <div class="d-flex align-items-center">
+              <div class="flex online flex-shrink-0">
+                <app-user-item
+                  [photo]="(feed_info | async)?.user.main_photo"
+                  [isOnline]="(feed_info | async)?.user.is_online"
+                  [cam]="false"
+                ></app-user-item>
+              </div>
+              <div class="text-muted mx-2 overflow-hidden d-flex align-items-center">
+                <div class="flex flex-column mr-2">
+                  <div class="text-truncate font--size-14">
+                    <a
+                      [routerLink]="['profile', (feed_info | async)?.id]"
+                      class="text-dark font-weight-bold"
+                      >{{ (feed_info | async)?.user && (feed_info | async)?.user.username }},
+                    </a>
+                    <span>{{ (feed_info | async)?.user && (feed_info | async)?.user.age }}</span>
+                  </div>
+                  <div class="d-flex align-items-end">
+                    <img
+                      src="/assets/icons/svg-icons/location-black.svg"
+                      class="modal__location-icon mr-1"
+                    />
+                    <span class="text-truncate modal__from">{{
+                      (feed_info | async)?.user && (feed_info | async)?.user.country_string
+                    }}</span>
+                  </div>
+                </div>
+                <img
+                  src="/assets/icons/svg-icons/verified.svg"
+                  *ngIf="current_post.is_verified"
+                  class="ml-1"
+                />
+              </div>
+            </div>
+            <div class="modal__mobile-more-btn">
+              <a href="#" class="btn btn-link px-1 modal__more-btn">
+                <img
+                  src="/assets/icons/svg-icons/more.svg"
+                  class="icon icon--size-18 icon--color-light m-0"
+                  alt="More"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="flex align-items-center modal__header-bottom">
+            <ng-container *ngIf="isAuth">
+              <button
+                class="btn btn-outline-primary btn-sm btn-rounded ml-auto flex-shrink-0 modal__subscribe-btn"
+                *ngIf="!current_post.is_subscribed"
+                (click)="emitSubscribe(current_post)"
+              >
+                + Subscribe
+              </button>
+              <button
+                (click)="emitUnSubscribe(current_post)"
+                *ngIf="current_post.is_subscribed"
+                class="btn btn-outline-primary btn-sm btn-rounded ml-auto flex-shrink-0 modal__subscribe-btn"
+              >
+                Unsubscribe
+              </button>
+            </ng-container>
+            <ng-container *ngIf="!isAuth">
+              <button
+                [routerLink]="['login']"
+                class="btn btn-outline-primary btn-sm btn-rounded ml-auto flex-shrink-0 modal__subscribe-btn"
+              >
+                Subscribe
+              </button>
+            </ng-container>
+            <div class="ml-2 modal__more-btn-wrapper">
+              <a href="#" class="btn btn-link px-1 modal__more-btn">
+                <img
+                  src="/assets/icons/svg-icons/more.svg"
+                  class="icon icon--size-18 icon--color-light m-0"
+                  alt="More"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        
+        <div class="modal__user-media">
+          <!-- 'modal-locked' -->
+          <a href="#" class="modal-locked" *ngIf="current_post.is_locked">
+            <img src="/assets/icons/svg-icons/view-lock.svg" alt="" />
+          </a>
+          <!-- 'modal-locked' end -->
+          <app-feed-detail
+            [feed]="feed_info | async"
+            [is_popup]="true"
+            [initialPopupHeight]="initialPopupHeight"
+            (changePopupHeight)="changePopupHeight($event)"
+            (firstVideoDownloaded)="handleFirstVideoDownloaded()"
+          ></app-feed-detail>
+        </div>
+        <div class="col d-flex flex-column">
+          <div class="flex-grow-1 overflow-auto h-100 d-flex flex-column">
+            <div class="overflow-hidden p-3 modal__top-bar">
+              <div class="card__header p-0 d-none d-lg-flex align-items-center">
+                <div class="flex online flex-shrink-0">
+                  <app-user-item
+                    [photo]="current_post.main_photo"
+                    [isOnline]="current_post.is_online"
+                    [cam]="false"
+                  ></app-user-item>
+                </div>
+                <div class="text-muted mx-2 overflow-hidden d-flex align-items-center">
+                  <div class="flex flex-column mr-2">
+                    <div class="text-truncate font--size-14">
+                      <a
+                        [routerLink]="['profile', current_post.id]"
+                        class="text-dark font-weight-bold"
+                        >{{ current_post && current_post.username }},
+                      </a>
+                      <span>{{ current_post && current_post.age }}</span>
+                    </div>
+                    <div class="d-flex align-items-end">
+                      <img
+                        src="/assets/icons/svg-icons/location-black.svg"
+                        class="modal__location-icon mr-1"
+                      />
+                      <span class="text-truncate modal__from">{{
+                        current_post && current_post.country_string
+                      }}</span>
+                    </div>
+                  </div>
+                  <img
+                    src="/assets/icons/svg-icons/verified.svg"
+                    *ngIf="current_post.is_verified"
+                    class="ml-1"
+                  />
+                </div>
+                <ng-container *ngIf="isAuth">
+                  <button
+                    class="btn btn-outline-primary btn-sm btn-rounded ml-auto flex-shrink-0 modal__subscribe-btn"
+                    *ngIf="!current_post.is_subscribed"
+                    (click)="emitSubscribe(current_post)"
+                  >
+                    + Subscribe
+                  </button>
+                  <button
+                    (click)="emitUnSubscribe(current_post)"
+                    *ngIf="current_post.is_subscribed"
+                    class="btn btn-outline-primary btn-sm btn-rounded ml-auto flex-shrink-0 modal__subscribe-btn"
+                  >
+                    Unsubscribe
+                  </button>
+                </ng-container>
+                <ng-container *ngIf="!isAuth">
+                  <button
+                    [routerLink]="['login']"
+                    class="btn btn-outline-primary btn-sm btn-rounded ml-auto flex-shrink-0 modal__subscribe-btn"
+                  >
+                    Subscribe
+                  </button>
+                </ng-container>
+                <div class="ml-2">
+                  <a href="#" class="btn btn-link px-1 modal__more-btn">
+                    <img
+                      src="/assets/icons/svg-icons/more.svg"
+                      class="icon icon--size-18 icon--color-light m-0"
+                      alt="More"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div>
+                <p class="modal__title">
+                  {{ current_post.last_feed && current_post.last_feed.title }}
+                </p>
+                <p class="modal__hashtags">
+                  #is this poetry #lol #infinite present #hotels #prose #writer problems #liminal
+                  spaces #personal problems #solo travel #writing research #being alone #things that
+                  happened #december mood
+                </p>
+                <div
+                  class="d-flex justify-content-between align-items-center modal__geo-and-date-wrapper"
+                >
+                  <div class="flex align-items-center">
+                    <img src="/assets/icons/svg-icons/geo.svg" alt="Geolocation" />
+                    <span class="modal__geo-text">
+                      {{ current_post.last_feed && current_post.last_feed.location }}
+                    </span>
+                  </div>
+                  <span class="modal__geo-text">
+                    {{
+                      current_post.last_feed &&
+                        current_post.last_feed.created_at.split('-').join('.')
+                    }}
+                  </span>
+                </div>
+                <div class="d-flex align-items-center modal__likes-and-comments-wrapper">
+                  <div class="flex align-items-center modal__likes-wrapper">
+                    <button class="p-0" (click)="handleClickLike()">
+                      <svg
+                        width="30"
+                        height="28"
+                        viewBox="0 0 30 28"
+                        class="modal__icon-like"
+                        [class.active]="current_post.last_feed && current_post.last_feed.is_liked"
+                        [class.like-anim]="is_anim_started"
+                        (animationend)="handleLikeAnimationEnd()"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M28.9543 8.43946L28.9574 8.47318L28.9627 8.50662C28.9785 8.60582 29.1199 9.59842 28.7212 11.2923L28.7212 11.2926C28.1478 13.7322 26.8217 15.9615 24.8711 17.7372L14.9159 26.6525L5.13201 17.7398L5.13145 17.7392C3.17939 15.9637 1.85222 13.7329 1.27854 11.2926L1.27849 11.2924C0.879647 9.59723 1.02153 8.60533 1.03719 8.50864L1.04283 8.47386L1.046 8.43876C1.44667 4.00595 4.52017 1 8.16841 1C10.5882 1 12.7678 2.29554 14.0529 4.50287L14.9076 5.97112L15.7764 4.51114C17.0693 2.33851 19.3543 1.00058 21.8313 1.00058C25.4801 1.00058 28.5531 4.00649 28.9543 8.43946Z"
+                          stroke="#6E6C79"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </button>
+                    <span class="modal__likes-and-comments-number">{{
+                      current_post.last_feed && current_post.last_feed.likes
+                    }}</span>
+                  </div>
+
+                  <div class="flex align-items-center">
+                    <button class="p-0">
+                      <img src="/assets/icons/svg-icons/comment.svg" />
+                    </button>
+                    <span class="modal__likes-and-comments-number">{{
+                      (feed_info | async) && (feed_info | async).feedcomment.length
+                    }}</span>
+                  </div>
+
+                  <button
+                    class="btn btn-primary modal__send-msg-btn"
+                    (click)="callToChat(current_post.id)"
+                  >
+                    Send message
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="modal__comments-wrapper overflow-hidden px-3 pb-3">
+              <div
+                class="media mt-3"
+                *ngFor="let comment of (feed_info | async) ? (feed_info | async).feedcomment : []"
+              >
+                <div class="mr-2">
+                  <app-user-item
+                    [photo]="comment.user.main_photo"
+                    [isOnline]="comment.user.is_online"
+                    [cam]="false"
+                  ></app-user-item>
+                </div>
+
+                <div class="media-body">
+                  <div class="text-truncate font--size-14">
+                    <a href="#" class="font-weight-bold">{{ comment.user.username }}, </a>
+                    <span class="text-muted">{{ comment.user.age }}</span>
+                  </div>
+                  <div class="modal__comment-text font--size-12">
+                    {{ comment.text }}
+                  </div>
+                  <div class="d-flex align-items-center font--size-12 text-muted">
+                    <button class="modal__reply-btn p-0">Reply</button>
+                    <div class="ml-auto">22.01.2019 11:40 PM</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal__send-message-wrapper">
+            <input type="text" class="modal__input" placeholder="Enter a message..." [(ngModel)]="commentMessage" required />
+            <div class="flex align-items-center">
+              <button class="p-0 user-select-none">
+                <img src="/assets/icons/svg-icons/emoji.svg" />
+              </button>
+              <button (click)="postComment()" class="btn btn-primary modal__send-comment-button">
+                <img src="/assets/icons/svg-icons/send-comment.svg" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

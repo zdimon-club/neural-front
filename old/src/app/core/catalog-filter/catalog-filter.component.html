@@ -1,0 +1,35 @@
+<div class="catalog-filter__wrapper">
+  <div class="catalog-filter__scroll">
+    <div class="flex">
+      <div class="catalog-filter__links">
+        <a
+          [routerLink]="['/index']"
+          class="catalog-filter__button"
+          [class.active]="url.includes('/index') || url === '/'"
+          >Publications</a
+        >
+        <a
+          [routerLink]="['/userlist']"
+          class="catalog-filter__button"
+          [class.active]="url.includes('/userlist')"
+          >People</a
+        >
+      </div>
+      <div class="flex">
+        <button
+          class="catalog-filter__button"
+          [class.active]="filter.name === activeFilter"
+          (click)="handleChangeFilter(filter.name)"
+          *ngFor="let filter of filters"
+        >
+          {{ filter.name }}
+        </button>
+      </div>
+    </div>
+
+    <a [routerLink]="['/addpost']" class="btn btn-primary catalog-filter__add-post-button">
+      <img src="/assets/icons/svg-icons/plus-add.svg" />
+      <span class="catalog-filter__add-post-button-text">Add Publication</span>
+    </a>
+  </div>
+</div>

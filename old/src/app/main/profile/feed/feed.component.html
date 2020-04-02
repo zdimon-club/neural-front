@@ -1,0 +1,157 @@
+<div class="feed-container row">
+
+    <div class="create-post-field col-12">
+        <!--
+        <div class="message-input" fxFlex>
+            <textarea
+                      placeholder="What's new with you?"
+                      name="createPost"
+                      [rows]="1"
+                      [matTextareaAutosize]="true"
+                      cdkAutosizeMaxRows="5"
+            ></textarea>
+        </div>
+        <div class="create-post-icons">
+            <a href=""><img src="/assets/icons/svg-icons/photo-camera.svg" alt=""></a>
+            <a href=""><img src="/assets/icons/svg-icons/video-player.svg" alt=""></a>
+        </div>
+        -->
+        <div class="col-auto">
+            <button style="float: right" mat-stroked-button (click)="changePage.emit('addFeed')"
+                    class="edit-btn text-uppercase">Add post
+            </button>
+        </div>
+
+    </div>
+
+    <div class="feed-list col-12">
+
+        <div class="feed-item" fxLayout="column" *ngFor="let post of posts; index as i" fxLayoutGap="20px">
+            <div fxLayout="row" fxLayoutAlign="space-between" class="post-header">
+
+
+                <div fxLayout="row" fxLayoutGap="10px">
+                    <div fxLayout="column" fxLayoutGap="8px">
+                        <img [src]="post.user.main_photo" class="post-author-img">
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="8px">
+                        <div class="post-info-title">{{ post.user.username }} <span
+                                class="age-post-user">, {{ post.user.age }}</span></div>
+                        <div class="post-info-subtitle"> {{ post.created_at }}</div>
+                    </div>
+                </div>
+                <span (click)="deletePost(post)" class="cursor-pointer">
+                    <img src="/assets/icons/svg-icons/trash.svg" alt="">
+                </span>
+
+            </div>
+
+            <div fxLayout="row wrap" class="post-body">
+                <div class="post-img" *ngFor="let image of post.photos" fxLayout="column" fxLayoutGap="8px" fxFlex>
+                    <a (click)="showMedia(image)">
+                        <img [src]="image.get_middle_url_square" alt="">
+                    </a>
+                </div>
+                <div class="post-img" *ngFor="let image of post.videos" fxLayout="column" fxLayoutGap="8px" fxFlex>
+                    <a (click)="showMedia(image)">
+                        <img [src]="image.get_middle_url_square" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div fxLayout="row wrap" class="post-body">
+                <strong>{{ post.title }}</strong>
+            </div>
+            <div fxLayout="row wrap" class="post-body">
+                <p>{{ post.text }}</p>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="20px" class="post-icons">
+                <div class="post-button" (click)="likePost(post)">
+                    <span class="post-button__icon">
+                        <img src="/assets/icons/svg-icons/like.svg" alt="">
+                    </span>
+                    <small class="ml-1 post-button__text">{{post.likes}}</small>
+                </div>
+                <div class="post-button" (click)="openPostComments(i)">
+                    <span class="post-button__icon">
+                        <img src="/assets/icons/svg-icons/message.svg" alt="">
+                    </span>
+                    <small class="ml-1 post-button__text">{{post.feedcomment.length}}</small>
+                </div>
+            </div>
+
+
+            <div *ngIf="post.commentsOpened" fxLayout="column" fxLayoutGap="20px">
+                <div class="post-comments" *ngFor="let comment of post.feedcomment  | smile: smiles" fxLayout="row"
+                     fxLayoutGap="10px">
+                    <div fxLayout="column" fxLayoutGap="5px">
+                        <div fxLayout="row" class="comment mt-4">
+                            <div fxLayout="column" fxLayoutGap="5px" class="mr-1">
+                                <img [src]="comment.user.main_photo" class="rounded-image">
+                            </div>
+                            <div fxLayout="column" fxLayoutGap="15px">
+                                <div>
+                                    <span class="user-name">{{ comment.user.username }}</span>, <span
+                                        class="user-age"> {{comment.id }}</span>
+                                </div>
+                                <div [innerHTML]="comment.text | smile: smiles"></div>
+                                <span class="comment-date">{{ comment.date }}</span>
+                            </div>
+                        </div>
+                        <div *ngIf="comment.reply_comments">
+                            <div *ngFor="let reply_comment of comment.reply_comments" fxLayout="row"
+                                 class="sub-comment mt-4">
+
+                                <div fxLayout="column" fxLayoutGap="5px" class="mr-1">
+                                    <img [src]="reply_comment.main_photo" class="rounded-image">
+                                </div>
+                                <div class="comment w-100" fxLayout="column" fxLayoutGap="5px">
+                                    <div>
+                                        <span class="user-name">{{ reply_comment.username }}</span>, <span
+                                            class="user-age"> {{reply_comment.age }}</span>
+                                    </div>
+                                    <div>
+                                        {{ reply_comment.commentText }}
+                                    </div>
+                                    <span class="comment-date">{{ comment.date }}</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="send-comment-container">
+                    <div class="message-input" fxFlex>
+                        <textarea
+                                name="createComment"
+                                [rows]="1"
+                                [(ngModel)]="commentText"
+                                [matTextareaAutosize]="true"
+                                cdkAutosizeMaxRows="5"
+                        ></textarea>
+                    </div>
+                    <a class="emoji-btn cursor-pointer" (click)="showSmiles = !showSmiles">
+                        <img src="/assets/icons/svg-icons/emoji.svg" alt="">
+                    </a>
+                    <a class="send-comment-send-btn cursor-pointer" (click)="addComment(post.id, commentText)">
+                        <img src="/assets/icons/svg-icons/send-msg.svg" alt="">
+                    </a>
+                </div>
+                <div class="row smiles">
+                    <ul class="smiles" *ngIf="showSmiles">
+                        <li *ngFor="let s of smiles"><img (click)="addSmile(s)" [src]="s.image"/></li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="60px" fxLayoutAlign="center center">
+            <div class="seeking-info" fxLayout="column" fxLayoutGap="10px">
+                <button mat-stroked-button class="download-more-btn">Download more</button>
+            </div>
+        </div>
+    </div>
+</div>

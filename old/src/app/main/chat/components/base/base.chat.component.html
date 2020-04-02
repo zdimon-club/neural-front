@@ -1,0 +1,76 @@
+<div id="chat" [ngClass]="{ 'stream-visible': active_stream }">
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+    <div class="content-card hello">
+        <!-- <mat-sidenav-container class="hello" [ngClass]="{'video-on': is_video}"> -->
+        <mat-sidenav-container [ngClass]="{'stream-shown': active_stream, 'sidebar-opened': sidebar_active, 'chat-shown': chat_visible}"
+                               (showCamera)="showCamera($event)" class="hello">
+            <mat-sidenav class="sidenav hello" position="start" opened="true" mode="side"
+                         fuseMatSidenavHelper="chat-left-sidenav" matIsLockedOpen="gt-md">
+                <div fxlayout="row" fxLayoutAlign="end" *ngIf="sidebar_active" class="sidemenu-control">
+                    <div (click)="hideSidebar()" class="sidemenu-control__button">Hide</div>
+                </div>
+                 <!--
+                <div fxLayout="row">
+
+                <a [routerLink]="['/']" class="home-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="24" height="24"
+                    viewBox="0 0 24 24"
+                    style=" fill: #ccc;"><path d="M 12 3.90625 L 11.75 4.0625 L 0.25 11.0625 L 0.75 11.9375 L 12 5.09375 L 23.25 11.9375 L 23.75 11.0625 L 20 8.78125 L 20 4 L 18 4 L 18 7.5625 L 12.25 4.0625 Z M 12 6.5 L 2 12.5 L 2 24 L 22 24 L 22 12.5 Z M 9 13 L 15 13 L 15 22 L 9 22 Z"></path></svg>
+                </a>
+                <input class="search" type="text" placeholder="Search">
+
+                </div>
+                -->
+                <ul class="radio-search" fxLayout="row" fxLayoutAlign="space-between">
+                    <li [ngClass]="{'active': active_panel=='all'}" class="active" fxFlex=""
+                        (click)="selectSidePanel('all')"><span>{{ 'TAB_ALLGIRLS' | translate }}</span></li>
+                    <li [ngClass]="{'active': active_panel=='online'}" fxFlex="" (click)="selectSidePanel('online')">
+                        <span>{{ 'TAB_ONLINE' | translate }}</span></li>
+                    <li [ngClass]="{'active': active_panel=='favorites'}" fxFlex=""
+                        (click)="selectSidePanel('favorites')"><span>{{ 'TAB_FAVS' | translate }}</span></li>
+                </ul>
+                <div class="chat-list contacts">
+                    <!-- {{  users_online | async | json }} -->
+
+                    <app-chat-contact
+                            [contacts]="users_contact | async"
+                            (select_emmiter)="doSelectRoom($event)">
+                    </app-chat-contact>
+
+
+                </div>
+            </mat-sidenav>
+            <!-- / LEFT SIDENAV -->
+            <app-room-chat (turn)="doTurn($event)" fxLayout="row" fxFlex=""  class="hello chat__content"
+                           (showSidebar)="showSidebar($event)" (toggleChat)="toggleChat($event)" (showCamera)="showCamera($event)">
+            </app-room-chat>
+            <app-chat-owner-video
+                    class="owner-video drag-video"
+                    (turn)="doTurn($event)"
+                    [publisher]="publisher"
+                    *ngIf="is_video"
+                    [is_loading]="is_loading">
+            </app-chat-owner-video>
+            <div (click)="hideSidebar()" [ngClass]="{'is-active': sidebar_active}" class="sidenav-overlay"></div>
+        </mat-sidenav-container>
+    </div>
+    <!-- / CONTENT CARD -->
+
+</div>
+<!--
+<h3>{{ 'TITLE_CHAT_NAME' | translate }} (base....)</h3>
+<div class="row">
+  <div class="col-md-4">
+    <app-chat-contact [contacts]="rooms| async" (select)="selectRoom($event)"></app-chat-contact>
+  </div>
+  <div class="col-md-8">
+    <app-room-chat></app-room-chat>
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+-->
+
+<!-- {{ (rooms | async) | json }} -->

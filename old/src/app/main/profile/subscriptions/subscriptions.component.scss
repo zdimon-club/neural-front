@@ -1,0 +1,75 @@
+.subscription-content {
+    padding: 22px 15px;
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #E3E4E8;
+    margin-top: 30px;
+
+    .subscription-title {
+        font-weight: bold;
+    }
+
+    .subscription-body {
+        padding-top: 20px;
+    }
+
+    .connections-photo, .post-author-img, .rounded-image {
+        border-radius: 50%;
+        width: 65px;
+        height: 65px;
+    }
+
+    .subscription-count {
+        font-weight: bold;
+    }
+
+    .subscription-item{
+        padding-right: 5px;
+    }
+}
+
+.subscription {
+    &__name {
+        font-size: 14px;
+        display: flex;
+        padding-top: 5px;
+        transition: color .2s ease;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &__image {
+        display: flex;
+        object-fit: cover;
+        max-width: 65px;
+        max-height: 65px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    &__title{
+        font-weight: bold;
+    }
+
+    &__count {
+        color: #b0abac;
+    }
+
+    &__link {
+        color: #b0abac;
+        transition: color .2s ease;
+
+        &:hover {
+            color: #00CCC9;
+        }
+
+        &:active {
+            color: #000;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+}

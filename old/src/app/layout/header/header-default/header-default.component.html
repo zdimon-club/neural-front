@@ -1,0 +1,202 @@
+<div class="container-fluid header__container-fluid full-height">
+  <div class="row align-items-center full-height">
+    <div class="col-auto col-xxl-2">
+      <a [routerLink]="['/']" class="logotype"
+        ><img src="/assets/icons/svg-icons/logo.svg" alt="Logo"
+      /></a>
+    </div>
+    <a [routerLink]="['/main/catalog/online/true']">
+      <div class="col-auto d-none d-md-block">
+        <div class="header__online">
+          Online: <b class="text-success">{{ online }}</b>
+        </div>
+      </div>
+    </a>
+    <div class="col-auto d-none d-md-block">
+      <app-search-header (searchEmmiter)="handleSearch($event)"></app-search-header>
+      <!-- 
+      <a
+        href="#"
+        [routerLink]="'game'"
+        class="btn btn-outline-warning btn-lg text-uppercase mr-3 header__action-button"
+      >
+        <svg width="14" height="14" fill="none" class="icon" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M10.28 5.75c-1.131 0-2.051.92-2.051 2.05 0 1.131.92 2.05 2.05 2.05s2.05-.919 2.05-2.05c0-1.13-.92-2.05-2.05-2.05zm-8.202 7.819v-.848c0-.14.015-.277.03-.413l-.03.003a2.095 2.095 0 01-1.657-.82A2.03 2.03 0 000 12.721v.848c0 .227.183.41.41.41h1.743a1.216 1.216 0 01-.075-.41zm0-4.539c-.679 0-1.23.553-1.23 1.23a1.232 1.232 0 001.464 1.207 3.68 3.68 0 01.97-1.455 1.232 1.232 0 00-1.204-.981zm3.69 3.691c0-.434.066-.853.18-1.25-.06.004-.117.02-.18.02a2.446 2.446 0 01-1.894-.91 2.853 2.853 0 00-.976 2.14v.848c0 .227.183.41.41.41h2.536a1.216 1.216 0 01-.076-.41v-.848zm0-5.331c-.904 0-1.64.736-1.64 1.64 0 .905.736 1.641 1.64 1.641.193 0 .375-.04.547-.1.273-.5.637-.942 1.07-1.305.011-.077.024-.155.024-.235 0-.905-.736-1.64-1.64-1.64z"
+            fill="#F8856B"
+          />
+          <path
+            d="M12.404 9.713a2.853 2.853 0 01-2.125.958 2.853 2.853 0 01-2.124-.958 3.683 3.683 0 00-1.566 3.008v.848c0 .226.183.41.41.41h6.588a.41.41 0 00.41-.41v-.848c0-1.243-.649-2.339-1.593-3.008zm.309-7.936a.41.41 0 00-.332-.28l-1.198-.173L10.647.21c-.138-.28-.598-.28-.735 0l-.537 1.114-1.198.174a.41.41 0 00-.227.7l.867.844-.204 1.194a.41.41 0 00.594.432l1.072-.563c.147.077 1.106.61 1.263.61a.409.409 0 00.404-.48l-.205-1.193.868-.845a.41.41 0 00.104-.42zM8.291 5.299a1.214 1.214 0 01-.429-.582l-.8.8L5.7 3.472a.41.41 0 00-.632-.062l-3.28 3.28a.41.41 0 10.58.58l2.927-2.927 1.362 2.045a.41.41 0 00.632.062l1.1-1.1c-.031-.02-.067-.03-.098-.051z"
+            fill="#F8856B"
+          />
+        </svg>
+        {{ 'BTN_ICHOSE' | translate }}</a
+      >
+      <a
+        href="#"
+        class="btn btn-outline-warning btn-lg text-uppercase d-none d-lg-inline-flex header__action-button"
+      >
+        <svg width="14" height="14" fill="none" class="icon" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M.875 7.43v5.25c0 .482.393.874.875.874h4.375V7.43H.875zm12.25-3.5h-2.768a3.51 3.51 0 00.488-.392 1.829 1.829 0 000-2.574c-.686-.692-1.882-.69-2.567 0-.38.38-1.386 1.93-1.247 2.965h-.063c.139-1.035-.867-2.585-1.246-2.965-.686-.69-1.882-.69-2.567 0a1.831 1.831 0 000 2.574c.12.12.29.255.489.391H.874A.876.876 0 000 4.804v1.313c0 .241.196.437.438.437h5.687v-1.75h1.75v1.75h5.688A.438.438 0 0014 6.117V4.804a.876.876 0 00-.875-.875zM6.073 3.9s-.036.03-.162.03c-.604 0-1.758-.63-2.135-1.009a.954.954 0 010-1.34.93.93 0 011.325 0c.59.593 1.176 2.108.972 2.32zm2.015.03c-.125 0-.161-.029-.161-.03-.204-.21.382-1.726.972-2.32a.954.954 0 011.325 0 .953.953 0 010 1.341c-.377.38-1.53 1.008-2.136 1.008zm-.213 3.5v6.124h4.375a.875.875 0 00.875-.875V7.43h-5.25z"
+            fill="#F8856B"
+          />
+        </svg>
+        {{ 'BTN_FOR_FREE' | translate }}</a
+      >
+      -->
+    </div>
+    <div class="col-auto ml-auto d-flex full-height align-items-center">
+      <ng-container *ngIf="is_auth">
+        <div class="col-auto ml-auto d-flex align-items-center full-height header__border-right">
+
+          <div class="header__profile-wrapper flex align-items-center">
+            <a (clickOutside)="handleClickOutsideMessages()" class="px-0 mr-3 mr-xxl-4 position-relative">
+              <div class="hoverable">
+                <img
+                  src="/assets/icons/svg-icons/envelope.svg"
+                  class="icon--color-grey m-0"
+                  width="25"
+                  height="19"
+                  (click)="toggleMessagesAlert()"
+                />
+                <div class="header__btn-notif" *ngIf="(cnt_messages | async) > 0"></div>
+              </div>
+            </a>
+            <app-messages-menu
+            [isHeaderSmall]="isHeaderSmall"
+            [user]="user"
+            [isMessagesOpened]="isMessagesOpened"
+            (clickTriangleEmitter)="handleClickOutsideMessages()"
+          ></app-messages-menu>
+            <button
+              class="px-0 mr-3 mr-xxl-4 position-relative"
+              (clickOutside)="handleClickOutsideNotifications()"
+            >
+              <div class="hoverable">
+                <img
+                  src="/assets/icons/svg-icons/notification.svg"
+                  class="icon--color-grey m-0"
+                  width="24"
+                  height="25"
+                  (click)="toggleNotifications()"
+                />
+                <div class="header__btn-notif smaller" *ngIf="(cnt_notifications | async) > 0"></div>
+              </div>
+
+              <app-notifications-menu
+                [isHeaderSmall]="isHeaderSmall"
+                [user]="user"
+                [isNotificationsOpened]="isNotificationsOpened"
+                (clickTriangleEmitter)="handleClickOutsideNotifications()"
+              ></app-notifications-menu>
+            </button>
+            <a
+              class="avatar avatar--size-upper-md d-none d-xl-block header__avatar"
+              [routerLink]="['profile', user.id]"
+            >
+              <img [src]="user.main_photo" class="header__avatar-image position-relative" />
+            </a>
+
+            <!-- Меню всплывуйка -->
+
+            <div
+              class="position-relative cursor-pointer d-none d-xl-block"
+              (clickOutside)="handleClickOutsideDropdown()"
+            >
+               <span class="header__username">
+                 {{ user.username }}
+               </span>
+              <img
+                class="header__dropdown-toggle hoverable"
+                src="/assets/icons/svg-icons/dropdown-toggle.svg"
+                (click)="toggleDropdown()"
+              />
+              <div
+                class="header__dropdown-menu position-absolute"
+                [class.active]="isDropdownOpened"
+                [class.small]="isHeaderSmall"
+              >
+                <button
+                  class="header__dropdown-item hoverable"
+                  (click)="handleClickCloseDropdownAndNavigate(['profile', user.id])"
+                >
+                  My Profile
+                </button>
+                <button
+                  class="header__dropdown-item hoverable"
+                  (click)="handleClickCloseDropdownAndNavigate(['chatdesign'])"
+                >
+                  Chat design
+                </button>
+                <button
+                  *ngIf="user.gender === 'male'"
+                  class="header__dropdown-item hoverable"
+                  (click)="handleClickCloseDropdownAndNavigate(['payment'])"
+                >
+                  Payments
+                </button>
+                <button class="header__dropdown-item hoverable" (click)="doLogout()">
+                  Go out
+                </button>
+                <!--<button
+                  (click)="showBilling()"
+                  class="btn btn-primary text-uppercase header__auth-button header__get-credits-mobile d-none"
+                >
+                  Get credits
+                </button>-->
+              </div>
+            </div>
+
+
+          </div>
+
+          <div
+            *ngIf="user.gender === 'male'"
+            class="header__credits-and-balance-wrapper d-xl-flex align-items-center full-height d-none">
+            <!--<button
+              class="btn btn-primary btn-lg text-uppercase mr-3 font-weight-bold header__auth-button header__get-credits"
+              (click)="showBilling()"
+            >
+              Get credits
+            </button>-->
+            <div class="text-muted d-xl-block header__my-balance">
+              <a (click)="showBilling()" class="text-primary d-flex align-items-center">
+                <img
+                  src="/assets/icons/svg-icons/credit.svg"
+                  class="icon--color-grey m-0"
+                  width="27"
+                  height="27"
+                />
+                <b class="header__balance-count">{{ user.account }}</b>
+              </a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!is_auth">
+        <a
+          class="btn btn-primary btn-lg text-uppercase mr-3 d-none d-xl-flex justify-content-center header__auth-button"
+          [routerLink]="['login']"
+        >
+          <img src="/assets/icons/svg-icons/login.svg" class="icon icon--size-18" alt="" />
+          {{ 'BTN_LOGIN' | translate }}</a
+        >
+        <a
+          class="btn btn-primary btn-lg text-uppercase d-none d-xl-flex justify-content-center header__auth-button"
+          [routerLink]="['register/man']"
+        >
+          <img src="/assets/icons/svg-icons/signup.svg" class="icon icon--size-14" alt="" />
+          {{ 'BTN_SIGN_UP' | translate }}</a
+        >
+      </ng-container>
+      <button
+        class="btn btn-link p-0 menu-call d-xl-none hoverable"
+        type="button"
+        (click)="openBurger()"
+      >
+        <img src="/assets/icons/svg-icons/menu.svg" class="icon icon--size-24 m-0" alt="" />
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="message-value" fxLayout="column" fxFlex="">
+    <div class="user-details" *ngIf="current_user">{{message.author.username}}</div>
+    <div class="user-details" *ngIf="current_user == false">You</div>
+    <p class="message-text" [innerHTML]="message.message"></p>
+</div>
+<span class="data" fxLayout="column" fxLayoutAlign="end end">
+    <div fxLayout="row">
+        <div class="time">
+            {{ message.created | date:'longTime' }}
+        </div>
+        <div *ngIf="current_user == false">
+            <svg *ngIf="message.is_readed" width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.0859 1.36055L11.1245 0.39917L6.79829 4.72536L7.75967 5.68673L12.0859 1.36055ZM14.97 0.39917L7.75964 7.67815L4.87552 4.79403L3.91414 5.7554L7.75964 9.6009L16 1.36055L14.97 0.39917ZM0 5.7554L3.8455 9.6009L4.80688 8.63953L0.961375 4.79403L0 5.7554Z" fill="#00BDBA" />
+            </svg>
+        </div>
+    </div>
+</span>

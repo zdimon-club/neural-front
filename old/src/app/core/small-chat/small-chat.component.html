@@ -1,0 +1,78 @@
+<div class='small-chat drag-wrapper__draggable' *ngIf="room" id="drageble"
+cdkDrag>
+  <!-- {{ room | json }} -->
+  <div class="container" fxLayout="column" fxLayoutAlign="space-between" fxFlex="0 0 300px">
+
+    <div class="header" fxLayout="row" fxFlex="0 0 60px" fxLayoutAlign="space-between center">
+
+      <div fxLayout="row" fxLayoutGap="15px">
+        <span class="img-container">
+          <img [src]="room.abonent.main_photo" alt="Blob">
+        </span>
+
+        <span class="sender-title">
+          {{ room.abonent.username }}
+        </span>
+      </div>
+      <button mat-icon-button aria-label="Collapse button" class="icon-container">
+          <mat-icon *ngIf="is_collapsed" (click)="collapseChat()">expand_less</mat-icon>
+          <mat-icon *ngIf="!is_collapsed" (click)="collapseChat()">expand_more</mat-icon>
+        </button>
+      <button mat-icon-button aria-label="Close button" class="icon-container">
+        <mat-icon (click)="hideChat()">close</mat-icon>
+      </button>
+    </div>
+    <div class="videos" *ngIf="!is_collapsed">
+         <app-chat-abonent-video [abonent]="room.abonent" ></app-chat-abonent-video>
+    </div>
+    <div class="body" fxFlex="1 1 300px" *ngIf="!is_collapsed">
+      
+      <div class="body-container" #messagescontent>
+        <div class="messages" fxLayout="column" fxLayoutGap="10px">
+          <div *ngFor="let m of room.messages | smile: smiles" class="message l" [ngClass]="{'r': m.author_id == current_user.id, 'l': m.author_id != current_user.id}" fxLayout="row">
+            <!-- {{ m | json }} -->
+            <app-chat-message-item 
+            *ngIf="!m.is_private || current_user.gender === 'female'"
+            style="width: 100%" 
+            fxLayout="row" 
+            fxLayoutAlign="space-between end" 
+            [message]="m" 
+            [current_user]="m.author_id != current_user.id">
+            </app-chat-message-item>
+
+            <app-chat-private-media-item
+            *ngIf="m.is_private && current_user.gender === 'male'"
+            style="width: 100%" 
+            fxLayout="row" 
+            fxLayoutAlign="space-between end" 
+            [message]="m" 
+            [current_user]="m.author_id != current_user.id">
+            </app-chat-private-media-item>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" fxFlex="1 1 0" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-between center">
+      <mat-form-field class="message-input" fxFlex floatLabel="never" appearance="standard">
+                    <textarea matInput
+                              #chattextarea
+                              placeholder="Type your message"
+                              [(ngModel)]="message"
+                              name="message"
+                              [rows]="1"
+                              [matTextareaAutosize]="true"
+                              cdkAutosizeMaxRows="5"
+                              (keydown.enter)="send()"></textarea>
+      </mat-form-field>
+      <button mat-icon-button
+              aria-label="Send button"
+              class="send-button icon-container"
+              (click)="send()">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+
+  </div>
+</div>

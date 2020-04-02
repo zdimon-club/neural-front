@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>
+<!--  Take video from the camera-->
+  {{ 'TAKE_VIDEO_CAM' | translate }}
+</h2>
+<mat-dialog-content>
+  <video width="400" height="300" #hardwareVideo autoplay></video>
+  <canvas [hidden]="true" #canvas width="400" height="300"></canvas>
+</mat-dialog-content>
+
+<button mat-raised-button
+        (click)="startRec()"
+        *ngIf="is_cam_active && !is_rec_active"
+        color="warn"
+        class="add-product-button fuse-white mt-14 mt-md-0">
+  <span>{{ 'BUTTON_START_REC' | translate }}</span>
+</button>
+
+<button mat-raised-button
+        *ngIf="is_cam_active && is_rec_active"
+        (click)="stopRec()"
+        color="warn"
+        class="add-product-button fuse-white mt-14 mt-md-0">
+  <span>{{ 'BUTTON_STOP_REC' | translate }}</span>
+</button>

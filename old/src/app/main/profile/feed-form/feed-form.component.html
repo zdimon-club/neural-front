@@ -1,0 +1,341 @@
+<div class="form-title">
+  Add new post
+
+  <button style="float: right" mat-stroked-button (click)="changePage.emit('main')" class="edit-btn text-uppercase">
+    Main page
+  </button>
+
+</div>
+
+
+<!-- {{ user | json }} -->
+
+<form name="form" [formGroup]="form" novalidate>
+  <div class="form-container">
+    <mat-form-field>
+      <mat-label>{{ 'TITLE_TITLE' | translate }}</mat-label>
+      <textarea matInput formControlName="title"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'TITLE_DESCRIPTION' | translate }}</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+
+    <!-- Camera buttons -->
+    <!-- Take Photo -->
+    <br>
+    <button mat-stroked-button (click)="takeCameraPhoto()">Take Photo</button>
+    <br>
+
+    <div class="form-group row" *ngFor="let cameraImage of cameraImages.value; index as i">
+      <label class="col-sm-3 col-form-label text-uppercase">Camera Image {{i + 1}}</label>
+      <div class="col-sm-9">
+        <div class="mt-2" fxLayout="row" fxLayoutAlign="flex-start center"
+             fxLayoutGap="5px">
+          <img [src]="cameraImage" width="200px" height="100%"/>
+          <button mat-stroked-button color="warn" (click)="deleteCameraItem(cameraImages.value, i)">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Take Video -->
+    <br>
+    <button mat-stroked-button (click)="takeCameraVideo()">Take Video</button>
+    <br>
+
+    <div class="form-group row" *ngFor="let blob of cameraVideo.value; index as i">
+      <label class="col-sm-3 col-form-label text-uppercase">Camera Video {{i + 1}}</label>
+      <div class="col-sm-9">
+        <div class="mt-2" fxLayout="row" fxLayoutAlign="flex-start center"
+             fxLayoutGap="5px">
+          <app-show-video [blob]="blob"></app-show-video>
+          <button mat-stroked-button color="warn" (click)="deleteCameraItem(cameraVideo.value, i)">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <!---Images -->
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 col-form-label text-uppercase">Image 1</label>
+      <div class="col-sm-9">
+        <div>
+          <input
+            hidden
+            formControlName="image1"
+            type="file"
+            class="form-control"
+            (change)="onFileChange($event, 'image1')"
+            #image1Input
+            onclick="this.value = null"
+          />
+          <button mat-stroked-button class="file-btn" (click)="image1Input.click()">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+              <img src="/assets/icons/svg-icons/link.svg" alt="">
+              <span>
+                            Add a photo
+                            </span>
+            </div>
+          </button>
+        </div>
+        <div class="mt-2" *ngIf="image1" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+          <img [src]="image1" width="100px" height="100%"/>
+          <button mat-stroked-button color="warn" (click)="deleteImg('image1')">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 col-form-label text-uppercase">Image 2</label>
+      <div class="col-sm-9">
+        <div>
+          <input
+            hidden
+            formControlName="image2"
+            type="file"
+            class="form-control"
+            (change)="onFileChange($event, 'image2')"
+            #image2Input
+            onclick="this.value = null"
+          />
+          <button mat-stroked-button class="file-btn" (click)="image2Input.click()">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+              <img src="/assets/icons/svg-icons/link.svg" alt="">
+              <span>
+                            Add a photo
+                            </span>
+            </div>
+          </button>
+        </div>
+        <div class="mt-2" *ngIf="image2" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+          <img [src]="image2" width="100px" height="100%"/>
+          <button mat-stroked-button color="warn" (click)="deleteImg('image2')">Delete</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 col-form-label text-uppercase">Image 1</label>
+      <div class="col-sm-9">
+        <div>
+          <input
+            hidden
+            formControlName="image3"
+            type="file"
+            class="form-control"
+            (change)="onFileChange($event, 'image3')"
+            #image3Input
+            onclick="this.value = null"
+          />
+          <button mat-stroked-button class="file-btn" (click)="image3Input.click()">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+              <img src="/assets/icons/svg-icons/link.svg" alt="">
+              <span>
+                            Add a photo
+                            </span>
+            </div>
+          </button>
+        </div>
+        <div class="mt-2" *ngIf="image3" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+          <img [src]="image3" width="100px" height="100%"/>
+          <button mat-stroked-button color="warn" (click)="deleteImg('image3')">Delete</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 col-form-label text-uppercase">Image 4</label>
+      <div class="col-sm-9">
+        <div>
+          <input
+            hidden
+            formControlName="image4"
+            type="file"
+            class="form-control"
+            (change)="onFileChange($event, 'image4')"
+            #image4Input
+            onclick="this.value = null"
+          />
+          <button mat-stroked-button class="file-btn" (click)="image4Input.click()">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+              <img src="/assets/icons/svg-icons/link.svg" alt="">
+              <span>
+                            Add a photo
+                            </span>
+            </div>
+          </button>
+        </div>
+        <div class="mt-2" *ngIf="image4" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+          <img [src]="image4" width="100px" height="100%"/>
+          <button mat-stroked-button color="warn" (click)="deleteImg('image4')">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!------------------------------->
+
+    <!---Videos -->
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 col-form-label text-uppercase">Video 1</label>
+      <div class="col-sm-9">
+        <div>
+          <input
+            hidden
+            formControlName="video1"
+            type="file"
+            class="form-control"
+            (change)="onFileChange($event, 'video1')"
+            #video1Input
+            onclick="this.value = null"
+          />
+          <button mat-stroked-button class="file-btn" (click)="video1Input.click()">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+              <img src="/assets/icons/svg-icons/link.svg" alt="">
+              <span>
+                            Add a video
+                            </span>
+            </div>
+          </button>
+        </div>
+        <div class="mt-2" *ngIf="video1" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+          <span>{{video1.name}}</span>
+          <button mat-stroked-button color="warn" (click)="deleteImg('video1')">Delete</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 col-form-label text-uppercase">Video 2</label>
+      <div class="col-sm-9">
+        <div>
+          <input
+            hidden
+            formControlName="video2"
+            type="file"
+            class="form-control"
+            (change)="onFileChange($event, 'video2')"
+            #video2Input
+            onclick="this.value = null"
+          />
+          <button mat-stroked-button class="file-btn" (click)="video2Input.click()">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+              <img src="/assets/icons/svg-icons/link.svg" alt="">
+              <span>
+                            Add a video
+                            </span>
+            </div>
+          </button>
+        </div>
+        <div class="mt-2" *ngIf="video2" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+          <span>{{video2.name}}</span>
+          <button mat-stroked-button color="warn" (click)="deleteImg('video2')">Delete</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 col-form-label text-uppercase">Video 3</label>
+      <div class="col-sm-9">
+        <div>
+          <input
+            hidden
+            formControlName="video3"
+            type="file"
+            class="form-control"
+            (change)="onFileChange($event, 'video3')"
+            #video3Input
+            onclick="this.value = null"
+          />
+          <button mat-stroked-button class="file-btn" (click)="video3Input.click()">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+              <img src="/assets/icons/svg-icons/link.svg" alt="">
+              <span>
+                            Add a video
+                            </span>
+            </div>
+          </button>
+        </div>
+        <div class="mt-2" *ngIf="video3" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+          <span>{{video3.name}}</span>
+          <button mat-stroked-button color="warn" (click)="deleteImg('video3')">Delete</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 col-form-label text-uppercase">Video 4</label>
+      <div class="col-sm-9">
+        <div>
+          <input
+            hidden
+            formControlName="video4"
+            type="file"
+            class="form-control"
+            (change)="onFileChange($event, 'video4')"
+            #video4Input
+            onclick="this.value = null"
+          />
+          <button mat-stroked-button class="file-btn" (click)="video4Input.click()">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+              <img src="/assets/icons/svg-icons/link.svg" alt="">
+              <span>
+                            Add a video
+                            </span>
+            </div>
+          </button>
+        </div>
+        <div class="mt-2" *ngIf="video4" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5px">
+          <span>{{video4.name}}</span>
+          <button mat-stroked-button color="warn" (click)="deleteImg('video4')">Delete</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="form-group row">
+      <label for="city" class="col-sm-3 col-form-label text-uppercase">Is stories</label>
+      <div class="col-sm-9">
+        <div>
+          <input
+            formControlName="is_stories"
+            type="checkbox"
+            class="form-control"
+          />
+          
+        </div>
+        
+      </div>
+    </div>
+
+    <!-------------->
+
+
+    <!--
+    <mat-form-field>
+      <mat-select placeholder="Select">
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field>
+    -->
+  </div>
+
+  <button (click)="onSubmit()" mat-raised-button color="primary"
+          [disabled]="form.invalid">
+    {{ 'BTN_SAVE' | translate }}
+  </button>
+
+  <button (click)="changePage.emit('main')" mat-raised-button style="margin-left: 5px;">
+    {{ 'BTN_CANCEL' | translate }}
+  </button>
+
+</form>
+

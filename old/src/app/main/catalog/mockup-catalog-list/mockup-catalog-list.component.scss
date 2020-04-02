@@ -1,0 +1,124 @@
+@import '~src/assets/scss/vars';
+@import '~src/assets/scss/bootstrap-theme';
+@import '~bootstrap/scss/mixins';
+
+.card {
+  border-radius: 10px;
+  background: white;
+  transition: 0.2s;
+  border: none;
+  &:hover {
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  &__geo {
+    width: 174px;
+    height: 15px;
+    background: #FAFAFA;
+  }
+  &__hashtags {
+    width: 174px;
+    height: 15px;
+    background: #FAFAFA;
+    margin-bottom: 20px;
+  }
+  &__title {
+    width: 270px;
+    height: 15px;
+    background: #FAFAFA;
+    margin-bottom: 5px;
+  }
+  &__title2 {
+    width: 250px;
+    height: 15px;
+    background: #FAFAFA;
+    margin-bottom: 12px;
+  }
+  &__date {
+    margin-bottom: 5px;
+    width: 60px;
+    height: 11px;
+    background: #FAFAFA;
+  }
+  &__user-main-info {
+    width: 60px;
+    height: 11px;
+    background: #FAFAFA;
+    margin: 0 0 8px 0;
+  }
+  &__user-from {
+    width: 67px;
+    height: 11px;
+    background: #FAFAFA;
+  }
+
+  &__header {
+    line-height: 1.1em;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+
+  &__body {
+    width: 315px;
+    height: 199px;
+    left: 0px;
+    top: 68px;
+    background: #C5C5C5;
+    &:hover {
+      .card__label,
+      .card__duration {
+        opacity: 0;
+      }
+      .card__hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__footer {
+    padding: 10px 10px 15px;
+    &-icon {
+      width: 24px;
+      height: 15px;
+      background: #FAFAFA;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+      padding: 0 !important;
+    }
+  }
+
+  &__avatar {
+    position: relative;
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #C5C5C5;
+  }
+}
+.masonry {
+  &:after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+  &__sizer,
+  &__card {
+    width: 315px;
+    @media screen and (max-width: 400px) {
+      width: 300px;
+    }
+  }
+
+  &__card {
+    margin-bottom: 25px;
+    @media screen and (max-width: 500px) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__gutter {
+    width: 30px;
+  }
+}

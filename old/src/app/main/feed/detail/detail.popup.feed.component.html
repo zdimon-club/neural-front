@@ -1,0 +1,265 @@
+<div *ngIf="feed" class="feed-detail" fxLayoutAlign="left" [class.full-width]="is_popup">
+  <div class="count-bar" [class.popup]="is_popup">
+    <div *ngFor="let video of feed.videos; let i = index" [id]="video.id" class="count-bar__item">
+      <span
+        class="count-bar__status"
+        [ngStyle]="{
+          width:
+            i <= current_media ? (i < current_media ? '100%' : current_thumb_width + '%') : 'auto'
+        }"
+      ></span>
+    </div>
+    <div *ngFor="let photo of feed.photos; let i = index" [id]="photo.id" class="count-bar__item">
+      <span
+        class="count-bar__status"
+        [ngStyle]="{
+          width: (i + feed.videos.length) <= current_media ? (i + feed.videos.length) === current_media ? current_thumb_width + '%' : '100%' : 'auto'
+        }"
+      ></span>
+    </div>
+  </div>
+
+  <div class="feed-detail__container position-relative">
+    <ng-container *ngIf="feed.videos[current_media]">
+      <img
+        src="/assets/icons/svg-icons/sound-on.svg"
+        alt="Sound on"
+        class="user-media__sound"
+        [class.active]="isSoundOn"
+        *ngIf="is_popup"
+        (click)="handleClickSound()"
+      />
+      <img
+        src="/assets/icons/svg-icons/sound-off.svg"
+        alt="Sound off"
+        class="user-media__sound"
+        [class.active]="!isSoundOn"
+        *ngIf="is_popup"
+        (click)="handleClickSound()"
+      />
+    </ng-container>
+
+    <div class="user-media__arrow-left" (click)="prev()" *ngIf="current_media !== 0">
+      <img src="/assets/icons/svg-icons/slider-arrow-left.svg" alt="Arrow"/>
+    </div>
+    <div class="user-media__duration flex align-items-center" *ngIf="feed.videos[current_media]">
+      <img src="/assets/icons/svg-icons/chart-volume.svg" alt="Video duration"/>
+      <span class="user-media__duration-text">{{
+        formatVideoTime(feed.videos[current_media].current_media_time)
+        }}</span>
+    </div>
+    <div class="user-info-container" fxLayout="row" fxLayoutAlign="left center" *ngIf="!is_popup">
+      <a>
+        <img [src]="feed.user.main_photo" alt="main photo" class="user-photo-container"/>
+      </a>
+      <div class="user-info" fxLayout="column" fxLayoutGap="3px">
+        <span>
+          <span class="user-name user-name--dark"> {{ feed.user.username }}, </span>
+          <span class="user-age">
+            {{ feed.user.age }}
+          </span>
+          <!-- @todo выводить время поста-->
+          <span class="user-post-time">
+            17:10 PM
+          </span>
+        </span>
+        <!--        <span class="country" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="flex-start center">-->
+        <!--          <div fxLayoutAlign="center">-->
+        <!--&lt;!&ndash;            todo: ng-svg &ndash;&gt;-->
+        <!--              <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+        <!--                <path-->
+        <!--                    d="M7.811 2.89031C7.76967 2.73539 7.68573 2.57032 7.62363 2.42579C6.88055 0.639994 5.25694 0 3.94596 0C2.19097 0 0.25806 1.1768 0 3.60245V4.09802C0 4.1187 0.00712784 4.30449 0.0172526 4.39742C0.161915 5.55343 1.07409 6.78201 1.75534 7.93801C2.48826 9.17656 3.24878 10.3949 4.00225 11.6128C4.46686 10.818 4.92979 10.0128 5.38381 9.23865C5.50755 9.01145 5.65119 8.78439 5.77506 8.56753C5.85763 8.42314 6.01536 8.27874 6.08742 8.1444C6.82032 6.80255 8 5.45034 8 4.11868V3.57162C8.00003 3.42725 7.82107 2.92144 7.811 2.89031ZM3.97809 5.37809C3.46221 5.37809 2.89755 5.12014 2.61883 4.40776C2.57731 4.29436 2.58066 4.06711 2.58066 4.04629V3.7263C2.58066 2.81814 3.35176 2.40516 4.02258 2.40516C4.84844 2.40516 5.48717 3.06589 5.48717 3.89175C5.48717 4.71758 4.80395 5.37809 3.97809 5.37809Z"-->
+        <!--                    fill="#9C9697"></path>-->
+        <!--              </svg>-->
+        <!--          </div>-->
+
+        <!--          <div>-->
+        <!--            &lt;!&ndash;todo must be country, not language&ndash;&gt;-->
+        <!--            {{feed.user.city}}-->
+        <!--          </div>-->
+        <!--        </span>-->
+        <!--        <span class="id">-->
+        <!--          ID: {{feed.user.id}}-->
+        <!--        </span>-->
+      </div>
+    </div>
+
+    <div
+      *ngFor="let v of feed.videos; let i = index; let last = last"
+      data-feed-item
+      class="full-width full-height"
+      fxLayout="center center"
+      [class.full-min-width]="i === current_media"
+    >
+      <div *ngIf="i === current_media" class="full-fixed-height">
+        <div class="user-media_video" [class.user-media__wrapper_popup]="is_popup">
+          <video
+            autoplay
+            [muted]="!isSoundOn"
+            (loadeddata)="i === 0 ? initFirstVideo() : null"
+            [id]="v.id"
+            (timeupdate)="videoUpdate($event, v)"
+            (playing)="!block_play ? playVideo($event) : null"
+            (pointerdown)="pauseVideo($event)"
+            (pointerup)="!block_play ? playVideo($event) : null"
+            (pointerleave)="!block_play ? playVideo($event) : null"
+            (ended)="showNextVideo(last && !feed.photos.length, last)"
+            [poster]="v.image_big"
+            [src]="v.get_video_url"
+          ></video>
+        </div>
+        <div class="feed-comment" *ngIf="!is_popup">
+          <form action="" class="feed-comment__form">
+            <input
+              (focus)="photo_active ? freezePhotoThumb($event) : null"
+              (blur)="!photo_active ? showPhoto() : null"
+              placeholder="Leave a comment..."
+              class="feed-comment__field"
+              type="text"
+              name="feed-comment"
+            />
+            <button (click)="postComment()" class="feed-comment__button">
+              <svg width="24" height="23" viewBox="0 0 24 23" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M23.3071 12.7236L1.20754 22.9234C0.855651 23.0832 0.43576 22.988 0.190965 22.6854C-0.0555291 22.3828 -0.0640289 21.9527 0.170566 21.6416L7.43791 11.9518L0.170566 2.26201C-0.0640289 1.95092 -0.0555291 1.51913 0.189266 1.21824C0.354162 1.01254 0.600657 0.902044 0.850551 0.902044C0.971248 0.902044 1.09195 0.927544 1.20584 0.980242L23.3054 11.18C23.608 11.3194 23.8 11.6203 23.8 11.9518C23.8 12.2833 23.608 12.5842 23.3071 12.7236Z"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      *ngFor="let v of feed.photos; let i = index; let last = last"
+      class="full-width full-height"
+      [class.full-min-width]="i + feed.videos.length === current_media"
+    >
+      <div
+        class="user-media user-media--photo full-width full-height full-fixed-height"
+        *ngIf="i + feed.videos.length === current_media"
+      >
+        <div
+          class="user-info-container"
+          fxLayout="row"
+          fxLayoutAlign="left center"
+          *ngIf="!is_popup"
+        >
+          <a>
+            <img [src]="feed.user.main_photo" alt="main photo" class="user-photo-container"/>
+          </a>
+          <div class="user-info" fxLayout="column" fxLayoutGap="3px">
+            <span>
+              <span class="user-name user-name--dark">
+                <!--todo hardcoded age-->
+                {{ feed.user.username }},
+              </span>
+              <span class="user-age">
+                {{ feed.user.age }}
+              </span>
+              <!-- @todo выводить время поста-->
+              <span class="user-post-time">
+                17:10 PM
+              </span>
+            </span>
+            <!--        <span class="country" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="flex-start center">-->
+            <!--          <div fxLayoutAlign="center">-->
+            <!--&lt;!&ndash;            todo: ng-svg &ndash;&gt;-->
+            <!--              <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+            <!--                <path-->
+            <!--                    d="M7.811 2.89031C7.76967 2.73539 7.68573 2.57032 7.62363 2.42579C6.88055 0.639994 5.25694 0 3.94596 0C2.19097 0 0.25806 1.1768 0 3.60245V4.09802C0 4.1187 0.00712784 4.30449 0.0172526 4.39742C0.161915 5.55343 1.07409 6.78201 1.75534 7.93801C2.48826 9.17656 3.24878 10.3949 4.00225 11.6128C4.46686 10.818 4.92979 10.0128 5.38381 9.23865C5.50755 9.01145 5.65119 8.78439 5.77506 8.56753C5.85763 8.42314 6.01536 8.27874 6.08742 8.1444C6.82032 6.80255 8 5.45034 8 4.11868V3.57162C8.00003 3.42725 7.82107 2.92144 7.811 2.89031ZM3.97809 5.37809C3.46221 5.37809 2.89755 5.12014 2.61883 4.40776C2.57731 4.29436 2.58066 4.06711 2.58066 4.04629V3.7263C2.58066 2.81814 3.35176 2.40516 4.02258 2.40516C4.84844 2.40516 5.48717 3.06589 5.48717 3.89175C5.48717 4.71758 4.80395 5.37809 3.97809 5.37809Z"-->
+            <!--                    fill="#9C9697"></path>-->
+            <!--              </svg>-->
+            <!--          </div>-->
+
+            <!--          <div>-->
+            <!--            &lt;!&ndash;todo must be country, not language&ndash;&gt;-->
+            <!--            {{feed.user.city}}-->
+            <!--          </div>-->
+            <!--        </span>-->
+            <!--        <span class="id">-->
+            <!--          ID: {{feed.user.id}}-->
+            <!--        </span>-->
+          </div>
+        </div>
+        <div class="user-media__wrapper" [class.user-media__wrapper_popup]="is_popup">
+
+          <img
+            *ngIf="v.role_media=='public'"
+            (pointerdown)="photo_active ? freezePhotoThumb($event) : null"
+            (pointerup)="!photo_active ? showPhoto() : null"
+            (pointerleave)="!photo_active ? showPhoto() : null"
+            class="user-media__image blur"
+            [class.popup]="is_popup"
+            [src]="v.get_url_blur"
+          />
+
+          <img
+            *ngIf="v.role_media=='private'"
+            (pointerdown)="photo_active ? freezePhotoThumb($event) : null"
+            (pointerup)="!photo_active ? showPhoto() : null"
+            (pointerleave)="!photo_active ? showPhoto() : null"
+            class="user-media__image blur"
+            [class.popup]="is_popup"
+            [src]="v.image_big"
+          />
+
+          <div *ngIf="v.role_media=='public'" class="lock-content">
+            <img class="lock-content__image" src="/assets/icons/svg-icons/lock-content.svg" alt="Lock">
+            <span class="lock-content__title">
+              {{'CONTENT_LOCK_TITLE' | translate}}
+            </span>
+            <span class="lock-content__text">
+              {{'CONTENT_LOCK_TEXT' | translate}}
+            </span>
+            <button class="lock-content__button btn btn-primary">{{'CONTENT_LOCK_BTN' | translate}}</button>
+          </div>
+        </div>
+
+        <div class="feed-comment" *ngIf="!is_popup">
+          <form action="" class="feed-comment__form">
+            <input
+              (focus)="photo_active ? freezePhotoThumb($event) : null"
+              (blur)="!photo_active ? showPhoto() : null"
+              placeholder="Leave a comment..."
+              class="feed-comment__field"
+              type="text"
+              name="feed-comment"
+            />
+            <button class="feed-comment__button">
+              <svg width="24" height="23" viewBox="0 0 24 23" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M23.3071 12.7236L1.20754 22.9234C0.855651 23.0832 0.43576 22.988 0.190965 22.6854C-0.0555291 22.3828 -0.0640289 21.9527 0.170566 21.6416L7.43791 11.9518L0.170566 2.26201C-0.0640289 1.95092 -0.0555291 1.51913 0.189266 1.21824C0.354162 1.01254 0.600657 0.902044 0.850551 0.902044C0.971248 0.902044 1.09195 0.927544 1.20584 0.980242L23.3054 11.18C23.608 11.3194 23.8 11.6203 23.8 11.9518C23.8 12.2833 23.608 12.5842 23.3071 12.7236Z"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="user-media__arrow-right"
+      (click)="next()"
+      *ngIf="current_media !== feed.videos.length + feed.photos.length - 1"
+    >
+      <img src="/assets/icons/svg-icons/slider-arrow-right.svg" alt="Arrow"/>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="center center"></div>
+
+  <!--@todo убрать обертку с display: none когда станет известно куда девать комментарии -->
+  <div style="display: none">
+    <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="left center">
+      <div *ngFor="let c of feed.feedcomment" class="user-comment" fxFlexFill>
+        <!--
+              <img [src]="c.user.main_photo" />
+              -->
+        {{ c.text }}
+      </div>
+    </div>
+  </div>
+  <!--
+     {{  feed | json }}
+  -->
+</div>

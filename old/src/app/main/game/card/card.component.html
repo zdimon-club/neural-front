@@ -1,0 +1,15 @@
+<div class="card_cell playingCards">
+  <div
+    *ngIf="card"
+    [ngClass]="{ isHighlighted: card.isHighlighted, hovered: card.isHidden }"
+    class="card-container fade-long-anim"
+  >
+    <div class="card-flipper">
+      <div class="card back">*</div>
+      <div class="card front card rank-{{ card.name }} {{ card.faceName }}">
+        <span class="rank">{{ card.name }}</span>
+        <span class="suit" [innerHTML]="card.faceCSS"></span>
+      </div>
+    </div>
+  </div>
+</div>

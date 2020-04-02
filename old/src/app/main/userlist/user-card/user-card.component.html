@@ -1,0 +1,85 @@
+<div class="userlist-card">
+  <div class="flex justify-content-between userlist-card__main-block">
+    <div class="flex">
+      <div class="userlist-card__icons-wrapper">
+        <img
+          src="/assets/icons/svg-icons/verified.svg"
+          *ngIf="user?.is_verified"
+          class="userlist-card__icon"
+          width="25"
+          height="30"
+        />
+        <img
+          src="/assets/icons/svg-icons/not-verified.svg"
+          *ngIf="!user?.is_verified"
+          class="userlist-card__icon"
+          width="25"
+          height="30"
+        />
+        <img
+          src="/assets/icons/svg-icons/half-verified.svg"
+          *ngIf="user?.is_verified === 'half'"
+          class="userlist-card__icon"
+          width="25"
+          height="30"
+        />
+        <img src="/assets/icons/svg-icons/user-target.svg" class="userlist-card__icon" />
+        <img src="/assets/icons/svg-icons/user-star.svg" class="userlist-card__icon" />
+        <img src="/assets/icons/svg-icons/user-lock.svg" class="userlist-card__icon" />
+      </div>
+      <div class="userlist-card__avatar">
+        <app-user-item
+          [photo]="user?.main_photo"
+          [isOnline]="user?.is_online"
+          [cam]="user?.is_camera"
+        ></app-user-item>
+      </div>
+    </div>
+    <button class="userlist-card__more-btn">
+      <img
+        src="/assets/icons/svg-icons/more.svg"
+        class="icon icon--size-18 icon--color-light m-0"
+        alt="More"
+      />
+    </button>
+  </div>
+  <p class="userlist-card__user-name-age">
+    <a [routerLink]="['/index/detail', user.id]" class="text-dark">{{ user.username }}, </a>
+    <span class="userlist-card__age">{{ user.age }}</span>
+  </p>
+  <div class="flex align-items-center">
+    <img
+      src="/assets/icons/svg-icons/location-black.svg"
+      class="userlist-card__location-icon mr-1"
+    />
+    <span class="text-truncate userlist-card__from"
+      >{{ user.city }}, {{ user.country_string }}</span
+    >
+  </div>
+  <div class="userlist-card__buttons">
+    <button class="btn btn-primary userlist-card__action-button disabled" disabled>
+      <img src="/assets/icons/svg-icons/user-live.svg" />
+    </button>
+    <button class="btn btn-primary userlist-card__action-button">
+      <img src="/assets/icons/svg-icons/user-gift.svg" />
+    </button>
+    <button class="btn btn-primary userlist-card__action-button disabled" disabled>
+      <img src="/assets/icons/svg-icons/user-travel.svg" />
+    </button>
+  </div>
+  <div class="flex">
+    <button
+      class="btn btn-outline-primary userlist-card__text-button"
+      (click)="callToChat(user.id)"
+    >
+      Go messanger
+    </button>
+    <button
+      class="btn btn-outline-primary userlist-card__text-button"
+      (click)="handleSubscribe(user)"
+      *ngIf="!user.is_subscribed"
+    >
+      + Subscribe
+    </button>
+  </div>
+</div>

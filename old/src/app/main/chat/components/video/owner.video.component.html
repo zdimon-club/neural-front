@@ -1,0 +1,44 @@
+<!--
+<button mat-raised-button color="accent" *ngIf="!is_video" (click)="turn.emit(true)">
+    {{'TITLE_CHAT_TURNON_VIDEO' | translate }}
+</button>
+
+<button mat-raised-button color="warn" *ngIf="is_video" (click)="turn.emit(false)">
+    {{ 'TITLE_CHAT_TURNOFF_VIDEO' | translate }}
+</button>
+-->
+<!--<img *ngIf="!is_loading" class="noise" src="/assets/images/noise.gif"/>-->
+<!--<div class="drag-wrapper">-->
+  <div id="drageble"
+       class="drag-wrapper__draggable"
+       #dragDiv
+       cdkDrag>
+    <div class="drag-wrapper__icons-block">
+      <img class="drag-wrapper__move-icon"
+           src="../../../../../assets/icons/svg-icons/move.svg"
+           alt="move">
+      <div class="drag-wrapper__icons-group">
+        <div class="drag-wrapper__icon-container">
+          <img class="drag-wrapper__icon"
+               src="../../../../../assets/icons/svg-icons/off.svg"
+               alt="move">
+        </div>
+        <div class="drag-wrapper__icon-container">
+          <img class="drag-wrapper__icon"
+               src="../../../../../assets/icons/svg-icons/roll.svg"
+               alt="roll">
+        </div>
+        <div class="drag-wrapper__icon-container">
+          <img class="drag-wrapper__icon"
+               src="../../../../../assets/icons/svg-icons/expand.svg"
+               alt="expand">
+        </div>
+      </div>
+    </div>
+    <img *ngIf="is_loading" class="noise" src="/assets/images/noise.gif"/>
+    <app-user-video
+      *ngIf="publisher && !is_loading"
+      [streamManager]="publisher">
+    </app-user-video>
+  </div>
+<!--</div>-->

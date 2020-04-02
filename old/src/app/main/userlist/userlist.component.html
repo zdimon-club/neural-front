@@ -1,0 +1,35 @@
+<div class="userlist-wrapper">
+  <app-catalog-filter></app-catalog-filter>
+  <div class="userlist-grid">
+    <app-userlist-card *ngFor="let user of userlist | sort: 'is_online'" [user]="user"></app-userlist-card>
+  </div>
+  <!-- <ngx-masonry [useImagesLoaded]="true" class="masonry-grid m-layout">
+    <div ngxMasonryItem class="m-width m-4-col" *ngFor="let user of userlist | sort: 'is_online'">
+      <div class="blog-agency">
+        <div class="blog-contain">
+          <img [src]="user.middle_photo" alt="" class="img-fluid" />
+          <div class="img-container">
+            <div class="blog-info bottom-0">
+              <div class="d-flex m-b-20">
+                <div class="d-flex center-text">
+                  <i class="fa fa-clock-o m-r-10" aria-hidden="true"></i>
+                  <h6 class="m-r-25 font-blog">{{ user.age }}</h6>
+                </div>
+                <div class="d-flex center-text">
+                  <i class="fa fa-map-marker m-r-10" aria-hidden="true"></i>
+                  <h6 class="font-blog">{{ user.about_me }}</h6>
+                </div>
+              </div>
+              <h5 class="blog-head font-600">{{ user.username }}</h5>
+              <p class="para2">{{ user.age }}</p>
+              <div class="btn-bottom  m-t-20">
+                <a (click)="trigger(user)" class="text-uppercase">{{ user.is_online }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ngx-masonry> -->
+  
+</div>

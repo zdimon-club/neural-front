@@ -1,0 +1,51 @@
+<div class="upload-container" fxLayout="column" fxFlex="920px">
+  <div fxLayout="row" fxLayoutAlign="space-between flex-start">
+    <span class="upload-title"> Add Photos</span>
+    <mat-icon class="close-icon" (click)="closeDialog()">close</mat-icon>
+  </div>
+
+  <div fxLayout="row" fxFlexOffset="30px" fxLayoutGap="30px" [hidden]="!fromCam">
+    <h2>Take pic from cam</h2>
+    
+    <video  width="400" height="300" #hardwareVideo autoplay></video>
+    <button mat-stroked-button class="upload-btn" fxFlex="50%" (click)="takePic()">Take a snapshot</button>
+    <canvas [hidden]="true"  #canvas width="400" height="300"> </canvas>
+    
+  </div>
+
+
+  <div fxLayout="row" fxFlexOffset="30px" fxLayoutGap="30px" *ngIf="!fromCam">
+    <input hidden
+           [(ngModel)]="uploadedPhoto"
+           type="file"
+           class=""
+           (change)="onFileChange($event)"
+           #uploadInput>
+    <button mat-stroked-button class="upload-btn" fxFlex="50%" (click)="uploadInput.click()">
+        <div fxLayoutAlign="center center" fxLayout="row" fxLayoutGap="20px">
+            <img src="/assets/icons/svg-icons/uploaded-photo-icon.svg" alt="">
+            <span>
+                Uploaded photo
+            </span>
+        </div>
+    </button>
+    <button mat-stroked-button class="upload-btn mobile" fxFlex="50%" (click)="getVideo()">
+        <label for="image">
+          <div fxLayoutAlign="center center" fxLayout="row" fxLayoutGap="20px">
+            <img src="/assets/icons/svg-icons/take-picture.svg" alt="" class="mr-2">
+              Take a picture
+          </div>
+        </label>
+      
+    </button>
+  </div>
+  <div fxLayout="column" fxFlexOffset="20px" class="my-photos-container">
+      <div class="my-photos-title"> Photos from my page</div>
+      <div fxLayout="row wrap" fxLayoutGap="10px">
+         <div style="padding: 5px;" *ngFor="let i of gallery">
+          <img [src]="i.get_small_url_square" />
+         </div>
+      </div>
+
+  </div>
+</div>

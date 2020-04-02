@@ -1,0 +1,141 @@
+@import "../../../../assets/scss/theme/mixins";
+
+
+@include media-breakpoint-down(md){
+	.main-info-container {
+		padding: 35px 30px 30px!important;
+	}
+	.main-info-title {
+		font-size: 25px!important;
+	}
+}
+
+@include media-breakpoint-down(xs){
+	.main-info-title {
+		font-size: 22px!important;
+	}
+	.main-info-container {
+		padding: 35px 5px 30px!important;
+	}
+}
+
+.main-info-container {
+	padding: 35px 50px 30px;
+	border-radius: 10px;
+	font-size: 16px;
+	line-height: 19px;
+	box-sizing: border-box;
+	color: #000000;
+	background: #FFFFFF;
+	border: 1px solid #E3E4E8;
+
+	.main-info-title {
+		font-weight: bold;
+		font-size: 30px;
+		line-height: 35px;
+		color: #29333F;
+
+		img {
+			margin-right: 12px;
+			vertical-align: middle;
+		}
+	}
+
+	.main-info-subtitle{
+		font-weight: bold;
+		font-size: 14px;
+		color: #C5C5C5;
+		padding-top: 5px;
+
+		@media screen and (min-width: 768px) {
+			padding-top: 10px;
+		}
+	}
+
+	.show-details-btn {
+		border: 2px solid #A4A4A4;
+		color: #A4A4A4;
+		border-radius: 10px;
+		width: 219px;
+		height: 40px;
+		font-weight: bold;
+		font-size: 16px;
+		opacity: 0.5;
+		&:hover{
+			opacity: 1;
+		}
+	}
+
+	.main-info-header {
+		padding-bottom: 15px;
+		border-bottom: 0.5px solid #E4E4E4;
+	}
+
+	.personal-message-title {
+		font-weight: bold;
+		font-size: 18px;
+		line-height: 21px;
+		color: #000000;
+	}
+
+	.languages-title, .seeking-title, .interests-title {
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 21px;
+		color: #000000;
+	}
+
+	.edit-btn{
+		width: 134px;
+		height: 50px;
+		border: 2px solid #00BDBA;
+		color: #00BDBA;
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: bold;
+		box-sizing: border-box;
+		border-radius: 10px;
+		@media only screen and (max-width: 536px) {
+			width: 80px;
+		}
+	}
+}
+
+.main-info {
+	&__content {
+		padding-bottom: 40px;
+
+		@media screen and (min-width: 768px) {
+			padding-bottom: 60px;
+		}
+
+		@media screen and (min-width: 1024px) {
+			padding-bottom: 80px;
+		}
+	}
+
+	&__title {
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 18px;
+		color: #000000;
+		padding-bottom: 10px;
+
+		@media screen and (min-width: 1024px) {
+			font-size: 18px;
+			line-height: 21px;
+		}
+	}
+
+	&__row {
+		padding: 15px 10px 10px;
+		font-size: 14px;
+		line-height: 16px;
+
+		@media screen and (min-width: 1024px) {
+			padding: 30px 15px;
+			font-size: 16px;
+			line-height: 20px;
+		}
+	}
+}

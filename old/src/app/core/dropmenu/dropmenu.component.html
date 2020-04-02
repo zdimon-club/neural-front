@@ -1,0 +1,14 @@
+<div class="dropmenu" (clickOutside)="handleClickOutsideDropdown()">
+  <img class="dropmenu__toggle hoverable"
+       src="{{isDropdownOpened ? data.iconOn : data.iconOff}}"
+       (click)="toggleDropdown()"/>
+  <div class="dropmenu__list" [ngClass]="data.type" [class._active]="isDropdownOpened">
+    <button class="dropmenu__item hoverable"
+            *ngFor="let button of data.buttons;let index = index;"
+            (click)="runMethod(button.action, button.arg, index)">
+      <img class="dropmenu__item-icon" *ngIf="data.buttons.length-1 > index && data.buttons.length-1 != index" [src]="button.iconOn">
+      <img class="dropmenu__item-icon" *ngIf="data.buttons.length-1 == index" [src]="toggleCamera? button.iconOff: button.iconOn">
+      {{button.title | translate}}
+    </button>
+  </div>
+</div>

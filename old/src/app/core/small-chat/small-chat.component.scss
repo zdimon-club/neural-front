@@ -1,0 +1,152 @@
+.small-chat {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 99999;
+
+  .container {
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+  }
+
+  .header {
+    background: #3c4252;
+    padding: 0 5px 0 10px;
+    .img-container img {
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+    }
+    .sender-title {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .icon-container mat-icon {
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7);
+      float: right;
+    }
+  }
+
+  .videos {
+    background: #fff;
+    
+    }
+
+  .body {
+    background: #fff;
+    overflow-y: auto;
+    .messages {
+      width: 100%;
+      padding: 10px;
+    }
+
+    .message-container {
+      height: auto;
+      width: fit-content;
+      max-width: 50%;
+    }
+
+    .message {
+      padding: 10px 15px;
+      border-radius: 10px;
+    }
+
+    .msg-time {
+      text-align: right;
+      font-size: 10px;
+    }
+
+    .dark-message {
+      background: #3c4252;
+      &.message-text {
+        color: #fff;
+      }
+    }
+
+    .light-message {
+      background: #f5f5f5;
+      &.message-text {
+        color: rgba(0,0,0,0.87);
+      }
+
+      +.msg-time {
+        text-align: left;
+      }
+    }
+  }
+
+  .footer {
+    min-height: 80px;
+    background: #3c4252;
+    padding: 10px 5px 10px 10px;
+
+    // remove material paddings start
+    .mat-form-field-underline {
+      display: none;
+    }
+    .mat-form-field-appearance-standard .mat-form-field-flex {
+      padding: 0;
+    }
+    .mat-form-field-infix {
+      border-top: 0;
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+    // remove materail paddings end
+
+    mat-form-field {
+      background: #fff;
+      border-radius: 15px;
+    }
+
+    mat-form-field textarea {
+      min-height: 20px!important;
+      overflow: hidden;
+      margin: 5px 0 5px;
+    }
+
+    .icon-container mat-icon {
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7)
+    }
+
+    .message-input {
+      padding: 0 15px;
+    }
+  }
+
+  .body-container {
+    height: 100%;
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column-reverse;
+  }
+
+  .message {
+    background: #fff;
+    
+    margin: 0;
+  }
+
+  .message video {
+    width: 100px;
+  }
+
+  .message img {
+    width: 100px;
+  }
+
+
+}
+
+
+
+
+.drag-wrapper__draggable:hover .drag-wrapper__icons-block {
+  opacity: 1;
+  transition: 0.5s;
+}

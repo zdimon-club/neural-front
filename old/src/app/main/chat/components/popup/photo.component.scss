@@ -1,0 +1,32 @@
+.photos {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	min-height: 200px;
+	overflow: auto;
+	align-items: flex-start;
+
+	.red {
+		border: 1px solid red;
+	}
+
+	.photo {
+		flex-basis: calc(25% - 3px);
+		width: calc(25% - 3px);
+		margin-right: 4px;
+		padding: 0;
+		background: transparent;
+		border: none;
+
+		img {
+			object-fit: contain;
+			width: 100%;
+		}
+
+		&:nth-child(4n) {
+			margin-right: 0;
+		}
+
+
+	}
+}

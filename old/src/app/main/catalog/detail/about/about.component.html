@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-12">
+        <div class="main-info-container">
+            <div class="main-info-header col-12">
+                <div class="row">
+                    <div class="col pl-0">
+                        <div class="main-info-title"> <img src="/assets/icons/svg-icons/shield.svg">{{ user?.user.username }}</div>
+                        <div class="main-info-subtitle mt-8"> Age, Country</div>
+                    </div>
+                    <div class="col-auto">
+                        <ul class="profile-settings">
+                            <li class="user-online" *ngIf="user?.user.is_online">Online</li>
+                            <li><img src="/assets/icons/svg-icons/star.svg" alt=""></li>
+                            <li><img src="/assets/icons/svg-icons/user-menu.svg" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-info__content">
+                <div class="main-info__row">
+                    <div class="row">
+                        <span class="main-info__title col-md-8 col-12">Personal Message</span>
+                        <div class="col-md-8 col-12">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab expedita illum impedit, laudantium nemo
+                            officiis totam ut. Consectetur, mollitia sint.
+                        </div>
+                    </div>
+                </div>
+                <div class="main-info__row">
+                    <div class="row">
+                        <div class="col-md-4 col-12 mb-md-0 mb-3 mb-md-5">
+                            <div class="row">
+                                <span class="main-info__title col-12">Languages</span>
+                                <div class="col-12">
+                                    Russian, English
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <div class="row">
+                                <span class="main-info__title col-12">Seeking in Relationship</span>
+                                <div class="col-12">
+                                    Dating, Travelling together
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-info__row">
+                    <div class="row">
+                        <span class="main-info__title col-md-8 col-12">Interests</span>
+                        <div class="col-8">
+                            Ice skating, gym, socializing with friends. I work in a shelter for homeless animals. I love to travel and
+                            would be happy to join you in exploring the world
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-28">
+                <div class="seeking-info justify-content-center d-flex">
+                    <button mat-stroked-button class="show-details-btn">Show details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

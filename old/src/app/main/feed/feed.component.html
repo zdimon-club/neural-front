@@ -1,0 +1,34 @@
+
+<div fxLayout="column" fxLayoutAlign="space-between stretch">
+
+
+<mat-card  *ngFor="let f of feed" class="feed-card">
+
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>{{ f.title }}</mat-card-title>
+      <!--<mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
+      
+    </mat-card-header>
+      <div *ngFor="let ph of f.photos" style="width: 200px; float: left">
+          <img *ngIf="ph.type_media=='photo'" style="margin: 10px;"  [src]="ph.get_middle_url_port" alt="">
+      </div>
+
+      <div *ngFor="let ph of f.videos" style="width: 250px; float: left">
+          <img *ngIf="ph.type_media=='video'" style="margin: 10px;" [src]="ph.get_middle_url_land" alt="">
+      </div>
+
+      
+      <div style="clear: both"></div>
+    <mat-card-content>
+      <div *ngFor="let com of f.feedcomment">
+          <p>{{  com.text  }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="showVideo(f)" mat-button *ngIf="f.has_video">VIDEO</button>
+      <!-- <button mat-button>SHARE</button> -->
+    </mat-card-actions>
+  </mat-card>
+
+</div>

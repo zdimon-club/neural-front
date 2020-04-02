@@ -1,0 +1,121 @@
+<footer class="container-fluid footer d-flex justify-content-between flex-wrap">
+  <div class="logo col-12 col-lg-2 d-flex justify-content-center justify-content-lg-start">
+    <a href="/">
+      <img src="/assets/icons/svg-icons/logo.svg" alt=""/>
+    </a>
+  </div>
+
+  <div
+    class="navigation-links d-flex col-12 col-lg-6 d-xl-none justify-content-between justify-content-lg-start mt-5 mb-5 mt-lg-0 mb-lg-0"
+    #navigationLinks>
+
+    <div class="dating-site links-column d-flex flex-column text-center text-sm-left ">
+      <p class="list-title">
+        Our dating site:
+      </p>
+      <a href="">
+        License agreement
+      </a>
+      <a href="">
+        Terms and Conditions
+      </a>
+      <a href="">
+        Services
+      </a>
+      <a href="">
+        Assistance
+      </a>
+      <a href="">
+        FAQ
+      </a>
+      <a href="">
+        For dating agency
+      </a>
+    </div>
+
+    <div class="about-us links-column d-flex flex-column mx-3 mx-sm-5 text-center text-sm-left">
+      <p class="list-title">
+        About us:
+      </p>
+      <a href="">
+        Who we are
+      </a>
+      <a href="">
+        Anti scam-policy
+      </a>
+      <a href="">
+        Recognize a scammer
+      </a>
+      <a href="">
+        Contacts
+      </a>
+      <a href="">
+        Conditions
+      </a>
+      <a href="">
+        Privacy
+      </a>
+      <a href="">
+        Vacancies
+      </a>
+      <a href="">
+        Support
+      </a>
+    </div>
+
+    <div class="start-dating links-column d-flex flex-column text-center text-sm-left">
+      <p class="list-title">
+        Start dating:
+      </p>
+      <a href="">
+        Girls online
+      </a>
+      <a href="">
+        Advanced search
+      </a>
+      <a href="">
+        Ladies with webcam
+      </a>
+      <a href="">
+        About online dating
+      </a>
+    </div>
+
+  </div>
+
+  <div class="wrapper-social d-flex col-12 col-lg-3 justify-content-between justify-content-lg-end">
+
+    <div class="social-links d-flex flex-column ml-0 ml-sm-3">
+      <p class="social-links-title">
+        Social network:
+      </p>
+      <div class="socials d-flex justify-content-center justify-content-sm-start mt-2">
+        <a href="#" class="mx-2 mx-sm-0 mr-sm-3">
+          <img src="/assets/icons/svg-icons/facebook.svg" class="social__icon" alt=""/>
+        </a>
+        <a href="#" class="mx-2 mx-sm-0 mr-sm-3">
+          <img src="/assets/icons/svg-icons/twitter.svg" class="social__icon" alt=""/>
+        </a>
+        <a href="#" class="mx-2 mx-sm-0 mr-sm-3">
+          <img src="/assets/icons/svg-icons/vk.svg" class="social__icon" alt=""/>
+        </a>
+      </div>
+    </div>
+
+    <div class="language d-flex flex-column ml-3 ml-sm-5">
+      <p class="languages-links-title">
+        Language:
+      </p>
+      <div class="languages">
+        <button class="eu" (click)="setLanguage('en')">
+          <img src="/assets/icons/svg-icons/eu.svg" class="language__icon"
+               [class.language__icon_selected]="selectedLanguage === 'en'" alt="en"/>
+        </button>
+        <button class="ru" (click)="setLanguage('ru')">
+          <img src="/assets/icons/svg-icons/ru.svg" class="language__icon"
+               [class.language__icon_selected]="selectedLanguage === 'ru'" alt="ru"/>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>

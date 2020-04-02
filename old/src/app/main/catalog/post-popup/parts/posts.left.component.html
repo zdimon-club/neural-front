@@ -1,0 +1,175 @@
+<div class="flex-grow-1 overflow-auto d-flex flex-column" *ngIf="feed">
+  <div class="overflow-hidden p-3 modal__top-bar">
+    <div class="card__header p-0 d-none d-lg-flex align-items-center justify-content-between">
+      <div class="flex align-items-center">
+        <div class="flex modal__avatar flex-shrink-0">
+          <ng-container *ngIf="feed.user_obj">
+            <app-user-item
+              [photo]="feed.user_obj?.main_photo"
+              [isOnline]="feed.user_obj?.is_online"
+              [cam]="feed.user_obj?.is_camera"
+            ></app-user-item>
+          </ng-container>
+        </div>
+        <div class="text-muted mx-2 overflow-hidden d-flex align-items-center">
+          <div class="flex flex-column mr-2">
+            <div class="text-truncate">
+              <a
+                [routerLink]="['/profile', feed.user_obj?.id || 'none']"
+                class="font--size-14 text-dark font-weight-bold"
+                >{{ feed.user_obj?.username }},
+              </a>
+
+              <span class="modal__age font--size-14 font-weight-bold">{{
+                feed.user_obj?.age
+              }}</span>
+            </div>
+            <div class="d-flex align-items-end">
+              <img
+                src="/assets/icons/svg-icons/location-black.svg"
+                class="modal__location-icon mr-1"
+              />
+
+              <span class="text-truncate modal__from"
+                >{{ feed.user_obj?.city }}, {{ feed.user_obj?.country_string }}</span
+              >
+            </div>
+          </div>
+          <img
+            src="/assets/icons/svg-icons/verified.svg"
+            *ngIf="feed.user_obj?.is_verified"
+            class="ml-1 mr-3"
+          />
+          <img
+            src="/assets/icons/svg-icons/not-verified.svg"
+            *ngIf="!feed.user_obj?.is_verified"
+            class="ml-1 mr-3"
+          />
+          <img
+            src="/assets/icons/svg-icons/half-verified.svg"
+            *ngIf="feed.user_obj?.is_verified === 'half'"
+            class="ml-1 mr-3"
+          />
+        </div>
+      </div>
+      <div class="flex align-items-center">
+        <ng-container *ngIf="isAuth">
+          <button
+            class="btn btn-outline-primary btn-sm btn-rounded ml-auto flex-shrink-0 modal__subscribe-btn"
+            *ngIf="!feed.user_obj?.is_subscribed"
+            (click)="emitSubscribe(feed.user_obj)"
+          >
+            + Subscribe
+          </button>
+          <!-- 
+            <button
+              (click)="emitUnSubscribe(feed.user_obj)"
+              *ngIf="feed.user_obj?.is_subscribed"
+              class="btn btn-outline-primary btn-sm btn-rounded ml-auto flex-shrink-0 modal__subscribe-btn"
+            >
+              Unsubscribe
+            </button>
+            -->
+        </ng-container>
+
+        <div class="ml-2">
+          <a href="#" class="btn btn-link px-1 modal__more-btn">
+            <img
+              src="/assets/icons/svg-icons/more.svg"
+              class="icon icon--size-18 icon--color-light m-0"
+              alt="More"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="modal__title">
+        {{ feed.title }}
+      </p>
+      <p class="modal__hashtags">
+        #libra #horoscope #scorpio
+      </p>
+      <div class="d-flex justify-content-between align-items-center modal__geo-and-date-wrapper">
+        <div class="flex align-items-center">
+          <img src="/assets/icons/svg-icons/geo.svg" alt="Geolocation" />
+          <span class="modal__geo-text"> {{ feed.city }}, {{ feed.country }} </span>
+        </div>
+      </div>
+      <div class="d-flex align-items-center modal__likes-and-comments-wrapper">
+        <div class="flex align-items-center">
+          <div class="flex align-items-center modal__likes-wrapper">
+            <div class="modal__icon-like hoverable">
+              <app-like
+                (emitClick)="handleClickLike(feed)"
+                [isLiked]="feed.user_obj?.is_liked"
+              ></app-like>
+            </div>
+
+            <span class="modal__likes-and-comments-number">{{ feed.likes }}</span>
+          </div>
+
+          <div class="flex align-items-center ">
+            <button class="p-0">
+              <img src="/assets/icons/svg-icons/comment.svg" />
+            </button>
+            <span class="modal__likes-and-comments-number">{{ feed.comment_count }}</span>
+          </div>
+        </div>
+
+        <button
+          class="btn btn-primary modal__send-msg-btn"
+          (click)="callToChatEmmiter.emit(feed.user_obj.id)"
+        >
+          Send message
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal__comments-wrapper overflow-hidden px-3 pb-3">
+    <div class="media mt-3" *ngFor="let comment of feed.feedcomment">
+      <ng-container *ngIf="comment.user_obj">
+        <div class="mr-2 modal__avatar">
+          <app-user-item
+            [photo]="comment.user_obj.main_photo"
+            [isOnline]="comment.user_obj.is_online"
+            [cam]="comment.user_obj.is_camera"
+          ></app-user-item>
+        </div>
+
+        <div class="media-body">
+          <span class="text-truncate">
+            <a href="#" class="font-weight-bold font--size-14">{{ comment.user_obj.username }}, </a>
+            <span class="font-weight-bold modal__age font--size-14">{{
+              comment.user_obj.age
+            }}</span>
+          </span>
+          <div class="modal__comment-text font--size-12">
+            {{ comment.text }}
+          </div>
+          <div class="d-flex align-items-center font--size-12 text-muted">
+            <button class="modal__reply-btn p-0 hoverable">Reply</button>
+            <div class="ml-auto">{{ comment.created_at }}</div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div class="modal__send-message-wrapper" *ngIf="feed">
+  <input
+    type="text"
+    class="modal__input"
+    placeholder="Enter a message..."
+    [(ngModel)]="comment"
+    required
+  />
+  <div class="flex align-items-center">
+    <button class="p-0 user-select-none hoverable">
+      <img src="/assets/icons/svg-icons/emoji.svg" />
+    </button>
+    <button (click)="postComment(feed)" class="btn btn-primary modal__send-comment-button">
+      <img src="/assets/icons/svg-icons/send-comment.svg" />
+    </button>
+  </div>
+</div>

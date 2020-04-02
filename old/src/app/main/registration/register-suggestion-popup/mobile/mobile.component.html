@@ -1,0 +1,76 @@
+<div class="popup__wrapper">
+  <img
+    (click)="handleClosePopup()"
+    src="/assets/icons/svg-icons/modal-closed.svg"
+    alt="Close"
+    class="popup__wrapper-close hoverable"
+  />
+  <div class="popup__scroll full-width">
+    <div class="popup__image">
+      <img src="/assets/images/Background/Register/Pop-up-mobile.png" />
+      <div class="popup__image-text">
+        <h2 class="title popup__title">
+           {{ 'CREATE_FREE_ACCOUNT' | translate }}
+<!--            Create free account-->
+        </h2>
+        <h3 class="subtitle popup__subtitle">
+          <!--            Ukrainian brides may be looking for you-->
+            {{ 'UKR_BRIDES_LOOK' | translate }}
+        </h3>
+      </div>
+    </div>
+    <div class="popup__content">
+      <form class="popup__form">
+        <input
+          type="email"
+          class="input-email popup__input-email"
+          placeholder="Your Email"
+          [(ngModel)]="email"
+          name="email"
+        />
+        <div class="gender-wrapper popup__gender-wrapper">
+          <button
+            class="gender"
+            [class.active]="currentGender === 'Man'"
+            (click)="handleClickGender('Man')"
+          >
+            <img src="/assets/icons/svg-icons/gender-man.svg" />
+            <span class="gender-text">
+              <!--                  Man-->
+                  {{ 'MAN' | translate }}
+            </span>
+          </button>
+          <button
+            class="gender"
+            [class.active]="currentGender === 'Woman'"
+            (click)="handleClickGender('Woman')"
+          >
+            <img src="/assets/icons/svg-icons/gender-woman.svg" />
+            <span class="gender-text">
+              <!--                  Woman-->
+                  {{ 'WOMAN' | translate }}
+            </span>
+          </button>
+        </div>
+        <span class="input-hint">
+          <!--              You may have an account - just enter your email address-->
+              {{ 'YOU_HAVE_ACCOUNT' | translate }}
+        </span>
+        <button
+          type="submit"
+          class="submit-button popup__submit-button flex align-items-center justify-content-center"
+        >
+          <span class="submit-button__text">
+<!--            further-->
+              {{ 'FURTHER' | translate }}
+          </span>
+          <img
+            class="submit-button__arrows"
+            src="/assets/images/register-suggestion/arrows.png"
+            alt="Arrows"
+          />
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1784 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>MediaService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/main/chat/services/media.service.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#_isloading_abonent$">_isloading_abonent$</a>
+                            </li>
+                            <li>
+                                <a href="#_isloading$">_isloading$</a>
+                            </li>
+                            <li>
+                                <a href="#_publisher$">_publisher$</a>
+                            </li>
+                            <li>
+                                <a href="#_room_subscribers$">_room_subscribers$</a>
+                            </li>
+                            <li>
+                                <a href="#_subscribers$">_subscribers$</a>
+                            </li>
+                            <li>
+                                <a href="#current_room">current_room</a>
+                            </li>
+                            <li>
+                                <a href="#current_user">current_user</a>
+                            </li>
+                            <li>
+                                <a href="#is_loading">is_loading</a>
+                            </li>
+                            <li>
+                                <a href="#is_video_streaming">is_video_streaming</a>
+                            </li>
+                            <li>
+                                <a href="#mainStreamManager">mainStreamManager</a>
+                            </li>
+                            <li>
+                                <a href="#OV">OV</a>
+                            </li>
+                            <li>
+                                <a href="#publisher">publisher</a>
+                            </li>
+                            <li>
+                                <a href="#room_subscribers">room_subscribers</a>
+                            </li>
+                            <li>
+                                <a href="#session">session</a>
+                            </li>
+                            <li>
+                                <a href="#subscribers">subscribers</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#cameraHide">cameraHide</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#cameraOff">cameraOff</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#cameraOn">cameraOn</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#cameraShow">cameraShow</a>
+                            </li>
+                            <li>
+                                <a href="#createSession">createSession</a>
+                            </li>
+                            <li>
+                                <a href="#createToken">createToken</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#deleteSubscriber">deleteSubscriber</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#disconect">disconect</a>
+                            </li>
+                            <li>
+                                <a href="#emitPublisher">emitPublisher</a>
+                            </li>
+                            <li>
+                                <a href="#getCurrentSubscriber">getCurrentSubscriber</a>
+                            </li>
+                            <li>
+                                <a href="#getMedia">getMedia</a>
+                            </li>
+                            <li>
+                                <a href="#getToken">getToken</a>
+                            </li>
+                            <li>
+                                <a href="#joinToSession">joinToSession</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, session_store: Store<SessionState>, session_service: <a href="../injectables/SessionService.html">SessionService</a>, room_store: Store<RoomState>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/main/chat/services/media.service.ts:46</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>session_store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store&lt;SessionState&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>session_service</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SessionService.html" target="_self" >SessionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>room_store</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store&lt;RoomState&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cameraHide"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            cameraHide
+                        </b>
+                        <a href="#cameraHide"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cameraHide(data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="269"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:269</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cameraOff"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            cameraOff
+                        </b>
+                        <a href="#cameraOff"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cameraOff()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="261"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:261</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cameraOn"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            cameraOn
+                        </b>
+                        <a href="#cameraOn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cameraOn()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="257"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:257</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cameraShow"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            cameraShow
+                        </b>
+                        <a href="#cameraShow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>cameraShow(data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="265"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:265</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createSession"></a>
+                    <span class="name">
+                        <b>
+                            createSession
+                        </b>
+                        <a href="#createSession"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createSession(sessionId)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sessionId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createToken"></a>
+                    <span class="name">
+                        <b>
+                            createToken
+                        </b>
+                        <a href="#createToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createToken(sessionId)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="226"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:226</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sessionId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteSubscriber"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            deleteSubscriber
+                        </b>
+                        <a href="#deleteSubscriber"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteSubscriber(streamManager: StreamManager)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="174"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:174</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>streamManager</td>
+                                    <td>
+                                            <code>StreamManager</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="disconect"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            disconect
+                        </b>
+                        <a href="#disconect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>disconect()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="249"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:249</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emitPublisher"></a>
+                    <span class="name">
+                        <b>
+                            emitPublisher
+                        </b>
+                        <a href="#emitPublisher"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>emitPublisher(publisher)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>publisher</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCurrentSubscriber"></a>
+                    <span class="name">
+                        <b>
+                            getCurrentSubscriber
+                        </b>
+                        <a href="#getCurrentSubscriber"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCurrentSubscriber()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMedia"></a>
+                    <span class="name">
+                        <b>
+                            getMedia
+                        </b>
+                        <a href="#getMedia"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getMedia()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getToken"></a>
+                    <span class="name">
+                        <b>
+                            getToken
+                        </b>
+                        <a href="#getToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getToken(session_id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="185"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:185</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>session_id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="joinToSession"></a>
+                    <span class="name">
+                        <b>
+                            joinToSession
+                        </b>
+                        <a href="#joinToSession"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>joinToSession(sid)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="144"
+                            class="link-to-prism">src/app/main/chat/services/media.service.ts:144</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sid</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_isloading_abonent$"></a>
+                        <span class="name">
+                            <b>
+                            _isloading_abonent$</b>
+                            <a href="#_isloading_abonent$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject(false)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/main/chat/services/media.service.ts:42</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_isloading$"></a>
+                        <span class="name">
+                            <b>
+                            _isloading$</b>
+                            <a href="#_isloading$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject(false)</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/main/chat/services/media.service.ts:41</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_publisher$"></a>
+                        <span class="name">
+                            <b>
+                            _publisher$</b>
+                            <a href="#_publisher$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new ReplaySubject()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/main/chat/services/media.service.ts:40</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_room_subscribers$"></a>
+                        <span class="name">
+                            <b>
+                            _room_subscribers$</b>
+                            <a href="#_room_subscribers$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject({})</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/main/chat/services/media.service.ts:44</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_subscribers$"></a>
+                        <span class="name">
+                            <b>
+                            _subscribers$</b>
+                            <a href="#_subscribers$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new BehaviorSubject([])</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/main/chat/services/media.service.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="current_room"></a>
+                        <span class="name">
+                            <b>
+                            current_room</b>
+                            <a href="#current_room"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/main/chat/services/media.service.ts:46</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="current_user"></a>
+                        <span class="name">
+                            <b>
+                            current_user</b>
+                            <a href="#current_user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/main/chat/services/media.service.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="is_loading"></a>
+                        <span class="name">
+                            <b>
+                            is_loading</b>
+                            <a href="#is_loading"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/main/chat/services/media.service.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="is_video_streaming"></a>
+                        <span class="name">
+                            <b>
+                            is_video_streaming</b>
+                            <a href="#is_video_streaming"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/main/chat/services/media.service.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mainStreamManager"></a>
+                        <span class="name">
+                            <b>
+                            mainStreamManager</b>
+                            <a href="#mainStreamManager"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>StreamManager</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/main/chat/services/media.service.ts:37</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="OV"></a>
+                        <span class="name">
+                            <b>
+                            OV</b>
+                            <a href="#OV"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>OpenVidu</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/main/chat/services/media.service.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="publisher"></a>
+                        <span class="name">
+                            <b>
+                            publisher</b>
+                            <a href="#publisher"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>StreamManager</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/main/chat/services/media.service.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="room_subscribers"></a>
+                        <span class="name">
+                            <b>
+                            room_subscribers</b>
+                            <a href="#room_subscribers"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/main/chat/services/media.service.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="session"></a>
+                        <span class="name">
+                            <b>
+                            session</b>
+                            <a href="#session"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Session</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/main/chat/services/media.service.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="subscribers"></a>
+                        <span class="name">
+                            <b>
+                            subscribers</b>
+                            <a href="#subscribers"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>StreamManager[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/main/chat/services/media.service.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { Store } from &#x27;@ngrx/store&#x27;;
+/// OpenVidu
+import { OpenVidu, Publisher, Session, StreamEvent, StreamManager, Subscriber } from &#x27;openvidu-browser&#x27;;
+import { BehaviorSubject, ReplaySubject, throwError as observableThrowError } from &#x27;rxjs&#x27;;
+import { catchError } from &#x27;rxjs/operators&#x27;;
+import { environment } from &#x27;../../../../environments/environment&#x27;;
+import { selectUser } from &#x27;../../../auth/store/session.selector&#x27;;
+/// Session Store
+import { SessionState } from &#x27;../../../auth/store/session.store&#x27;;
+/////////////
+// User store
+import { User } from &#x27;../../users/store/users.store&#x27;;
+import { selectCurrentRoom } from &#x27;../store/chat.selector&#x27;;
+// Room store
+import { RoomState } from &#x27;../store/chat.store&#x27;;
+// Services
+import { SessionService } from &#x27;./../../../auth/session.service&#x27;;
+
+
+
+
+
+
+
+@Injectable()
+export class MediaService {
+
+  OV: OpenVidu;
+  session: Session;
+  publisher: StreamManager; // Local
+  subscribers: StreamManager[] &#x3D; []; // Remotes
+  room_subscribers: {[room_id: number]: StreamManager} &#x3D; {}; // Remotes
+  mainStreamManager: StreamManager;
+  is_video_streaming &#x3D; false;
+  is_loading &#x3D; false;
+  _publisher$ &#x3D; new ReplaySubject();
+  _isloading$ &#x3D; new BehaviorSubject(false);
+  _isloading_abonent$ &#x3D; new BehaviorSubject(false);
+  _subscribers$ &#x3D; new BehaviorSubject([]);
+  _room_subscribers$ &#x3D; new BehaviorSubject({});
+  current_user: User;
+  current_room: any;
+
+  constructor(
+    private http: HttpClient,
+    private session_store: Store&lt;SessionState&gt;,
+    private session_service: SessionService,
+    private room_store: Store&lt;RoomState&gt;,
+  ) {
+
+    // Set current user from store
+    this.session_store.select(selectUser).subscribe(user &#x3D;&gt; {
+      this.current_user &#x3D; user;
+    });
+
+    // Set current room from store
+    this.room_store.select(selectCurrentRoom).subscribe(room &#x3D;&gt; {
+      this.current_room &#x3D; room;
+    });
+
+  }
+
+  emitPublisher(publisher) {
+    this._publisher$.next(publisher);
+  }
+
+
+  getCurrentSubscriber() {
+    console.log(this.room_subscribers);
+    if (this.current_room) {
+    return this.room_subscribers[this.current_room.id];
+    } else {
+      return {};
+    }
+  }
+
+
+  getMedia() {
+    this._isloading$.next(true);
+    this.OV &#x3D; new OpenVidu();
+    this.session &#x3D; this.OV.initSession();
+
+    this.session.on(&#x27;streamCreated&#x27;, (event: StreamEvent) &#x3D;&gt; {
+      console.log(&#x27;[OV session] streamCreated&#x27;);
+      const subscriber: Subscriber &#x3D; this.session.subscribe(event.stream, undefined);
+      this.subscribers.push(subscriber);
+      // this.subscriberss[this.current_room.id] &#x3D; subscriber;
+    });
+
+    this.session.on(&#x27;streamDestroyed&#x27;, (event: StreamEvent) &#x3D;&gt; {
+      console.log(&#x27;[OV session] streamDestroyed&#x27;);
+      this.deleteSubscriber(event.stream.streamManager);
+    });
+
+    this.getToken(this.session_service.getToken()).then(token &#x3D;&gt; {
+
+      // First param is the token got from OpenVidu Server. Second param can be retrieved by every user on event
+      // &#x27;streamCreated&#x27; (property Stream.connection.data), and will be appended to DOM as the user&#x27;s nickname
+      this.session.connect(token, { clientData: this.session_service.getToken() })
+        .then(() &#x3D;&gt; {
+
+          // --- 5) Get your own camera stream ---
+
+          // Init a publisher passing undefined as targetElement (we don&#x27;t want OpenVidu to insert a video
+          // element: we will manage it on our own) and with the desired properties
+          const publisher: Publisher &#x3D; this.OV.initPublisher(undefined, {
+            audioSource: undefined, // The source of audio. If undefined default microphone
+            videoSource: undefined, // The source of video. If undefined default webcam
+            publishAudio: true,     // Whether you want to start publishing with your audio unmuted or not
+            publishVideo: true,     // Whether you want to start publishing with your video enabled or not
+            resolution: &#x27;640x480&#x27;,  // The resolution of your video
+            frameRate: 30,          // The frame rate of your video
+            insertMode: &#x27;APPEND&#x27;,   // How the video is inserted in the target element &#x27;video-container&#x27;
+            mirror: false           // Whether to mirror your local video or not
+          });
+
+          // --- 6) Publish your stream ---
+
+          this.session.publish(publisher).then(() &#x3D;&gt; {
+            this._isloading$.next(false);
+          });
+
+
+          // Set the main video in the page to display our webcam and store our Publisher
+          // this.mainStreamManager &#x3D; publisher;
+          /// send data to server
+          this.cameraOn().subscribe(data &#x3D;&gt; {});
+          this.publisher &#x3D; publisher;
+          this.emitPublisher(publisher);
+          this._isloading$.next(false);
+
+        })
+        .catch(error &#x3D;&gt; {
+          console.log(&#x27;There was an error connecting to the session:&#x27;, error.code, error.message);
+        });
+    });
+
+  }
+
+  joinToSession(sid) {
+    this._isloading_abonent$.next(true);
+    this.OV &#x3D; new OpenVidu();
+    this.session &#x3D; this.OV.initSession();
+    this.session.on(&#x27;streamCreated&#x27;, (event: StreamEvent) &#x3D;&gt; {
+      const subscriber: Subscriber &#x3D; this.session.subscribe(event.stream, undefined);
+      this.subscribers.push(subscriber);
+      this.room_subscribers[this.current_room.id] &#x3D; subscriber;
+      this._room_subscribers$.next(this.room_subscribers);
+    });
+
+    this.session.on(&#x27;streamDestroyed&#x27;, (event: StreamEvent) &#x3D;&gt; {
+      console.log(&#x27;[OV session] streamDestroyed&#x27;);
+      this.deleteSubscriber(event.stream.streamManager);
+    });
+    this.getToken(sid).then(token &#x3D;&gt; {
+
+      // First param is the token got from OpenVidu Server. Second param can be retrieved by every user on event
+      // &#x27;streamCreated&#x27; (property Stream.connection.data), and will be appended to DOM as the user&#x27;s nickname
+      this.session.connect(token, { clientData: sid })
+        .then(() &#x3D;&gt; {
+          this._isloading_abonent$.next(false);
+          this._subscribers$.next(this.subscribers);
+        })
+        .catch(error &#x3D;&gt; {
+          console.log(&#x27;There was an error connecting to the session:&#x27;, error.code, error.message);
+        });
+    });
+  }
+
+  public deleteSubscriber(streamManager: StreamManager): void {
+    const index &#x3D; this.subscribers.indexOf(streamManager, 0);
+    // console.log(this.subscribers);
+    if (index &gt; -1) {
+      this.subscribers.splice(index, 1);
+    }
+    // console.log(this.subscribers);
+    delete this.room_subscribers[this.current_room.id];
+  }
+
+
+  getToken(session_id): Promise&lt;string&gt; {
+
+    return this.createSession(session_id).then(
+      sessionId &#x3D;&gt; {
+        return this.createToken(sessionId);
+      });
+
+  }
+
+  createSession(sessionId) {
+    return new Promise((resolve, reject) &#x3D;&gt; {
+
+      const body &#x3D; JSON.stringify({ customSessionId: sessionId });
+      const options &#x3D; {
+        headers: new HttpHeaders({
+          Authorization: &#x27;Basic &#x27; + btoa(&#x27;OPENVIDUAPP:&#x27; + environment.OPENVIDU_SERVER_SECRET),
+          &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+        })
+      };
+      return this.http.post(environment.OPENVIDU_SERVER_URL + &#x27;/api/sessions&#x27;, body, options)
+        .pipe(
+          catchError(error &#x3D;&gt; {
+            if (error.status &#x3D;&#x3D;&#x3D; 409) {
+              resolve(sessionId);
+            } else {
+              console.warn(&#x27;No connection to OpenVidu Server. This may be a certificate error at &#x27; + environment.OPENVIDU_SERVER_URL);
+              if (window.confirm(&#x27;No connection toficate error at \&quot;&#x27; + environment.OPENVIDU_SERVER_URL +
+                &#x27;\&quot;\n\nClick OK to navigate and accept it. If no certificate warning is shown, then check that your OpenVidu Server&#x27; +
+                &#x27;is up and running at &quot;&#x27; + environment.OPENVIDU_SERVER_URL + &#x27;&quot;&#x27;)) {
+                location.assign(environment.OPENVIDU_SERVER_URL + &#x27;/accept-certificate&#x27;);
+              }
+            }
+            return observableThrowError(error);
+          })
+        )
+        .subscribe((response: any) &#x3D;&gt; {
+          resolve(response.id);
+        });
+    });
+  }
+
+  createToken(sessionId): Promise&lt;string&gt; {
+    return new Promise((resolve, reject) &#x3D;&gt; {
+
+      const body &#x3D; JSON.stringify({ session: sessionId });
+      const options &#x3D; {
+        headers: new HttpHeaders({
+          Authorization: &#x27;Basic &#x27; + btoa(&#x27;OPENVIDUAPP:&#x27; + environment.OPENVIDU_SERVER_SECRET),
+          &#x27;Content-Type&#x27;: &#x27;application/json&#x27;
+        })
+      };
+      return this.http.post(environment.OPENVIDU_SERVER_URL + &#x27;/api/tokens&#x27;, body, options)
+        .pipe(
+          catchError(error &#x3D;&gt; {
+            reject(error);
+            return observableThrowError(error);
+          })
+        )
+        .subscribe((response: any) &#x3D;&gt; {
+          resolve(response.token);
+        });
+    });
+  }
+
+  public disconect() {
+    if (this.session) {
+      this.session.disconnect();
+      this.cameraOff().subscribe(() &#x3D;&gt; {});
+
+    }
+  }
+
+  public cameraOn() {
+    return this.http.get(&#x60;${environment.apiUrl}/webrtc/cameraOn&#x60; );
+  }
+
+  public cameraOff() {
+    return this.http.get(&#x60;${environment.apiUrl}/webrtc/cameraOff&#x60; );
+  }
+
+  public cameraShow(data: any) {
+    return this.http.post(&#x60;${environment.apiUrl}/webrtc/cameraShow&#x60;, data);
+  }
+
+  public cameraHide(data: any) {
+    return this.http.post(&#x60;${environment.apiUrl}/webrtc/cameraHide&#x60;, data);
+  }
+
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'MediaService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

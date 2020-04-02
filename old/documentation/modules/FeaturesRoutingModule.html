@@ -1,0 +1,345 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content module">
+                   <div class="content-data">
+
+
+
+<ol class="breadcrumb">
+    <li>Modules</li>
+    <li>FeaturesRoutingModule</li>
+</ol>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li  class="active" >
+        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li >
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>tmp/unice/src/app/features/features-routing.module.ts</code>
+        </p>
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
+import { TransparentHeaderComponent } from &#x27;./header-style/transparent-header/transparent-header.component&#x27;;
+import { LightHeaderComponent } from &#x27;./header-style/light-header/light-header.component&#x27;;
+import { DarkHeaderComponent } from &#x27;./header-style/dark-header/dark-header.component&#x27;;
+import { HeaderRightNavigationComponent } from &#x27;./header-style/header-right-navigation/header-right-navigation.component&#x27;;
+import { HeaderCenterLogoComponent } from &#x27;./header-style/header-center-logo/header-center-logo.component&#x27;;
+import { FooterDefaultComponent } from &#x27;./footer-style/footer-default/footer-default.component&#x27;;
+import { FooterLightComponent } from &#x27;./footer-style/footer-light/footer-light.component&#x27;;
+import { FooterDarkComponent } from &#x27;./footer-style/footer-dark/footer-dark.component&#x27;;
+import { FooterLight2Component } from &#x27;./footer-style/footer-light2/footer-light2.component&#x27;;
+import { FooterDark2Component } from &#x27;./footer-style/footer-dark2/footer-dark2.component&#x27;;
+import { FooterDark3Component } from &#x27;./footer-style/footer-dark3/footer-dark3.component&#x27;;
+import { BreadcrumbLeftComponent } from &#x27;./breadcrumb/breadcrumb-left/breadcrumb-left.component&#x27;;
+import { BreadcrumbRightComponent } from &#x27;./breadcrumb/breadcrumb-right/breadcrumb-right.component&#x27;;
+import { BreadcrumbCenterComponent } from &#x27;./breadcrumb/breadcrumb-center/breadcrumb-center.component&#x27;;
+import { BreadcrumbDarkComponent } from &#x27;./breadcrumb/breadcrumb-dark/breadcrumb-dark.component&#x27;;
+import { BreadcrumbBigTypographyComponent } from &#x27;./breadcrumb/breadcrumb-big-typography/breadcrumb-big-typography.component&#x27;;
+import { BreadcrumbParallexBgComponent } from &#x27;./breadcrumb/breadcrumb-parallex-bg/breadcrumb-parallex-bg.component&#x27;;
+import { BreadcrumbBgComponent } from &#x27;./breadcrumb/breadcrumb-bg/breadcrumb-bg.component&#x27;;
+import { BreadcrumbGalleryComponent } from &#x27;./breadcrumb/breadcrumb-gallery/breadcrumb-gallery.component&#x27;;
+import { BreadcrumbVideoComponent } from &#x27;./breadcrumb/breadcrumb-video/breadcrumb-video.component&#x27;;
+import { ZoomGalleryComponent } from &#x27;./gallery/zoom-gallery/zoom-gallery.component&#x27;;
+import { FormPopupComponent } from &#x27;./gallery/form-popup/form-popup.component&#x27;;
+import { ModalPopupComponent } from &#x27;./gallery/modal-popup/modal-popup.component&#x27;;
+import { YoutubePopupComponent } from &#x27;./gallery/youtube-popup/youtube-popup.component&#x27;;
+import { MapPopupComponent } from &#x27;./gallery/map-popup/map-popup.component&#x27;;
+
+const routes: Routes &#x3D; [
+  {
+    path: &#x27;&#x27;,
+    children: [
+      {
+        path: &#x27;header-transparent&#x27;,
+        component: TransparentHeaderComponent,
+      }, 
+      {
+        path: &#x27;header-light&#x27;,
+        component: LightHeaderComponent
+      },
+      {
+        path: &#x27;header-dark&#x27;,
+        component: DarkHeaderComponent
+      },
+      {
+        path: &#x27;header-right-navigation&#x27;,
+        component: HeaderRightNavigationComponent
+      },
+      {
+        path: &#x27;header-center-logo&#x27;,
+        component: HeaderCenterLogoComponent
+      },
+      {
+        path: &#x27;footer-default&#x27;,
+        component: FooterDefaultComponent,
+        data: {
+          title: &quot;footer-default&quot;,
+          breadcrumb: &quot;Footer-default&quot;
+        }
+      },
+      {
+        path: &#x27;footer-light&#x27;,
+        component: FooterLightComponent,
+        data: {
+          title: &quot;footer-light&quot;,
+          breadcrumb: &quot;Footer-light&quot;
+        }
+      },  
+      {
+        path: &#x27;footer-dark&#x27;,
+        component: FooterDarkComponent,
+        data: {
+          title: &quot;footer-dark&quot;,
+          breadcrumb: &quot;Footer-dark&quot;
+        }
+      },
+      {
+        path: &#x27;footer-light2&#x27;,
+        component: FooterLight2Component,
+        data: {
+          title: &quot;footer- Dark Light&quot;,
+          breadcrumb: &quot;Footer Dark Light&quot;
+        }
+      },
+      {
+        path: &#x27;footer-dark2&#x27;,
+        component: FooterDark2Component,
+        data: {
+          title: &quot;Footer Dark Gradient&quot;,
+          breadcrumb: &quot;Footer Dark Gradient&quot;
+        }
+      },
+      {
+        path: &#x27;footer-dark3&#x27;,
+        component: FooterDark3Component,
+        data: {
+          title: &quot;Footer Creative&quot;,
+          breadcrumb: &quot;Footer Creative&quot;
+        }
+      },
+      {
+        path: &#x27;breadcrumb-left&#x27;,
+        component: BreadcrumbLeftComponent
+      },
+      {
+        path: &#x27;breadcrumb-right&#x27;,
+        component: BreadcrumbRightComponent
+      },
+      {
+        path: &#x27;breadcrumb-center&#x27;,
+        component: BreadcrumbCenterComponent,
+        data: {
+          title: &quot;FEATURES WITH BREADCRUMB CENTER&quot;,
+          breadcrumb: &quot;Breadcrumb Center&quot;
+        }
+      },
+      {
+        path: &#x27;breadcrumb-dark&#x27;,
+        component: BreadcrumbDarkComponent,
+        data: {
+          title: &quot;FEATURES WITH Dark BREADCRUMB&quot;,
+          breadcrumb: &quot;Dark Breadcrumb&quot;
+        }
+      },
+      {
+        path: &#x27;breadcrumb-big-typography&#x27;,
+        component: BreadcrumbBigTypographyComponent,
+        data: {
+          title: &quot;Breadcrumb&quot;,
+          breadcrumb: &quot;Classic Type&quot;
+        }
+      },
+      {
+        path: &#x27;breadcrumb-parallex-bg&#x27;,
+        component: BreadcrumbParallexBgComponent,
+        data: {
+          title: &quot;FEATURES WITH Breadcrumb Parallex&quot;,
+          breadcrumb: &quot;Breadcrumb Parallex&quot;
+        }
+      },
+      {
+        path: &#x27;breadcrumb-bg&#x27;,
+        component: BreadcrumbBgComponent,
+        data: {
+          title: &quot;FEATURES WITH Breadcrumb Background&quot;,
+          breadcrumb: &quot;Breadcrumb Background&quot;
+        }
+      },
+      {
+        path: &#x27;breadcrumb-gallery&#x27;,
+        component: BreadcrumbGalleryComponent
+      },
+      {
+        path: &#x27;breadcrumb-video&#x27;,
+        component: BreadcrumbVideoComponent
+      },
+      {
+        path: &#x27;zoom-gallery&#x27;,
+        component: ZoomGalleryComponent,
+        data: {
+          title: &quot;Zoom Gallery&quot;,
+          breadcrumb: &quot;Zoom Gallery&quot;
+        }
+      },
+      {
+        path: &#x27;form-popup&#x27;,
+        component: FormPopupComponent,
+        data: {
+          title: &quot;form-popup&quot;,
+          breadcrumb: &quot;Form Popup&quot;
+        }
+      },
+      {
+        path: &#x27;modal-popup&#x27;,
+        component: ModalPopupComponent,
+        data: {
+          title: &quot;modal-popup&quot;,
+          breadcrumb: &quot;Modal-Popup&quot;
+        }
+      },
+      {
+        path: &#x27;youtube-popup&#x27;,
+        component: YoutubePopupComponent,
+        data: {
+          title: &quot;youtube-popup&quot;,
+          breadcrumb: &quot;Youtube-Popup&quot;
+        }
+      },
+      {
+        path: &#x27;map-popup&#x27;,
+        component: MapPopupComponent,
+        data: {
+          title: &quot;Map-Popup&quot;,
+          breadcrumb: &quot;Map-Popup&quot;
+        }
+      }
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class FeaturesRoutingModule { }
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'FeaturesRoutingModule.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

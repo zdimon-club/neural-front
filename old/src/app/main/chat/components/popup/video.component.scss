@@ -1,0 +1,26 @@
+.videos {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	overflow: auto;
+	min-height: 200px;
+
+	.video {
+		flex-basis: calc(33% - 4px);
+		width: calc(33% - 4px);
+		padding: 0;
+		border: none;
+		background: transparent;
+		display: flex;
+		margin-right: 6px;
+
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
+
+		img {
+			object-fit: cover;
+			width: 100%;
+		}
+	}
+}

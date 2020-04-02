@@ -1,0 +1,52 @@
+<div class="container-fluid full-height">
+  <div
+    class="flex justify-content-around align-items-center full-width full-height"
+    *ngIf="is_auth"
+  >
+    <a href="#" class="px-0 position-relative mt-1">
+      <div class="hoverable">
+        <img
+          src="/assets/icons/svg-icons/envelope.svg"
+          class="icon--color-grey m-0"
+          width="25"
+          height="19"
+          (click)="toggleMessages()"
+        />
+        <div class="header__btn-notif"></div>
+      </div>
+    </a>
+    <button class="px-0 position-relative mt-1" (clickOutside)="handleClickOutsideNotifications()">
+      <div class="hoverable">
+        <img
+          src="/assets/icons/svg-icons/notification.svg"
+          class="icon--color-grey m-0"
+          width="24"
+          height="25"
+          (click)="toggleNotifications()"
+        />
+        <div class="header__btn-notif smaller"></div>
+      </div>
+      <app-notifications-menu
+        [isMobile]="true"
+        [isHeaderSmall]="isHeaderSmall"
+        [user]="user"
+        [isNotificationsOpened]="isNotificationsOpened"
+        (clickTriangleEmitter)="handleClickOutsideNotifications()"
+      ></app-notifications-menu>
+    </button>
+    <button class="btn btn-link p-0 menu-call" type="button" (click)="openBurger()">
+      <img src="/assets/icons/svg-icons/menu.svg" class="icon icon--size-24 m-0" alt="" />
+    </button>
+  </div>
+  <div
+    class="flex justify-content-between align-items-center full-width full-height"
+    *ngIf="!is_auth"
+  >
+    <a [routerLink]="['/']" class="logotype"
+      ><img src="/assets/icons/svg-icons/logo.svg" alt="Logo" class="logotype-mobile"
+    /></a>
+    <button class="btn btn-link p-0 menu-call hoverable" type="button" (click)="openBurger()">
+      <img src="/assets/icons/svg-icons/menu.svg" class="icon icon--size-24 m-0" alt="" />
+    </button>
+  </div>
+</div>

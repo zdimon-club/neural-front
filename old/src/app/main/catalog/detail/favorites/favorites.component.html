@@ -1,0 +1,33 @@
+<div *ngIf="favorites?.length>0" class="row favorites">
+    <div class="col-12">
+        <div class="favorites-container">
+            <div class="row">
+                <div class="favorites__header col-12">
+                    <div>
+                        <span class="favorites__title">Favorites:</span>
+                        <span class="favorites__count"> {{favorites.length}}</span>
+                    </div>
+                    <a href="#" class="favorites__link">
+                        Updates
+                    </a>
+                </div>
+                <div class="favorites-body col-12">
+                   <div class="row">
+                       <div class="favorite-item col-auto mt-16" *ngFor="let item of favorites">
+                           <div>
+                               <a [routerLink]="[ '/main/index/detail', item.id ]" class="connections-photo">
+                                   <img class="favorites__image" [src]="item.main_photo" alt="Fav img">
+                                   <span class="favorites__name"> {{item.username}}</span>
+                               </a>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="favorites?.length==0">
+    {{ 'MSG_NO_FAVORITES' | translate }}
+</ng-container>

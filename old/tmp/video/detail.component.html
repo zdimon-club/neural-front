@@ -1,0 +1,58 @@
+<div id="product" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header accent"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+             <div style="float: right; padding-top: 20px">
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/main/video'">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>                
+            </div>
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="start center">
+                 <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/main/photo'">
+                    <mat-icon>account_box</mat-icon>
+                </button>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Detail video #{{ video?.id }}
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+           
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            
+
+            <ng-container *ngIf="video">
+
+                    
+
+                    <video [src]="video.get_video_url" autoplay controls></video>
+    
+                    
+            </ng-container>
+            
+
+
+        </div>    
+
+        
+        
+    </div>
+</div>

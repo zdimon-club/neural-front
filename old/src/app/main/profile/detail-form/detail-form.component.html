@@ -1,0 +1,66 @@
+<div class="edit-form-title">
+  Detail information
+</div>
+
+
+<!-- {{ user | json }} -->
+
+<form name="form" [formGroup]="form" novalidate>
+  <div flLayout="column wrap" fxLayoutGap="7px" fxLayoutGap.xs="0px" style="width: 100%">
+
+
+    <mat-form-field>
+      <mat-label>{{ 'TITLE_JOB' | translate }}</mat-label>
+      <textarea matInput formControlName="job"></textarea>
+      <mat-hint>
+        {{ 'HELP_JOB' | translate }}
+      </mat-hint>
+      <mat-error *ngIf="form.get('job').hasError('required')">
+        {{ 'ERROR_JOB' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>{{ 'TITLE_GOAL' | translate }}</mat-label>
+      <textarea matInput formControlName="goal"></textarea>
+      <mat-hint>
+        {{ 'HELP_GOAL' | translate }}
+      </mat-hint>
+      <mat-error *ngIf="form.get('goal').hasError('required')">
+        {{ 'ERROR_GOAL' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" *ngFor="let item of oneFields; let i=index">
+      <mat-label>{{item.title}}</mat-label>
+      <mat-select formControlName="{{item.alias}}">
+        <mat-option *ngFor="let opt of item.values" [value]="opt.value">
+          {{ opt.title }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <div *ngFor="let manyField of manyFields; let i=index" formGroupName="{{manyField.alias}}">
+
+      <div>{{manyField.title}}</div>
+
+      <mat-checkbox *ngFor="let opt of manyField.values; let i = index"
+                    formControlName="{{i}}">{{ opt.title }}</mat-checkbox>
+
+
+    </div>
+
+
+    <div>
+      <button (click)="onSubmit()" mat-raised-button color="primary"
+              [disabled]="form.invalid">
+        {{ 'BTN_SAVE' | translate }}
+      </button>
+    </div>
+
+  </div>
+</form>
+

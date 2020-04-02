@@ -1,0 +1,84 @@
+.myvideo {
+  border: 1px solid rgba(24, 20, 20, 0.288);
+  width: 119px;
+  height: 90px;
+  background: silver;
+}
+
+#drageble {
+  position: fixed;
+  cursor: pointer;
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*bottom: 0;*/
+  z-index: 999;
+  width: 300px;
+  height: 240px;
+}
+
+.owner-video-actions {
+  float: right;
+  margin-left: 10px;
+}
+
+/*.drag-wrapper {*/
+/*  position: relative;*/
+/*  height: inherit;*/
+/*  width: 100%;*/
+/*  top: 60px;*/
+/*}*/
+
+.drag-wrapper__icons-block {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  top: 0.8rem;
+  opacity: 0;
+  z-index: 888;
+  transition: 0.5s;
+}
+
+.drag-wrapper__draggable:hover .drag-wrapper__icons-block {
+  opacity: 1;
+  transition: 0.5s;
+  }
+
+.drag-wrapper__move-icon {
+  margin: 0 0 0 5px;
+}
+
+.drag-wrapper__icons-group {
+  display: flex;
+}
+
+.drag-wrapper__icon-container {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 0 5px 0 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.noise {
+  position: relative;
+  top: -25px;
+}
+
+.log-message {
+  font-size: 10px;
+}
+
+.owner-video {
+  width: 130px;
+  float: left;
+}
+
+.owner-video-actions {
+  width: 200px;
+  float: right;
+}
+

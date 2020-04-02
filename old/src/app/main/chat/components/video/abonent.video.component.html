@@ -1,0 +1,66 @@
+<!--
+<div class="abonent-video">
+<img *ngIf="is_loading" class="noise" src="/assets/images/noise.gif" />
+<div *ngIf="room_subscribers[current_room.id]" class="abonent-video__container">
+        <app-user-video [streamManager]="room_subscribers[current_room.id]"></app-user-video>
+</div>
+</div>
+
+
+        
+        <button mat-raised-button color="warn" *ngIf="abonent.is_camera && camera_active" (click)="hideCamera(room_subscribers[current_room.id])">
+                {{ 'BUTTON_HIDE_CAMERA' | translate }}
+        </button>
+        -->
+
+<!--<video #abonentVideo autoplay class="abonent-video" [hidden]="!camera_active || !abonent.is_camera"></video>
+<button mat-raised-button color="accent" *ngIf="abonent.is_camera && !camera_active" (click)="showCamera($event)">
+        {{ 'BUTTON_SHOW_CAMERA' | translate }}
+</button>
+
+-->
+
+
+
+
+
+<div id="drageble"
+class="drag-wrapper__draggable myvideo"
+#dragDiv
+cdkDrag>
+<div class="drag-wrapper__icons-block">
+<img class="drag-wrapper__move-icon"
+    src="../../../../../assets/icons/svg-icons/move.svg"
+    alt="move">
+<div class="drag-wrapper__icons-group">
+ <div class="drag-wrapper__icon-container">
+   <img class="drag-wrapper__icon"
+        src="../../../../../assets/icons/svg-icons/off.svg"
+        alt="move">
+        
+ </div>
+ <div class="drag-wrapper__icon-container">
+         
+   <img class="drag-wrapper__icon"
+        src="../../../../../assets/icons/svg-icons/roll.svg"
+        alt="roll">
+        
+ </div>
+ <div class="drag-wrapper__icon-container">
+   <img class="drag-wrapper__icon"
+        src="../../../../../assets/icons/svg-icons/expand.svg"
+        alt="expand">
+ </div>
+</div>
+</div>
+
+<div id="time_counter">{{timeCounter | async | formatVideoCounterPipe}}</div>
+<div *ngIf="room_subscribers[current_room.id]" class="abonent-video__container">
+        <app-user-video [streamManager]="room_subscribers[current_room.id]"></app-user-video>
+</div>
+
+</div>
+
+
+
+

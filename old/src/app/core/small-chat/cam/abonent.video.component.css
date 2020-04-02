@@ -1,0 +1,14 @@
+.abonent-video {
+  width: 133px;
+  height: 100px;
+  border: 1px solid black;
+  background: silver;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+.log-message {
+  font-size: 10px;
+}

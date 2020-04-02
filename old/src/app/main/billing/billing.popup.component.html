@@ -1,0 +1,21 @@
+
+<mat-list role="list" >
+
+ <!--
+  <a class="btn btn-success btn-lg" (click)="dialogRef.close()"  [routerLink]="['/cardgame']" >
+     Play and win the credits!!!
+  </a>
+    -->
+
+ 
+    <mat-list-item role="listitem" *ngFor="let i of data.data">
+      {{ i.name }} - {{ i.dollar }} - {{ i.credit }} cr.
+      <div style="width: 100%; text-align: right;">
+      <button mat-raised-button color="accent" (click)="replanish(i)">
+          {{ 'BUTTON_REPLANISH' | translate  }}
+       </button>
+      </div>
+    </mat-list-item>
+
+</mat-list>
+

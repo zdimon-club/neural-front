@@ -1,0 +1,202 @@
+<ng-container>
+  <img
+    (click)="handleClosePopup()"
+    src="/assets/icons/svg-icons/modal-closed.svg"
+    alt="Close"
+    class="wrapper__close hoverable"
+  />
+  <div class="main flex align-items-center">
+    <div class="scroll-wrapper">
+      <div class="content-wrapper">
+        <div class="content">
+          <h2 class="title">
+            {{ 'CREATE_FREE_ACCOUNT' | translate }}
+<!--            Create free account-->
+          </h2>
+          <h3 class="subtitle">
+<!--            Ukrainian brides may be looking for you-->
+            {{ 'UKR_BRIDES_LOOK' | translate }}
+          </h3>
+          <div class="steps-container">
+            <div class="step-wrapper active">
+              <div class="step__active-badge">
+<!--                step-->
+                {{ 'STEP' | translate }}
+              </div>
+              <div class="step">
+                1
+              </div>
+            </div>
+            <div class="step-wrapper">
+              <div class="step__active-badge">
+<!--                step-->
+                {{ 'STEP' | translate }}
+              </div>
+              <div class="step">
+                2
+              </div>
+            </div>
+            <div class="step-wrapper">
+              <div class="step__active-badge">
+<!--                step-->
+                {{ 'STEP' | translate }}
+              </div>
+              <div class="step">
+                3
+              </div>
+            </div>
+            <img
+              src="/assets/images/register-suggestion/heart.svg"
+              alt="Heart"
+              class="step__heart"
+            />
+          </div>
+          <form name="form" [formGroup]="form" novalidate>
+
+
+            <div>
+              <mat-error *ngIf="form.get('email').hasError('required')">
+                {{ 'EMAIL_IS_REQUIRED' | translate }}
+              </mat-error>
+              <mat-error *ngIf="form.get('email').hasError('email')">
+                  {{ 'ERROR_PLZ_ENTER_EMAIL' | translate }}
+              </mat-error>
+              <mat-hint *ngIf="form.get('email').status === 'PENDING'">
+<!--              Checking...-->
+                  {{ 'CHECKING' | translate }}
+              </mat-hint>
+              <mat-hint *ngIf="form.get('email').status === 'VALID'">
+<!--              😺 Email is available!-->
+                {{ 'EMAIL_IS_AVALIABLE' | translate }}
+              </mat-hint>
+
+              <mat-hint *ngIf="form.get('email').hasError('incorrect')">
+<!--                 Login error!-->
+                {{ 'LOGIN_ERROR' | translate }}
+                </mat-hint>
+
+            </div>
+            
+            
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <input class="input-email" matInput formControlName="email" placeholder="Your Email" >
+              <div class="google-button" (click)="emitSubmitGoogleLogin.emit()">
+                <img src="/assets/icons/google.svg" alt="">
+              </div>
+            </div>
+
+
+
+
+
+            <input
+            *ngIf="!form.get('email').valid && form.get('email').dirty"
+            id="password"
+            class="input-email"
+            type="password" placeholder="Your password" formControlName="password">
+
+
+
+
+
+            <div class="gender-wrapper" *ngIf="form.get('email').valid">
+              <button
+                class="gender"
+                [class.active]="currentGender === 'Man'"
+                (click)="handleClickGender('male')"
+              >
+                <img src="/assets/icons/svg-icons/gender-man.svg" />
+                <span class="gender-text">
+<!--                  Man-->
+                  {{ 'MAN' | translate }}
+                </span>
+              </button>
+              <button
+                class="gender"
+                [class.active]="currentGender === 'Woman'"
+                (click)="handleClickGender('female')"
+              >
+                <img src="/assets/icons/svg-icons/gender-woman.svg" />
+                <span class="gender-text">
+<!--                  Woman-->
+                  {{ 'WOMAN' | translate }}
+                </span>
+              </button>
+            </div>
+            <span class="input-hint">
+<!--              You may have an account - just enter your email address-->
+              {{ 'YOU_HAVE_ACCOUNT' | translate }}
+            </span>
+
+
+            <div fxLayout="row" fxLayoutGap="10px">
+              <button
+              type="submit"
+              *ngIf="!form.get('email').valid"
+              class="submit-button flex align-items-center justify-content-center"
+              (click)="emitSubmitLogin.emit($evt)"
+            >
+              <span class="submit-button__text">
+<!--                Login-->
+                {{ 'LOGIN' | translate }}
+              </span>
+              <img
+                class="submit-button__arrows"
+                src="/assets/images/register-suggestion/arrows.png"
+                alt="Arrows"
+              />
+            </button>
+            <button
+              type="submit"
+              class="submit-button flex align-items-center justify-content-center"
+              [matMenuTriggerFor]="users"
+            >
+              <span class="submit-button__text">
+<!--                Login as-->
+                {{ 'LOGIN_AS' | translate }}
+              </span>
+              <img
+                class="submit-button__arrows"
+                src="/assets/images/register-suggestion/arrows.png"
+                alt="Arrows"
+              />
+            </button>
+            </div>
+
+
+
+
+
+
+
+            <mat-menu #users="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="women">
+<!--                Women-->
+                {{ 'WOMAN' | translate }}
+              </button>
+            </mat-menu>
+            <mat-menu #users="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="men">
+<!--                Men-->
+                {{ 'MAN' | translate }}
+              </button>
+              <button mat-menu-item [matMenuTriggerFor]="women">
+<!--                Women-->
+                {{ 'WOMAN' | translate }}
+              </button>
+            </mat-menu>
+            <mat-menu #women="matMenu">
+              <button mat-menu-item *ngFor="let woman of allUsers.women" (click)="emitSubmitLoginAs.emit(woman.value)">{{ woman.name }}
+              </button>
+            </mat-menu>
+            <mat-menu #men="matMenu">
+              <button mat-menu-item *ngFor="let man of allUsers.men"
+                      (click)="emitSubmitLoginAs.emit(man.value)">{{ man.name }}</button>
+            </mat-menu>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

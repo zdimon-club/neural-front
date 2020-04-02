@@ -1,0 +1,40 @@
+<div class="message-holder">
+  <div
+    [ngClass]="{ 'c-active': user?.is_active }"
+    class="message-card"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    *ngFor="let user of contacts | sort: 'activity'"
+    (click)="select_emmiter.emit(user)"
+  >
+    <div
+      class="storis tottils"
+      [ngClass]="{
+        'storis--online': user?.is_online && !user?.is_camera,
+        'storis--stream': user?.is_camera
+      }"
+      fxLayout="row"
+    >
+      <app-user-item
+        [photo]="user?.main_photo"
+        [isOnline]="user?.is_online"
+        [cam]="user?.is_camera"
+        [cnt]="user?.new_messages"
+      ></app-user-item>
+      <!-- <img class="" [src]="room.abonent.main_photo" alt="">
+            <div class="tottil" fxLayout><span>9</span></div>
+            <div class="play" fxLayout><span></span></div>
+             -->
+    </div>
+    <div class="message-card-value" fxFlex="">
+      <div class="message-card-info">
+        <span class="user-details">{{ user?.username }}, </span><span class="age">29</span>
+      </div>
+      <div class="card-message">{{ user?.about_me }}</div>
+    </div>
+    <div class="message-card-mode" fxLayout="column">
+      <div class="data">11.30 PM</div>
+      <i class="material-icons s-active">star</i>
+    </div>
+  </div>
+</div>

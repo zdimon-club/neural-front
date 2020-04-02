@@ -1,0 +1,185 @@
+@import "../../../../assets/scss/theme/mixins";
+
+@include media-breakpoint-down(md){
+  .price {
+    width: auto;
+    input {
+      width: 195px!important;
+    }
+  }
+  .radio-label {
+    width: 100% !important
+  }
+
+  .cancel-btn, .save-btn {
+    padding: 15px 15px!important;
+  }
+  image-cropper {
+    max-height: 590px;
+    max-width: 390px;
+  }
+  .add-photo-container .title-modal {
+    margin-bottom: 15px!important;
+  }
+}
+
+
+.dialog-container {
+  padding: 10px;
+
+  .close-icon {
+    cursor: pointer;
+  }
+}
+
+.cdk-overlay-container {
+  position: absolute!important;
+}
+.cdk-overlay-pane {
+  position: absolute!important;
+  top: 200px!important;
+}
+
+.add-photo-container {
+  .title-modal {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+    color: #29333F;
+    margin-bottom: 30px;
+  }
+
+  image-cropper {
+    max-height: 790px;
+    max-width: 590px;
+    margin: 0 auto;
+  }
+
+  .text-center {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .form-label {
+    min-width: 110px;
+    text-transform: uppercase;
+    height: 63.5px;
+    font-size: 14px;
+    line-height: 19px;
+    color: #000000;
+  }
+  // remove material paddings start
+  .mat-form-field-underline {
+    display: none;
+  }
+  .mat-form-field-appearance-standard .mat-form-field-flex {
+    padding: 0;
+  }
+  .mat-form-field-infix {
+    border-top: 0;
+  }
+  .mat-form-field-outline{
+    height: 100%;
+  }
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+  // remove materail paddings end
+
+  mat-form-field textarea {
+    min-height: 100px !important;
+    overflow: hidden;
+    margin: 5px 0 5px;
+  }
+
+  .form-field {
+    width: 100%;
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {
+      margin: 0
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+  }
+
+  .price {
+    padding-right: 5px;
+    width: auto;
+    input {
+      width: 153px;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .description-field{
+    position: relative;
+    .emoji-icon{
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+  }
+
+  .col-form-label{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #29333F;
+  }
+
+ .cancel-btn, .save-btn {
+    padding: 15px 40px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold!important;
+    font-size: 16px!important;
+    line-height: 19px;
+  }
+
+  .save-btn {
+    color: #fff!important;
+    background: #00BDBA!important;
+  }
+
+  .cancel-btn {
+    background: rgba(213, 213, 213, 0.2);
+    color: #00BDBA!important;
+  }
+
+
+  #personal, #sale, #gallery {
+    display: none;
+  }
+
+  .radio-container {
+    position: relative;
+    padding-right: 5px;
+  }
+
+  .radio-label {
+    cursor: pointer;
+    color: #29333F;;
+    font-size: 14px;
+    line-height: 23.5px;
+    padding: 17.5px 0;
+    min-width: 195px;
+    text-align: center;
+    background: #FFFFFF;
+    border: 1px solid #D3D9DE;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+
+  .radio-input:checked + label {
+    background: linear-gradient(107.37deg, rgba(0, 189, 186, 0.05) 0%, rgba(36, 231, 159, 0.05) 99.25%);
+    border: 1px solid #00BDBA;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+
+}

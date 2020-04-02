@@ -1,0 +1,53 @@
+.user-profile-content{
+    padding: 0 100px;
+}
+.contacts{
+    display: flex;
+}
+.contact-btn {
+    width: 100%;
+    height: 60px;
+    background-color: #575757;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color .2s ease;
+    outline: none;
+}
+
+.contact-btn:hover,
+.contact-btn:focus {
+    background-color: #00CCC9;
+}
+
+.contact-btn:active {
+    background-color: #343434;
+}
+
+app-stories{
+    justify-content: center;
+    margin-bottom: 40px;
+}
+@media only screen and (max-width: 1097px) {
+    .user-profile-content {
+        padding: 0 30px;
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+    .main-content{
+        margin-top: 30px!important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+}
+@media only screen and (max-width: 320px) {
+
+}

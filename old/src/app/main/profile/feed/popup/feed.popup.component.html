@@ -1,0 +1,12 @@
+
+
+<div *ngIf="data.media.type_media=='photo'">
+    <img *ngIf="data.media.orient=='port'" [src]="data.media.image_big" />
+    <img *ngIf="data.media.orient=='land'" [src]="data.media.image_big" />
+</div>
+
+
+<div *ngIf="data.media.type_media=='video'">
+    <video  [src]="data.media.get_video_url" autoplay controls></video>
+</div>
+

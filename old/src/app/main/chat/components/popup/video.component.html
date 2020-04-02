@@ -1,0 +1,7 @@
+Video
+<div class="videos">
+    <button class="video" *ngFor="let i of video" (click)="send(i)">
+      <img [src]="i.get_small_url_land" />
+    </button>
+</div>
+

@@ -1,0 +1,21 @@
+.edit-form-title {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: #29333F;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-container > * {
+    width: 100%;
+  }
+
+  .form-title {
+    width: 100%;
+    padding-bottom: 50px;
+    font-size: 25px;
+  }

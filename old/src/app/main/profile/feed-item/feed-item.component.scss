@@ -1,0 +1,52 @@
+.feed-item {
+  padding: 15px 0;
+  .post-info-title{
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #5F7D95;
+  }
+  .age-post-user{
+    color: #cbcbcb;
+  }
+  .post-info-subtitle{
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    color: #cbcbcb;
+  }
+  .send-comment-container{
+    position: relative;
+    textarea{
+      padding: 0 80px;
+    }
+    .link-icon{
+      position: absolute;
+      z-index: 1;
+      top: 25px;
+      left: 30px;
+      color: #5e7c94;
+      .mat-icon{
+        font-size: 30px!important;
+      }
+    }
+    .emoji-btn{
+      position: absolute;
+      z-index: 1;
+      top: 25px;
+      text-decoration: none;
+      color: #5e7c94;
+      right: 80px;
+    }
+    .send-comment-send-btn{
+      position: absolute;
+      z-index: 1;
+      top: 21px;
+      text-decoration: none;
+      color: #5e7c94;
+      right: 20px;
+    }
+  }
+}

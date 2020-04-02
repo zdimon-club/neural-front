@@ -1,0 +1,23 @@
+<div class="confirm-dialog">
+  <div class="confirm-dialog__title" [ngClass]="{'confirm-dialog_warning': data?.type === 'warning'}">
+    <p class="confirm-dialog__title-text">
+      {{ data?.title }}
+    </p>
+    <button mat-dialog-close class="confirm-dialog__close-button">
+      <img src="assets/icons/svg-icons/close.svg" alt="">
+    </button>
+  </div>
+
+  <div *ngIf="data?.content" class="confirm-dialog__content"
+       [innerHTML]="data?.content"></div>
+
+  <div class="confirm-dialog__controls">
+    <button class="btn btn-lg font-weight-bold"
+            *ngFor="let button of data?.buttons"
+            (click)="runMethod(button?.action, button?.link)"
+            [ngClass]="button?.type === 'default' ? 'btn-primary' : 'btn-outline-primary'"
+    >
+      {{ button?.title }}
+    </button>
+  </div>
+</div>

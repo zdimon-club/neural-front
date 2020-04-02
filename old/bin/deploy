@@ -1,0 +1,3 @@
+ng build --prod
+cd ../build
+./bin/deploy

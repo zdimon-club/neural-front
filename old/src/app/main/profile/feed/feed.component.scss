@@ -1,0 +1,299 @@
+@import "../../../../assets/scss/theme/mixins";
+
+@include media-breakpoint-down(xs) {
+	.comment {
+		margin-bottom: 15px !important;
+	}
+
+	.feed-container {
+		padding: 15px 5px !important;
+	}
+
+}
+
+.feed-container {
+	padding: 20px 35px;
+	background: #fff;
+	border: 1px solid #E3E4E8;
+	box-sizing: border-box;
+	border-radius: 10px;
+	margin-top: 30px;
+	// remove material paddings start
+	.mat-form-field-underline {
+		display: none;
+	}
+
+	.mat-form-field-appearance-standard .mat-form-field-flex {
+		padding: 0;
+	}
+
+	.mat-form-field-infix {
+		border-top: 0;
+	}
+
+	.mat-form-field-wrapper {
+		padding-bottom: 0;
+	}
+
+	// remove materail paddings end
+
+	mat-form-field {
+		background: #fff;
+		border-radius: 5px;
+	}
+
+	mat-form-field textarea {
+		min-height: 20px !important;
+		overflow: hidden;
+		margin: 5px 0 5px;
+	}
+
+	.icon-container mat-icon {
+		cursor: pointer;
+		color: rgba(255, 255, 255, 0.7)
+	}
+
+	.message-input {
+		padding: 10px 15px;
+		width: 100%;
+		height: 69px !important;
+		background: #FFFFFF;
+		border: 1px solid #E3E4E8;
+		border-radius: 10px;
+		line-height: 60px;
+
+		textarea {
+			outline: none;
+			border: none;
+			width: 100%;
+			height: 20px !important;
+			box-sizing: border-box;
+			overflow: hidden;
+
+			&::placeholder {
+				font-size: 16px;
+				line-height: 18px;
+				color: #7C7F82;
+			}
+		}
+	}
+
+	.create-post-icons {
+		position: absolute;
+		right: 40px;
+		top: 25px;
+
+		a {
+			margin-left: 20px;
+		}
+	}
+
+	.feed-list {
+		.download-more-btn {
+			color: #A4A4A4 !important;
+			padding: 0 40px;
+			border: 2px solid #A4A4A4;
+			border-radius: 10px;
+			width: 219px;
+			height: 40px;
+		}
+	}
+
+	.feed-item {
+		padding: 15px 0 50px;
+
+		.post-info-title {
+			margin-top: 10px;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 16px;
+			color: #29333F;
+		}
+
+		.age-post-user {
+			color: #cbcbcb;
+		}
+
+		.post-info-subtitle {
+			font-weight: normal;
+			font-size: 12px;
+			line-height: 18px;
+			color: #cbcbcb;
+		}
+
+		.send-comment-container {
+			position: relative;
+
+			textarea {
+				padding: 0 80px 0 0;
+			}
+
+			.link-icon {
+				position: absolute;
+				z-index: 1;
+				top: 25px;
+				left: 30px;
+				color: #5e7c94;
+
+				.mat-icon {
+					font-size: 30px !important;
+				}
+			}
+
+			.emoji-btn {
+				position: absolute;
+				z-index: 1;
+				top: 25px;
+				text-decoration: none;
+				color: #5e7c94;
+				right: 80px;
+			}
+
+			.send-comment-send-btn {
+				position: absolute;
+				z-index: 1;
+				top: 21px;
+				text-decoration: none;
+				color: #5e7c94;
+				right: 20px;
+			}
+		}
+	}
+
+	.post-body {
+		.post-img {
+			padding: 0 10px 0 0;
+			margin-bottom: 8px;
+
+			img {
+				width: 100%;
+				min-width: 150px;
+			}
+		}
+	}
+
+	.post-icons {
+		position: relative;
+		padding: 8px 0;
+
+		small {
+			margin-top: 6px;
+			font-weight: 500;
+			font-size: 18px;
+			color: #A4A4A4;
+		}
+
+		&::before {
+			content: "";
+			display: inline-block;
+			border-bottom: 1px solid #fff;
+			position: absolute;
+			bottom: 0;
+			left: -35px;
+			width: 106%;
+		}
+
+		&:after {
+			content: "";
+			display: inline-block;
+			border-bottom: 1px solid #fff;
+			position: absolute;
+			top: 0;
+			left: -35px;
+			width: 106%;
+		}
+	}
+
+	.post-comments {
+		& > div {
+			width: 100%;
+		}
+
+		.user-name {
+			font-size: 14px;
+			line-height: 16px;
+			color: #000;
+			font-weight: bold;
+		}
+
+		.user-age {
+			font-size: 14px;
+			line-height: 16px;
+			color: #cbcbcb;
+			font-weight: bold;
+		}
+
+		.comment-date {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			line-height: 18px;
+			text-align: right;
+			color: #cbcbcb;
+		}
+
+		.sub-comment {
+			margin-left: 60px;
+			position: relative;
+			padding-top: 20px;
+
+			&:before {
+				content: "";
+				display: inline-block;
+				border-bottom: 1px solid #fff;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+			}
+		}
+
+		.comment {
+			position: relative;
+		}
+	}
+
+	.connections-photo, .post-author-img, .rounded-image {
+		border-radius: 50%;
+		width: 55px;
+		height: 55px;
+	}
+
+	.create-post-field {
+		position: relative;
+	}
+}
+
+.post-button {
+	cursor: pointer;
+	display: flex;
+	align-items: safe center;
+
+	&__icon {
+		display: flex;
+	}
+
+	&__text {
+		color: #a4a4a4;
+		display: flex;
+		transition: color .2s ease;
+	}
+
+	&:focus,
+	&:hover {
+		&__text {
+			color: #5F7D95;
+		}
+	}
+
+	&:active {
+		&__text {
+			color: #000;
+		}
+	}
+}
+
+.post-header {
+	align-items: safe center !important;
+}

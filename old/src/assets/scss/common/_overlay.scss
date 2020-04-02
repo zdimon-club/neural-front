@@ -1,0 +1,52 @@
+.overlay {
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: none;
+
+  cursor: pointer;
+
+  background-color: rgba(black, 0.4);
+
+  &--close {
+    background-image: url('~src/assets/icons/svg-icons/close.svg') !important;
+    background-repeat: no-repeat;
+    background-position: 20px 20px;
+    background-size: 24px;
+  }
+
+  &.is-active {
+    display: block;
+  }
+}
+
+
+.confirm-dialog {
+
+
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+
+.regform-dialog {
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+.cdk-overlay-pane {
+  // height: 95% !important;
+  height: auto !important;
+  max-height: 95%;
+  overflow: auto;
+}

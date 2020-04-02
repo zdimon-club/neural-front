@@ -1,0 +1,46 @@
+<div>
+  <header
+    class="section section--p-small section--shadow section--sticky top-header"
+    [class.small]="isHeaderSmall"
+  >
+    <ng-container *ngIf="!isMobile">
+      <app-header-default
+        [is_auth]="is_auth"
+        [online]="online"
+        [user]="user"
+        [isHeaderSmall]="isHeaderSmall"
+        [isNotificationsOpened]="isNotificationsOpened"
+        [isMessagesOpened]="isMessagesOpened"
+        (doLogoutEmitter)="doLogout()"
+        (openBurgerEmitter)="openBurger()"
+        (showBillingEmitter)="showBilling()"
+        (toggleNotificationsEmitter)="toggleNotifications()"
+        (toggleMessagesAlertEmitter)="toggleMessagesAlert()"
+        (handleClickOutsideNotificationsEmitter)="handleClickOutsideNotifications()"
+        (handleClickOutsideMessagesEmitter)="handleClickOutsideMessages()"
+        (handleSearchEmitter)="handleSearch($event)"
+      ></app-header-default>
+    </ng-container>
+    <ng-container *ngIf="isMobile">
+      <app-header-mobile
+        [is_auth]="is_auth"
+        [user]="user"
+        [isHeaderSmall]="isHeaderSmall"
+        [isNotificationsOpened]="isNotificationsOpened"
+        [isMessagesOpened]="isMessagesOpened"
+        (openBurgerEmitter)="openBurger()"
+        (toggleNotificationsEmitter)="toggleNotifications()"
+        (handleClickOutsideNotificationsEmitter)="handleClickOutsideNotifications()"
+        (handleClickOutsideMessagesEmitter)="handleClickOutsideMessages()"
+      ></app-header-mobile>
+    </ng-container>
+  </header>
+  <app-burger-menu
+    [is_auth]="is_auth"
+    [online]="online"
+    [user]="user"
+    (closeBurgerEmitter)="closeBurger()"
+    (showBillingEmitter)="showBilling()"
+    (doLogoutEmitter)="doLogout()"
+  ></app-burger-menu>
+</div>

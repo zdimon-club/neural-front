@@ -1,0 +1,21 @@
+<div class="reset-pass-block container-fluid">
+  <div class="row h-100 align-items-center">
+    <form class="reset-pass-block__form mx-auto" [formGroup]="resetPassForm" (ngSubmit)="onSubmit()">
+      <h4 class="title">Enter new password</h4>
+      <div class="form-group">
+        <label for="password" class="sr-only">Enter new password</label> <!--for the blind-->
+        <input class="form-control"
+               [ngClass]="{'is-invalid': resetPassForm.get('password').invalid && resetPassForm.get('password').dirty,
+                                  'is-valid': resetPassForm.get('password').valid && resetPassForm.get('password').dirty}"
+               type="password" id="password" placeholder="Enter new password" formControlName="password">
+        <label for="againPassword" class="sr-only">Enter again new password</label>
+        <input class="form-control"
+               [ngClass]="{'is-invalid': resetPassForm.get('againPassword').invalid && resetPassForm.get('againPassword').dirty,
+                                  'is-valid': resetPassForm.get('againPassword').valid && resetPassForm.get('againPassword').dirty}"
+               type="password" id="againPassword" placeholder="Enter again new password"
+               formControlName="againPassword">
+      </div>
+      <button class="btn submit-button" [disabled]="resetPassForm.invalid">Reset password</button>
+    </form>
+  </div>
+</div>

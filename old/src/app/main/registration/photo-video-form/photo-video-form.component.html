@@ -1,0 +1,81 @@
+<div class="common-dialog">
+  <div class="common-dialog__title" >
+    <p class="common-dialog__title-text">
+      {{ 'TITLE_PHOTO_VIDEO' | translate }}
+    </p>
+  </div>
+
+
+  <div class="common-dialog__content" fxLayout="column" fxLayoutAlign="start center">
+
+      <ng-container *ngIf="activeBlock=='camera'">
+
+      </ng-container>
+      
+      <ng-container *ngIf="activeBlock=='selected'">
+        <img class="imgpreview" [src]="base64Image" />
+      </ng-container>
+    
+      <video [hidden]="activeBlock=='selected' ||  activeBlock=='select'" width="400" height="300" #hardwareVideo autoplay></video>
+      <canvas [hidden]="true"  #canvas width="400" height="300"> </canvas>
+    
+      
+    
+      <ng-container *ngIf="activeBlock=='select'">
+    
+        <div class="common-dialog__help">
+          {{ 'HLP_PHOTOVIDEO1' | translate }}
+        </div>
+    
+        
+        <div class="common-dialog__icons">
+          <div class="icon" (click)="imageInput.click()">
+            <img src="assets/icons/PC.png" />
+            <p class="white">{{ 'LBL_FROMPC' | translate }}</p>
+          </div>
+          <div class="icon" (click)="initVideo()">
+            <img src="assets/icons/Webcam.png" />
+            <p class="blue">{{ 'LBL_FROMCAM' | translate }}</p>
+          </div>
+        </div>
+    
+        <input
+          hidden
+          type="file"
+          class="form-control"
+          (change)="onFileChange($event, 'photo')"
+          #imageInput
+          onclick="this.value = null"
+        />
+    
+    
+    
+        <div class="common-dialog__help">
+          {{ 'HLP_PHOTOVIDEO2' | translate }}
+        </div>
+      </ng-container>
+    
+    
+      <div class="common-dialog__buttons">
+          <button 
+          class="btn btn-lg font-weight-bold btn-outline-primary" 
+          (click)="savePic()"
+          *ngIf="activeBlock=='selected'" >
+          {{ 'BTN_TAKEPIC' | translate }}</button>
+      
+          <button 
+          class="btn btn-lg font-weight-bold btn-outline-primary" 
+          *ngIf="activeBlock=='camera'" (click)="takePic()" >{{ 'BTN_TAKEPICCAM' | translate }}</button>
+      
+      
+          <button 
+          class="btn btn-lg font-weight-bold btn-outline-primary"  
+          *ngIf="activeBlock=='selected'" 
+          (click)="activeBlock='select'"
+          >{{ 'BTN_BACK' | translate }}</button>
+      </div>
+
+  </div>
+
+
+</div>

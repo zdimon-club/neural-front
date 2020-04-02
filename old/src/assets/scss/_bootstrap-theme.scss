@@ -1,0 +1,29 @@
+$red: $color-red;
+$yellow: $color-yellow;
+$green: $color-green;
+$orange: $color-orange;
+$primary: $color-turquoise;
+$warning: $orange;
+$border-radius-lg: 6px;
+$btn-font-weight: 300;
+$btn-font-size-lg: 1rem;
+$grid-gutter-width: 25px;
+@media screen and (max-width: 1199px) {
+  $grid-gutter-width: 15px;
+}
+$badge-font-weight: 300;
+$link-color: $color-black;
+$link-hover-decoration: none;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  ms: 640px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
+);
+$enable-shadows: true;
+$dropdown-border-width: 0;
+$dropdown-border-radius: 0;
+$dropdown-box-shadow: $shadow-item;

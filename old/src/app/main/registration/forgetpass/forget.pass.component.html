@@ -1,0 +1,15 @@
+<div class="forget-pass-block container-fluid">
+  <div class="row h-100 align-items-center">
+    <form class="forget-pass-block__form mx-auto" [formGroup]="forgetPassForm" (ngSubmit)="onSubmit()">
+      <h4 class="title">Forgot your password?</h4>
+      <div class="form-group">
+        <label for="email" class="sr-only">Email address</label> <!--for the blind-->
+        <input class="form-control"
+               [ngClass]="{'is-invalid': forgetPassForm.get('email').invalid && forgetPassForm.get('email').dirty,
+                                  'is-valid': forgetPassForm.get('email').valid && forgetPassForm.get('email').dirty}"
+               type="email" id="email" placeholder="Enter email" formControlName="email">
+      </div>
+      <button class="btn submit-button" [disabled]="forgetPassForm.invalid">Reset password</button>
+    </form>
+  </div>
+</div>

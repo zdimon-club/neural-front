@@ -1,0 +1,379 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content module">
+                   <div class="content-data">
+
+
+
+<ol class="breadcrumb">
+    <li>Modules</li>
+    <li>ShopRoutingModule</li>
+</ol>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li  class="active" >
+        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li >
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>tmp/unice/src/app/shop/shop-routing.module.ts</code>
+        </p>
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
+import { LeftSidebarComponent } from &#x27;./shop-categories/left-sidebar/left-sidebar.component&#x27;;
+import { RightSidebarComponent } from &#x27;./shop-categories/right-sidebar/right-sidebar.component&#x27;;
+import { NoSidebarComponent } from &#x27;./shop-categories/no-sidebar/no-sidebar.component&#x27;;
+import { LeftSidebarTwoGridComponent } from &#x27;./shop-categories/left-sidebar-two-grid/left-sidebar-two-grid.component&#x27;;
+import { LeftSidebarThreeGridComponent } from &#x27;./shop-categories/left-sidebar-three-grid/left-sidebar-three-grid.component&#x27;;
+import { RightSidebarTwoGridComponent } from &#x27;./shop-categories/right-sidebar-two-grid/right-sidebar-two-grid.component&#x27;;
+import { RightSidebarThreeGridComponent } from &#x27;./shop-categories/right-sidebar-three-grid/right-sidebar-three-grid.component&#x27;;
+import { NoSidebarTwoGridComponent } from &#x27;./shop-categories/no-sidebar-two-grid/no-sidebar-two-grid.component&#x27;;
+import { NoSidebarThreeGridComponent } from &#x27;./shop-categories/no-sidebar-three-grid/no-sidebar-three-grid.component&#x27;;
+import { CategoryMetroComponent } from &#x27;./shop-categories/category-metro/category-metro.component&#x27;;
+import { ProductRightSidebarComponent } from &#x27;./product-pages/product-right-sidebar/product-right-sidebar.component&#x27;;
+import { ProductLeftSidebarComponent } from &#x27;./product-pages/product-left-sidebar/product-left-sidebar.component&#x27;;
+import { ProductNoSidebarComponent } from &#x27;./product-pages/product-no-sidebar/product-no-sidebar.component&#x27;;
+import { ThreeGridComponent } from &#x27;./product-pages/three-grid/three-grid.component&#x27;;
+import { AccordianComponent } from &#x27;./product-pages/accordian/accordian.component&#x27;;
+import { BundleComponent } from &#x27;./product-pages/bundle/bundle.component&#x27;;
+import { ImageSwatchComponent } from &#x27;./product-pages/image-swatch/image-swatch.component&#x27;;
+import { ImageOutsideComponent } from &#x27;./product-pages/image-outside/image-outside.component&#x27;;
+import { ImageStickyComponent } from &#x27;./product-pages/image-sticky/image-sticky.component&#x27;;
+import { CheckOutComponent } from &#x27;./shop-pages/check-out/check-out.component&#x27;;
+import { SignUpComponent } from &#x27;./shop-pages/sign-up/sign-up.component&#x27;;
+import { LoginComponent } from &#x27;./shop-pages/login/login.component&#x27;;
+import { WishlistComponent } from &#x27;./shop-pages/wishlist/wishlist.component&#x27;;
+import { AddToCartComponent } from &#x27;./shop-pages/add-to-cart/add-to-cart.component&#x27;;
+import { CompareProductComponent } from &#x27;./shop-pages/compare-product/compare-product.component&#x27;;
+
+
+const routes: Routes &#x3D; [
+  {
+    path: &#x27;collection-left-sidebar/:category&#x27;,
+    component: LeftSidebarComponent,
+    data: {
+      title: &quot;Collection Left Sidebar&quot;,
+      breadcrumb: &quot;Collection Left Sidebar&quot;
+    }
+  },
+  {
+    path: &#x27;collection-right-sidebar/:category&#x27;,
+    component: RightSidebarComponent,
+    data: {
+      title: &quot;Collection Right Sidebar&quot;,
+      breadcrumb: &quot;Collection Right Sidebar&quot;
+    }
+  },
+  {
+    path: &#x27;collection-no-sidebar/:category&#x27;,
+    component: NoSidebarComponent,
+    data: {
+      title: &quot;Collection No Sidebar&quot;,
+      breadcrumb: &quot;Collection No Sidebar&quot;
+    }
+  },
+  {
+    path: &#x27;collection-left-sidebar-two-grid/:category&#x27;,
+    component: LeftSidebarTwoGridComponent,
+    data: {
+      title: &quot;Collection Left Sidebar Two Grid&quot;,
+      breadcrumb: &quot;Collection Left Sidebar Two Grid&quot;
+    }
+  },
+  {
+    path: &#x27;collection-left-sidebar-three-grid/:category&#x27;,
+    component: LeftSidebarThreeGridComponent,
+    data: {
+      title: &quot;Collection Left Sidebar three Grid&quot;,
+      breadcrumb: &quot;Collection Left Sidebar Three Grid&quot;
+    }
+  },
+  {
+    path: &#x27;collection-right-sidebar-two-grid/:category&#x27;,
+    component: RightSidebarTwoGridComponent,
+    data: {
+      title: &quot;Collection right Sidebar Two Grid&quot;,
+      breadcrumb: &quot;Collection Right Sidebar Two Grid&quot;
+    }
+  },
+  {
+    path: &#x27;collection-right-sidebar-three-grid/:category&#x27;,
+    component: RightSidebarThreeGridComponent,
+    data: {
+      title: &quot;Collection right Sidebar three Grid&quot;,
+      breadcrumb: &quot;Collection Right Sidebar Three Grid&quot;
+    }
+  },
+  {
+    path: &#x27;collection-no-sidebar-two-grid/:category&#x27;,
+    component: NoSidebarTwoGridComponent,
+    data: {
+      title: &quot;Collection no Sidebar Two Grid&quot;,
+      breadcrumb: &quot;Collection No Sidebar Two Grid&quot;
+    }
+  },
+  {
+    path: &#x27;collection-no-sidebar-three-grid/:category&#x27;,
+    component: NoSidebarThreeGridComponent,
+    data: {
+      title: &quot;Collection no Sidebar three Grid&quot;,
+      breadcrumb: &quot;Collection No Sidebar Three Grid&quot;
+    }
+  },
+  {
+    path: &#x27;metro/:category&#x27;,
+    component: CategoryMetroComponent,
+    data: {
+      title: &quot;Collection Metro&quot;,
+      breadcrumb: &quot;Collection Metro&quot;
+    }
+  },
+  {
+    path: &#x27;no-sidebar/:id&#x27;,
+    component: ProductNoSidebarComponent,
+    data: {
+      title: &quot;Product Detail&quot;,
+      breadcrumb: &quot;Product Detail - No Sidebar&quot;
+    }
+  },
+  {
+    path: &#x27;left-sidebar/:id&#x27;,
+    component: ProductLeftSidebarComponent,
+    data: {
+      title: &quot;Product Detail&quot;,
+      breadcrumb: &quot;Product Detail-Left-Sidebar&quot;
+    }
+  },
+  {
+    path: &#x27;right-sidebar/:id&#x27;,
+    component: ProductRightSidebarComponent,
+    data: {
+      title: &quot;Product Detail&quot;,
+      breadcrumb: &quot;Product Detail-Right-Sidebar&quot;
+    }
+  },
+  {
+    path: &#x27;three-grid/:id&#x27;,
+    component: ThreeGridComponent,
+    data: {
+      title: &quot;Product Detail&quot;,
+      breadcrumb: &quot;Product Detail - Three Grid&quot;
+    }
+  },
+  {
+    path: &#x27;accordian/:id&#x27;,
+    component: AccordianComponent,
+    data: {
+      title: &quot;Product Detail&quot;,
+      breadcrumb: &quot;Product Detail With Accordian&quot;
+    }
+  },
+  {
+    path: &#x27;bundle/:id&#x27;,
+    component: BundleComponent,
+    data: {
+      title: &quot;Product Detail&quot;,
+      breadcrumb: &quot;Product Detail With Bundle Product&quot;
+    }
+  },
+  {
+    path: &#x27;image-swatch/:id&#x27;,
+    component: ImageSwatchComponent,
+    data: {
+      title: &quot;Product Detail&quot;,
+      breadcrumb: &quot;Product Detail With Swatch Image&quot;
+    }
+  },
+  {
+    path: &#x27;image-outside/:id&#x27;,
+    component: ImageOutsideComponent,
+    data: {
+      title: &quot;Product Detail&quot;,
+      breadcrumb: &quot;Product Detail With Outside Nav Slider&quot;
+    }
+  },
+  {
+    path: &#x27;image-sticky/:id&#x27;,
+    component: ImageStickyComponent,
+    data: {
+      title: &quot;Product Detail&quot;,
+      breadcrumb: &quot;Product Detail With Sticky Image&quot;
+    }
+  },
+  {
+    path: &#x27;cart&#x27;,
+    component: AddToCartComponent,
+    data: {
+      title: &quot;Add to cart&quot;,
+      breadcrumb: &quot;Add to cart&quot;
+    }
+  },
+  {
+    path: &#x27;checkout&#x27;,
+    component: CheckOutComponent,
+    data: {
+      title: &quot;Checkout&quot;,
+      breadcrumb: &quot;Checkout&quot;
+    }
+  },
+  {
+    path: &#x27;compare&#x27;,
+    component: CompareProductComponent,
+    data: {
+      title: &quot;Compare&quot;,
+      breadcrumb: &quot;Compare&quot;
+    }
+  },
+  {
+    path: &#x27;signup&#x27;,
+    component: SignUpComponent,
+    data: {
+      title: &quot;Signup&quot;,
+      breadcrumb: &quot;Sign Up&quot;
+    }
+  },
+  {
+    path: &#x27;login&#x27;,
+    component: LoginComponent,
+    data: {
+      title: &quot;Login&quot;,
+      breadcrumb: &quot;Login&quot;
+    }
+  },
+  {
+    path: &#x27;wishlist&#x27;,
+    component: WishlistComponent,
+    data: {
+      title: &quot;Wishlist&quot;,
+      breadcrumb: &quot;Wishlist&quot;
+    }
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class ShopRoutingModule {
+
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'ShopRoutingModule.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

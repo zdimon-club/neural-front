@@ -1,0 +1,289 @@
+.feed-detail {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  &__container {
+    div {
+      width: 100%;
+    }
+  }
+}
+
+.user-name {
+  font-weight: 600;
+  margin-left: 15px;
+
+  &--dark {
+    color: #29333f;
+  }
+}
+
+.user-age {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.user-post-time {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+}
+
+.user-info-container {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  z-index: 1;
+  margin-bottom: 0;
+}
+
+.user-photo-container {
+  height: 48px;
+  width: 48px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.user-media__arrow-left,
+.user-media__arrow-right {
+  position: absolute;
+  top: 50%;
+  width: 24px !important;
+  height: 24px;
+  z-index: 2000;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  img {
+    transition: 0.15s;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    top: 0;
+    transform: translateY(0);
+    width: 25% !important;
+    height: 100%;
+    border-radius: 0;
+    background: transparent;
+    img {
+      display: none;
+    }
+  }
+}
+
+.user-media__arrow-left {
+  left: 18px;
+  @media screen and (max-width: 991px) {
+    left: 0;
+  }
+}
+
+.user-media__arrow-right {
+  right: 18px;
+  @media screen and (max-width: 991px) {
+    right: 0;
+  }
+}
+
+.user-media__main {
+  z-index: -10;
+
+  &.active {
+    z-index: 10;
+  }
+}
+
+.user-media__duration {
+  height: 22px;
+  bottom: 10px;
+  width: auto !important;
+  right: 15px;
+  position: absolute;
+  z-index: 1;
+  border-radius: 5px;
+  background: rgba(black, 0.5);
+  padding: 0 7px;
+
+  &-text {
+    margin: 1px 0 0 5px;
+    color: #ffffff;
+    font-size: 14px;
+  }
+}
+
+.user-media__sound {
+  position: absolute;
+  right: 15px;
+  top: 25px;
+  z-index: 1000;
+  transition: 0.2s;
+  opacity: 0;
+  cursor: pointer;
+
+  &.active {
+    z-index: 1001;
+    opacity: 1;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+  }
+}
+
+.user-media__wrapper {
+
+  &_popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px !important;
+    @media screen and (max-width: 991px) {
+      min-width: 100% !important;
+      width: 100% !important;
+    }
+    height: 100%;
+    background-color: black;
+
+    video {
+      transition: 0.2s;
+      max-width: 1000px;
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .blur {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      filter: blur(30px);
+    }
+
+  }
+
+  .lock-content {
+    color: #fff;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &__image {
+      max-width: 127px;
+      max-height: 128px;
+      width: 20vw;
+      height: 20vw;
+    }
+
+    &__title {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    &__text {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 18px;
+      max-width: 206px;
+      text-align: center;
+      padding: 5px 0 10px;
+    }
+
+    &__button {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 16px;
+      height: 36px;
+    }
+  }
+}
+
+.count-bar {
+  background-image: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+  padding: 10px 15px 0;
+  height: 80px;
+  z-index: 15;
+  @media screen and (max-width: 1400px) {
+    height: 60px;
+  }
+  @media screen and (max-width: 991px) {
+    height: 40px;
+  }
+  @media screen and (max-width: 500px) {
+    height: 30px;
+  }
+  $this: &;
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  top: 0px;
+
+  &.popup {
+    @media screen and (max-width: 991px) {
+      top: 0;
+    }
+  }
+
+  display: flex;
+
+  &__status {
+    position: absolute;
+    top: 0;
+    width: auto;
+    height: 100%;
+    background-color: #fff;
+
+    &.video {
+      left: 0;
+    }
+
+    &.photo {
+      right: 0;
+    }
+  }
+
+  &__item {
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    & + #{$this}__item {
+      margin-left: 4px;
+    }
+  }
+}
+
+.blur {
+  width: 100%;
+}

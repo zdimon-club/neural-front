@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-2">
+
+    </div>
+
+    <div class="col-8">
+
+      <div class="row">
+        <div class="col-12">
+
+          <div *ngIf="win==0">
+            <strong>BET : {{ bet }}</strong>
+            <div class="row">
+            <button class="btn btn-success" *ngIf="bet==0" [disabled]="!isBetUpPossible && is_active_game" (click)="betUp()">
+              Make the bet
+            </button>
+            </div>
+            <strong>Attempt : {{ account }}</strong>
+          </div>
+
+       
+          <div *ngIf="win>0">
+            <H2>WIN : {{ win }}</H2>
+            <div class="btn-group">
+            <button class="btn btn-warning" [disabled]="!canTake()" (click)="takeMoney()">Take the money</button>
+            <button class="btn btn-primary" *ngIf="canDouble()" (click)="doubleMode()" >Double win</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <div class="playingCards">
+            <app-card [card]="current_set[0]" (eventClick)="selectCard(current_set[0])"></app-card>
+            <app-card [card]="current_set[1]" (eventClick)="selectCard(current_set[1])"></app-card>
+            <app-card [card]="current_set[2]" (eventClick)="selectCard(current_set[2])"></app-card>
+            <app-card [card]="current_set[3]" (eventClick)="selectCard(current_set[3])"></app-card>
+            <app-card [card]="current_set[4]" (eventClick)="selectCard(current_set[4])"></app-card>
+          </div>
+        </div>
+
+        <div class="row">
+          <button type="button" class="btn btn-primary" *ngIf="isValidSelection()" (click)="changeCards()" >Change</button>
+          
+          <button class="btn btn-warning" *ngIf="isStartPossible()" (click)="start()" >Start</button>
+
+          <!-- 
+          <button [disabled]="!isBetDownPossible && is_active_game" (click)="betDown()" class="btn">
+            Bet down
+          </button>
+          -->
+          
+          
+        </div>
+    
+</div>
+<!--
+<div>
+  <img *ngFor="let c of current_deck.cards" src="{{c.image}}" />
+</div>
+-->
+
+<div class="col-2">
+
+</div>
+
+</div>
+</div>
+
+
+<!--
+<H2>Mode : {{ mode }}</H2>
+ -->

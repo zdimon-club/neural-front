@@ -1,0 +1,305 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content module">
+                   <div class="content-data">
+
+
+
+<ol class="breadcrumb">
+    <li>Modules</li>
+    <li>LayoutsRoutingModule</li>
+</ol>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li  class="active" >
+        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li >
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>tmp/unice/src/app/layouts/layouts-routing.module.ts</code>
+        </p>
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
+import { EnterpriceComponent } from &#x27;./enterprice/enterprice.component&#x27;;
+import { ModernComponent } from &#x27;./modern/modern.component&#x27;;
+import { ModernSassComponent } from &#x27;./modern-sass/modern-sass.component&#x27;;
+import { EnterpriceSassComponent } from &#x27;./enterprice-sass/enterprice-sass.component&#x27;;
+import { ResumeComponent } from &#x27;./resume/resume.component&#x27;;
+import { AgencyComponent } from &#x27;./agency/agency.component&#x27;;
+import { EventsComponent } from &#x27;./events/events.component&#x27;;
+import { GymComponent } from &#x27;./gym/gym.component&#x27;;
+import { MusicComponent } from &#x27;./music/music.component&#x27;;
+import { WeddingComponent } from &#x27;./wedding/wedding.component&#x27;;
+import { YogaComponent } from &#x27;./yoga/yoga.component&#x27;;
+import { PortfolioMetroComponent } from &#x27;./portfolio-metro/portfolio-metro.component&#x27;;
+import { ECommerceComponent } from &#x27;./e-commerce/e-commerce.component&#x27;;
+import { ProductDetailComponent } from &#x27;./e-commerce/product/widget/product-detail/product-detail.component&#x27;;
+import { CheckoutComponent } from &#x27;./e-commerce/product/widget/checkout/checkout.component&#x27;;
+import { CompareComponent } from &#x27;./e-commerce/product/widget/compare/compare.component&#x27;;
+import { CartComponent } from &#x27;./e-commerce/product/widget/cart/cart.component&#x27;;
+import { CollectionLeftSidebarComponent } from &#x27;./e-commerce/product/widget/collection/collection-left-sidebar/collection-left-sidebar.component&#x27;;
+import { SuccessComponent } from &#x27;./e-commerce/product/widget/success/success.component&#x27;;
+
+const routes: Routes &#x3D; [
+  {
+    path: &#x27;agency&#x27;,
+    component: AgencyComponent,
+    data: {
+      title: &quot;Agency | Unice Landing Page&quot;,
+      content: &quot;Agency Angular 8 landing page with Angular Universal | SSR | SEO friendly&quot;
+    }
+  },
+  {
+    path: &#x27;enterprice&#x27;,
+    component: EnterpriceComponent,
+    data: {
+      title: &quot;App Landing Page | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;modern&#x27;,
+    component: ModernComponent,
+    data: {
+      title: &quot;App Landing Page 2 | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;modern-sass&#x27;,
+    component: ModernSassComponent,
+    data: {
+      title: &quot;Modern SASS| Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;enterprice-sass&#x27;,
+    component: EnterpriceSassComponent,
+    data: {
+      title: &quot;Enterprice SASS | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;resume&#x27;,
+    component: ResumeComponent,
+    data: {
+      title: &quot;Resume | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;event&#x27;,
+    component: EventsComponent,
+    data: {
+      title: &quot;Events | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;gym&#x27;,
+    component: GymComponent,
+    data: {
+      title: &quot;Gym | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;music&#x27;,
+    component: MusicComponent,
+    data: {
+      title: &quot;Music | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;portfolio-layout&#x27;,
+    component: PortfolioMetroComponent,
+    data: {
+      title: &quot;Portfolio | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;wedding&#x27;,
+    component: WeddingComponent,
+    data: {
+      title: &quot;Wedding | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;yoga&#x27;,
+    component: YogaComponent,
+    data: {
+      title: &quot;Yoga | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;e-commerce&#x27;,
+    component: ECommerceComponent,
+    data: {
+      title: &quot;ECommerce | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;e-commerce/left-sidebar/product/:id&#x27;,
+    component: ProductDetailComponent,
+    data: {
+      title: &quot;Detail Page | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;e-commerce/checkout&#x27;,
+    component: CheckoutComponent,
+    data: {
+      title: &quot;Checkout Page| Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;e-commerce/checkout/success&#x27;,
+    component: SuccessComponent,
+    data: {
+      title: &quot;Success Page| Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;e-commerce/compare&#x27;,
+    component: CompareComponent,
+    data: {
+      title: &quot;Compare Page| Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;e-commerce/cart&#x27;,
+    component: CartComponent,
+    data: {
+      title: &quot;Cart | Unice Landing Page&quot;
+    }
+  },
+  {
+    path: &#x27;e-commerce/left-sidebar/collection/:category&#x27;,
+    component: CollectionLeftSidebarComponent,
+    data: {
+      title: &quot;Collection Page | Unice Landing Page&quot;
+    }
+  },
+
+]
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class LayoutsRoutingModule { }
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'LayoutsRoutingModule.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

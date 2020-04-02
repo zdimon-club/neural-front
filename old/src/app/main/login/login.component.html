@@ -1,0 +1,51 @@
+<div class="login-block container-fluid">
+  <div class="row h-100 align-items-center">
+    <form class="login-block__form mx-auto" name="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h4 class="title">Log in</h4>
+      <div class="form-group">
+        <label for="email" class="sr-only">Email address</label>
+        <input id="email" class="form-control"
+               [ngClass]="{'is-invalid': loginForm.get('username').invalid && loginForm.get('username').dirty,
+                                  'is-valid': loginForm.get('username').valid && loginForm.get('username').dirty}"
+               type="email" placeholder="Enter email" formControlName="username">
+      </div>
+      <div class="form-group" *ngIf="loginForm.get('username').valid">
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" class="form-control"
+               [ngClass]="{'is-invalid': loginForm.get('password').invalid && loginForm.get('password').dirty,
+                                  'is-valid': loginForm.get('password').valid && loginForm.get('password').dirty}"
+               type="password" placeholder="Your password" formControlName="password">
+      </div>
+      <div class="d-flex align-items-center login-block__buttons">
+        <button class="btn submit-button" [disabled]="loginForm.invalid">Log In</button>
+        <div class="or-text">
+          <span>or</span>
+        </div>
+        <div class="google-button" (click)="signInWithGoogle()">
+          <img src="/assets/icons/google.svg" alt="">
+        </div>
+        <br>
+      </div>
+      <a class="forget-pas-link" [routerLink]="['/forget/pass']">Recover the password?</a>
+
+      <!-- TODO: for testing -->
+      <div class="mt-2">
+        <button class="btn submit-button" type="button" [matMenuTriggerFor]="users">Authorize as</button>
+        <mat-menu #users="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="men">Men</button>
+          <button mat-menu-item [matMenuTriggerFor]="women">Women</button>
+        </mat-menu>
+        <mat-menu #men="matMenu">
+          <button mat-menu-item *ngFor="let man of allUsers.men"
+                  (click)="loginAs(man.value)">{{ man.name }}</button>
+        </mat-menu>
+        <mat-menu #women="matMenu">
+          <button mat-menu-item *ngFor="let woman of allUsers.women" (click)="loginAs(woman.value)">{{ woman.name }}
+          </button>
+        </mat-menu>
+      </div>
+
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<app-popup (handleClose)="emitClickOutside()" [isOpened]="is_opened">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modal-content-fixed position-relative">
+      <img
+        (click)="closeModal.emit(true)"
+        src="/assets/icons/svg-icons/modal-closed.svg"
+        alt="Close"
+        class="modal__close hoverable"
+      />
+      <div class="modal__loader loader-wrapper full-width full-height" [class.hidden]="!is_loading">
+        <div id="loader">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="loading"></div>
+        </div>
+      </div>
+      <div class="row flex-lg-nowrap no-gutters h-100 modal__main-wrapper" *ngIf="is_displayed">
+        <!--- mobile.header.component ---->
+        <div class="card__header modal__header-mobile d-block d-lg-none">
+          <app-feed-popup-mobile-header
+            [feed]="feed | async"
+            [isAuth]="isAuth"
+          ></app-feed-popup-mobile-header>
+        </div>
+        <!--- end mobile header  -->
+
+        <!--- media right component  -->
+        <div class="modal__user-media">
+          <app-feed-detail
+            [feed]="feed | async"
+            [is_popup]="true"
+            (firstVideoDownloaded)="handleFirstVideoDownloaded()"
+          ></app-feed-detail>
+        </div>
+        <!--- END media right component  -->
+
+        <!--- feed posts left component  -->
+        <div class="col d-flex flex-column overflow-auto modal__right-col">
+          <app-feed-posts-left
+            [feed]="feed | async"
+            [isAuth]="isAuth"
+            (postCommentEmmiter)="postComment($event)"
+            (subscribeEmmiter)="handleSubscribe($event)"
+            (callToChatEmmiter)="emitCallToChat($event)"
+          >
+          </app-feed-posts-left>
+        </div>
+        <!--- END feed posts component  -->
+      </div>
+    </div>
+  </div>
+</app-popup>

@@ -1,0 +1,9 @@
+Photo
+<div style="overflow: auto; height: 450px;" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="5px grid">
+    <div class="photos">
+        <button class="photo" *ngFor="let i of photos" (click)="send(i)" ngClass="{'red': i.role_media === 'private'}">
+            <img [src]="i.get_small_url_port" />
+        </button>
+    </div>
+</div>
+

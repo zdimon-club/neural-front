@@ -1,0 +1,95 @@
+<nav id="menu" class="section section--shadow section--fixed p-4 d-flex flex-column">
+  <div class="header__online d-md-none text-center mb-3">
+    Online: <b class="text-success">{{ online }}</b>
+  </div>
+  <a
+    href="#"
+    [routerLink]="['game']"
+    class="d-flex btn btn-outline-warning text-uppercase d-md-none mb-3 header__action-button justify-content-center"
+  >
+    <svg width="14" height="14" fill="none" class="icon" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M10.28 5.75c-1.131 0-2.051.92-2.051 2.05 0 1.131.92 2.05 2.05 2.05s2.05-.919 2.05-2.05c0-1.13-.92-2.05-2.05-2.05zm-8.202 7.819v-.848c0-.14.015-.277.03-.413l-.03.003a2.095 2.095 0 01-1.657-.82A2.03 2.03 0 000 12.721v.848c0 .227.183.41.41.41h1.743a1.216 1.216 0 01-.075-.41zm0-4.539c-.679 0-1.23.553-1.23 1.23a1.232 1.232 0 001.464 1.207 3.68 3.68 0 01.97-1.455 1.232 1.232 0 00-1.204-.981zm3.69 3.691c0-.434.066-.853.18-1.25-.06.004-.117.02-.18.02a2.446 2.446 0 01-1.894-.91 2.853 2.853 0 00-.976 2.14v.848c0 .227.183.41.41.41h2.536a1.216 1.216 0 01-.076-.41v-.848zm0-5.331c-.904 0-1.64.736-1.64 1.64 0 .905.736 1.641 1.64 1.641.193 0 .375-.04.547-.1.273-.5.637-.942 1.07-1.305.011-.077.024-.155.024-.235 0-.905-.736-1.64-1.64-1.64z"
+        fill="#F8856B"
+      />
+      <path
+        d="M12.404 9.713a2.853 2.853 0 01-2.125.958 2.853 2.853 0 01-2.124-.958 3.683 3.683 0 00-1.566 3.008v.848c0 .226.183.41.41.41h6.588a.41.41 0 00.41-.41v-.848c0-1.243-.649-2.339-1.593-3.008zm.309-7.936a.41.41 0 00-.332-.28l-1.198-.173L10.647.21c-.138-.28-.598-.28-.735 0l-.537 1.114-1.198.174a.41.41 0 00-.227.7l.867.844-.204 1.194a.41.41 0 00.594.432l1.072-.563c.147.077 1.106.61 1.263.61a.409.409 0 00.404-.48l-.205-1.193.868-.845a.41.41 0 00.104-.42zM8.291 5.299a1.214 1.214 0 01-.429-.582l-.8.8L5.7 3.472a.41.41 0 00-.632-.062l-3.28 3.28a.41.41 0 10.58.58l2.927-2.927 1.362 2.045a.41.41 0 00.632.062l1.1-1.1c-.031-.02-.067-.03-.098-.051z"
+        fill="#F8856B"
+      />
+    </svg>
+    {{ 'BTN_ICHOSE' | translate }}</a
+  >
+  <a
+    href="#"
+    class="d-flex d-lg-none btn btn-outline-warning text-uppercase header__action-button justify-content-center mb-3"
+  >
+    <svg width="14" height="14" fill="none" class="icon" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M.875 7.43v5.25c0 .482.393.874.875.874h4.375V7.43H.875zm12.25-3.5h-2.768a3.51 3.51 0 00.488-.392 1.829 1.829 0 000-2.574c-.686-.692-1.882-.69-2.567 0-.38.38-1.386 1.93-1.247 2.965h-.063c.139-1.035-.867-2.585-1.246-2.965-.686-.69-1.882-.69-2.567 0a1.831 1.831 0 000 2.574c.12.12.29.255.489.391H.874A.876.876 0 000 4.804v1.313c0 .241.196.437.438.437h5.687v-1.75h1.75v1.75h5.688A.438.438 0 0014 6.117V4.804a.876.876 0 00-.875-.875zM6.073 3.9s-.036.03-.162.03c-.604 0-1.758-.63-2.135-1.009a.954.954 0 010-1.34.93.93 0 011.325 0c.59.593 1.176 2.108.972 2.32zm2.015.03c-.125 0-.161-.029-.161-.03-.204-.21.382-1.726.972-2.32a.954.954 0 011.325 0 .953.953 0 010 1.341c-.377.38-1.53 1.008-2.136 1.008zm-.213 3.5v6.124h4.375a.875.875 0 00.875-.875V7.43h-5.25z"
+        fill="#F8856B"
+      />
+    </svg>
+    {{ 'BTN_FOR_FREE' | translate }}</a
+  >
+  <ng-container *ngIf="!is_auth">
+    <button
+      (click)="handleClickCloseMenuAndNavigate(['login'])"
+      class="d-flex justify-content-center btn btn-primary text-uppercase mt-3 header__auth-button"
+    >
+      <img src="/assets/icons/svg-icons/login.svg" class="icon icon--size-18" alt="" />
+      {{ 'BTN_LOGIN' | translate }}
+    </button>
+    <button
+      (click)="handleClickCloseMenuAndNavigate(['register/men'])"
+      class="d-flex justify-content-center btn btn-primary text-uppercase mt-3 header__auth-button"
+    >
+      <img src="/assets/icons/svg-icons/signup.svg" class="icon icon--size-14" alt="" />
+      {{ 'BTN_SIGN_UP' | translate }}
+    </button>
+  </ng-container>
+  <ng-container *ngIf="is_auth">
+    <div class="mb-1 text-center">
+      <a class="avatar avatar--size-upper-md" [routerLink]="['profile', user.id]">
+        <img [src]="user.main_photo" class="header__avatar-image position-relative" />
+      </a>
+    </div>
+    <div class="list-group list-group-flush">
+      <button
+        class="header__dropdown-item hoverable"
+        (click)="handleClickCloseMenuAndNavigate(['profile', user.id])"
+      >
+        My Profile
+      </button>
+      <button
+        class="header__dropdown-item hoverable"
+        (click)="handleClickCloseMenuAndNavigate(['chatdesign'])"
+      >
+        Chat design
+      </button>
+      <button
+        *ngIf="user.gender === 'male'"
+        class="header__dropdown-item hoverable"
+        (click)="handleClickCloseMenuAndNavigate(['payment'])"
+      >
+        Payments
+      </button>
+      <button class="header__dropdown-item hoverable" (click)="doLogout()">Go out</button>
+    </div>
+
+    <div class="d-sm-flex align-items-center mt-2" *ngIf="user.gender === 'male'">
+      <!--<button
+        class="d-block btn btn-primary btn-lg text-uppercase font-weight-bold menu__get-credits"
+        (click)="showBilling()"
+      >
+        Get credits
+      </button>-->
+      <div class="text-center justify-content-center text-sm-left mt-3 mt-sm-0 header__my-balance">
+        My balance:<br />
+        <a href="#" class="text-primary">
+          <b class="header__balance-count">{{ user.account }}</b>
+        </a>
+      </div>
+    </div>
+  </ng-container>
+</nav>
+<div class="overlay overlay--close" (click)="closeBurger()"></div>

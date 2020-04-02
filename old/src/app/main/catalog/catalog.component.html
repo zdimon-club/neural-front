@@ -1,0 +1,66 @@
+<div class="catalog__container full-width">
+  <div class="catalog__show-entries" *ngIf="showNewEntries">
+    <p class="catalog__show-entries-text">show new entries</p>
+  </div>
+
+  <!-- section -->
+
+  <main class="section">
+    <app-catalog-filter></app-catalog-filter>
+    <!--
+      <app-search-form
+        class="search-form"
+        fxLayoutAlign="center"
+        [filter]="filter"
+        (onchange)="doFilter($event)"
+      ></app-search-form>
+      -->
+    <!-- masonry -->
+
+    <app-catalog-list
+      class="catalog-list"
+      [users]="users"
+      [isAuth]="isAuth"
+      (subscribe)="handleSubscribe($event)"
+      (unSubscribe)="handleUnSubscribe($event)"
+      (openFeed)="openFeed($event)"
+      (changes)="updateMasonry({ withImagesLoaded: true })"
+      (openPopup)="handleOpenPopup($event)"
+      (callToChat)="callToChat($event)"
+    ></app-catalog-list>
+    <button class="button-go-top" type="button" (click)="handleScrollButtonClick($event)">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon--size-24 m-0"
+        alt="Arrow up"
+      >
+        <g clip-path="url(#clip0)">
+          <path
+            d="M3.81605 7.83868C3.47766 8.16564 3.47766 8.70981 3.81605 9.04821C4.14301 9.37517 4.68718 9.37517 5.01338 9.04821L11.1464 2.91521L11.1464 23.1533C11.1471 23.625 11.5221 24 11.9939 24C12.4657 24 12.8528 23.625 12.8528 23.1533L12.8528 2.91521L18.9744 9.04821C19.3128 9.37517 19.8577 9.37517 20.1839 9.04821C20.5223 8.70981 20.5223 8.16488 20.1839 7.83868L12.599 0.253797C12.2721 -0.084597 11.7279 -0.084597 11.4017 0.253797L3.81605 7.83868Z"
+            fill="#00BDBA"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0">
+            <rect y="24" width="24" height="24" transform="rotate(-90 0 24)" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </button>
+  </main>
+
+  <app-post-popup
+    [current_user]="current_user"
+    [isAuth]="isAuth"
+    (closeModal)="handleClosePopup()"
+    (subscribe)="handleSubscribe($event)"
+    (unSubscribe)="handleUnSubscribe($event)"
+    [is_displayed]="is_popup_displayed"
+    (displayPopup)="handleDisplayPopup($event)"
+    (callToChat)="callToChat($event)"
+  ></app-post-popup>
+</div>

@@ -1,0 +1,56 @@
+.reset-pass-block {
+  height: calc(100vh - 88px - 139px);
+  min-height: 600px;
+
+  &__form {
+
+    .title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 28px;
+      text-transform: uppercase;
+
+      color: #28263C;
+      margin-bottom: 28px;
+    }
+
+    .submit-button {
+      padding: 10px 14px;
+      height: 39px;
+      background-color: #98B8E8;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 19px;
+      text-transform: uppercase;
+      color: #ffffff;
+
+      &:hover {
+        background-color: #5680bf;
+
+      }
+    }
+
+    .form-group {
+
+      .form-control {
+        padding: 10px;
+        width: 235px;
+        height: 39px;
+        border: 1px solid #c5c5c5;
+        margin-bottom: 20px
+      }
+
+      ::placeholder {
+        height: 39px;
+        font-size: 16px;
+        line-height: 19px;
+        color: #6E6C79 !important;
+      }
+    }
+  }
+}

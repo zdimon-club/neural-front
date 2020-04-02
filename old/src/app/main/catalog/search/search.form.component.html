@@ -1,0 +1,320 @@
+<div fxLayout='row' class="col-12" fxLayoutGap="10px">
+    <div style="width: 100%;" id="search-form" class="container">
+        <form (submit)="onChanges()" class="filter row" name="searchForm" [formGroup]="searchForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="row">
+                <div class="col-12">
+                    <div class="pb-xl-3 pb-2 mb-4">
+                        <div class="filter__title filter__title--uppercase">
+                            Personal filter
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-6">
+                    <div class="row">
+                        <mat-form-field class="filter__field col-12 pl-2 pr-2" appearance="outline">
+                            <mat-label>{{ 'Country' | translate }}</mat-label>
+                            <mat-select formControlName="country">
+                                <mat-option *ngFor="let opt of ['Ukraine', 'USA', 'USA', 'Ukraine', 'GB']" [value]="opt">
+                                    {{opt}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-6">
+                    <div class="row">
+                        <mat-form-field class="filter__field col-12 pl-2 pr-2" appearance="outline">
+                            <mat-label>{{ 'City' | translate }}</mat-label>
+                            <mat-select formControlName="city">
+                                <mat-option *ngFor="let opt of ['London', 'London', 'London', 'London', 'London']" [value]="opt">
+                                    {{opt}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="filter__row">
+                        <div class="col-12 pl-2 pr-2">
+                            <div class="mt-2 mb-3">
+                                <div class="filter__title">
+                                    Marital status
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2 pl-2 pr-2 filter__checkbox-container">
+                            <div class="filter__checkbox">
+                                <input formControlName="marital_status" id="marital_free" name="marital_status" type="radio" class="filter__checkbox-input">
+                                <label for="marital_free" class="filter__checkbox-label">Free</label>
+                            </div>
+                        </div>
+                        <div class="mb-2 pl-2 pr-2 filter__checkbox-container">
+                            <div class="filter__checkbox">
+                                <input formControlName="marital_status" id="marital_for_husband" name="marital_status" type="radio" class="filter__checkbox-input">
+                                <label for="marital_for_husband" class="filter__checkbox-label">For husband</label>
+                            </div>
+                        </div>
+                        <div class="mb-2 pl-2 pr-2 filter__checkbox-container">
+                            <div class="filter__checkbox">
+                                <input formControlName="marital_status" id="marital_in_a_relationship" name="marital_status" type="radio" class="filter__checkbox-input">
+                                <label for="marital_in_a_relationship" class="filter__checkbox-label">In a relationship</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="advancedFilter">
+                <div class="col-xl-12 col-sm-6 col-12">
+                    <div class="filter__row">
+                        <div class="col-12 pl-2 pr-2">
+                            <div class="mt-2 mb-3">
+                                <div class="filter__title">
+                                    Presence of children
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter__checkbox-container mb-2 pl-2 pr-2">
+                            <div class="filter__checkbox">
+                                <input formControlName="children" id="children_yes" name="children" type="radio" class="filter__checkbox-input">
+                                <label for="children_yes" class="filter__checkbox-label">Yes</label>
+                            </div>
+                        </div>
+                        <div class="filter__checkbox-container mb-2 pl-2 pr-2">
+                            <div class="filter__checkbox">
+                                <input formControlName="children" id="children_no" name="children" type="radio" class="filter__checkbox-input">
+                                <label for="children_no" class="filter__checkbox-label">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                    @todo range-slider growth -->
+                <div class="col-xl-12 col-sm-6 col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mt-2 mb-3">
+                                <div class="filter__title">
+                                    Growth
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 pr-2 pl-2">
+                            <div class="filter__range-wrapper">
+                                <span class="filter__min">
+                                    {{ growthRange.min }} sm
+                                </span>
+                                    <span class="filter__max">
+                                    {{ growthRange.max }} sm
+                                </span>
+                                <mat-slider
+                                        formControlName="growth"
+                                        class="filter__range"
+                                        step="1"
+                                        thumbLabel="true"
+                                        min="{{ growthRange.min }}"
+                                        max="{{ growthRange.max }}"></mat-slider>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--                    @todo range-slider weight -->
+                <div class="col-xl-12 col-sm-6 col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mt-2 mb-3">
+                                <div class="filter__title">
+                                    Weight
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 pr-2 pl-2">
+                            <div class="filter__range-wrapper">
+                                <span class="filter__min">
+                                    {{ weightRange.min }} sm
+                                </span>
+                                <span class="filter__max">
+                                    {{ weightRange.max }} sm
+                                </span>
+                                <mat-slider
+                                        formControlName="weight"
+                                        class="filter__range"
+                                        step="1"
+                                        thumbLabel="true"
+                                        min="{{ weightRange.min }}"
+                                        max="{{ weightRange.max }}"></mat-slider>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-sm-6 col-12 pt-xl-0 pt-3">
+                    <div class="row">
+                        <mat-form-field class="filter__field col-12 pl-2 pr-2" appearance="outline">
+                            <mat-label>{{ 'Eye color' | translate }}</mat-label>
+                            <mat-select formControlName="eye_color">
+                                <mat-option *ngFor="let opt of ['brown', 'green', 'grey', 'blue']" [value]="opt">
+                                    {{opt}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-sm-6 col-12 pt-xl-0 pt-3">
+                    <div class="row">
+                        <mat-form-field class="filter__field col-12 pl-2 pr-2" appearance="outline">
+                            <mat-label>{{ 'Hair color' | translate }}</mat-label>
+                            <mat-select formControlName="hair_color">
+                                <mat-option *ngFor="let opt of ['Brown', 'Black', 'Blonde']" [value]="opt">
+                                    {{opt}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="filter__row">
+                        <div class="col-12">
+                            <div class="mt-2 mb-3">
+                                <div class="filter__title">
+                                    Alcohol
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter__checkbox-container mb-2 pl-2 pr-2">
+                            <div class="filter__checkbox">
+                                <input formControlName="alcohol" id="alcohol_yes" name="alcohol" type="radio" class="filter__checkbox-input">
+                                <label for="alcohol_yes" class="filter__checkbox-label">Yes</label>
+                            </div>
+                        </div>
+                        <div class="filter__checkbox-container mb-2 pl-2 pr-2">
+                            <div class="filter__checkbox">
+                                <input formControlName="alcohol" id="alcohol_no" name="alcohol" type="radio" class="filter__checkbox-input">
+                                <label for="alcohol_no" class="filter__checkbox-label">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="filter__row">
+                        <div class="col-12">
+                            <div class="mt-2 mb-3">
+                                <div class="filter__title">
+                                    Smoking
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter__checkbox-container mb-2 pl-2 pr-2">
+                            <div class="filter__checkbox">
+                                <input formControlName="smoking" id="smoking_yes" name="smoking" type="radio" class="filter__checkbox-input">
+                                <label for="smoking_yes" class="filter__checkbox-label">Yes</label>
+                            </div>
+                        </div>
+                        <div class="filter__checkbox-container mb-2 pl-2 pr-2">
+                            <div class="filter__checkbox">
+                                <input formControlName="smoking" id="smoking_no" name="smoking" type="radio" class="filter__checkbox-input">
+                                <label for="smoking_no" class="filter__checkbox-label">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 pt-3 pt-xl-0 col-sm-6 col-12">
+                    <div class="row">
+                        <mat-form-field class="filter__field col-12 pl-2 pr-2" appearance="outline">
+                            <mat-label>{{ 'Nationality' | translate }}</mat-label>
+                            <mat-select formControlName="nationality">
+                                <mat-option *ngFor="let opt of ['Ukrainian', 'American', 'Iranian', 'Chinese']" [value]="opt">
+                                    {{opt}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-xl-12 pt-3 pt-xl-0 col-sm-6 col-12">
+                    <div class="row">
+                        <mat-form-field class="filter__field col-12 pl-2 pr-2" appearance="outline">
+                            <mat-label>{{ 'Languages' | translate }}</mat-label>
+                            <mat-select formControlName="languages">
+                                <mat-option *ngFor="let opt of ['arabic', 'turkish', 'hebrew']" [value]="opt">
+                                    {{opt}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="filter__row">
+                        <div class="col-12">
+                            <div class="mt-2 mb-3">
+                                <div class="filter__title">
+                                    Work
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter__checkbox-container mb-2 pl-2 pr-2">
+                            <div class="filter__checkbox">
+                                <input formControlName="work" id="work_yes" name="work" type="radio"
+                                       class="filter__checkbox-input">
+                                <label for="work_yes" class="filter__checkbox-label">Yes</label>
+                            </div>
+                        </div>
+                        <div class="filter__checkbox-container mb-2 pl-2 pr-2">
+                            <div class="filter__checkbox">
+                                <input formControlName="work" id="work_no" name="work" type="radio"
+                                       class="filter__checkbox-input">
+                                <label for="work_no" class="filter__checkbox-label">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-sm-6 col-12 pt-xl-0 pt-3">
+                    <div class="row">
+                        <mat-form-field class="filter__field col-12 pl-2 pr-2" appearance="outline">
+                            <mat-label>{{ 'Hobby' | translate }}</mat-label>
+                            <mat-select formControlName="hobby">
+                                <mat-option *ngFor="let opt of ['hobby1', 'hobby2', 'hobby3']" [value]="opt">
+                                    {{opt}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 pt-5">
+                <button type="submit" mat-button class="filter__submit">Filter</button>
+            </div>
+
+            <div class="col-12 pt-3 mt-3" fxLayoutAlign="center center">
+                <button (click)="toggleAdvancedFilter()" class="filter__button filter__button--advanced">
+                    {{ advancedFilter ? 'Hide advanced filter' : 'Advanced filter' }}
+                </button>
+            </div>
+
+                <!-- old filter -->
+
+<!--            <mat-form-field class="filter__field" appearance="outline">-->
+<!--                <mat-label>{{ 'TITLE_AGE_FROM' | translate }}</mat-label>-->
+<!--                <mat-select formControlName="age_from">-->
+<!--                    <mat-option value="all">-->
+<!--                        {{ 'MSG_ALL' | translate }}-->
+<!--                    </mat-option>-->
+<!--                    <mat-option *ngFor="let opt of [16,17,18,19,20,21,25,28,30,40,50]" [value]="opt">-->
+<!--                        {{opt}}-->
+<!--                    </mat-option>-->
+<!--                </mat-select>-->
+<!--            </mat-form-field>-->
+<!--            <mat-form-field class="filter__field" appearance="outline">-->
+<!--                <mat-label>{{ 'TITLE_AGE_TO' | translate }}</mat-label>-->
+<!--                <mat-select formControlName="age_to">-->
+<!--                    <mat-option value="all">-->
+<!--                        {{ 'MSG_ALL' | translate }}-->
+<!--                    </mat-option>-->
+<!--                    <mat-option *ngFor="let opt of [16,17,18,19,20,21,25,28,30,40,50]" [value]="opt">-->
+<!--                        {{opt}}-->
+<!--                    </mat-option>-->
+<!--                </mat-select>-->
+<!--            </mat-form-field>-->
+<!--            <mat-checkbox class="filter__field" matInput formControlName="is_online" color="primary">-->
+<!--                {{ 'TITLE_IS_ONLINE' | translate }}-->
+<!--            </mat-checkbox>-->
+        </form>
+    </div>
+</div>

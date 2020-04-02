@@ -1,0 +1,29 @@
+<div *ngIf="subscribers?.length>0" class="row mx-0 subscription-content">
+
+    <div class="subscription__header col-12">
+        <div>
+            <span class="subscription__title">Subscribers:</span>
+            <span class="subscription__count"> {{subscribers.length}}</span>
+        </div>
+        <a href="#" class="subscription__link">
+            Updates
+        </a>
+    </div>
+    <div class="subscription-body col-12">
+        <div class="row">
+            <div class="subscription-item col-auto" *ngFor="let item of subscribers">
+                <div>
+                    <a [routerLink]="[ '/index/detail', item.id ]">
+                        <img [src]="item?.main_photo" class="subscription__image">
+                        <span class="subscription__name"> {{item.username}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="subscribers?.length==0"  class="row mx-0 subscription-content">
+    {{ 'MSG_NO_SUBSCRIPTIONS' | translate }}
+</div>
