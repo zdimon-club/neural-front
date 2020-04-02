@@ -1,5 +1,5 @@
 import { Injectable, Inject } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 
 import { interval, timer, pipe } from 'rxjs';
 
@@ -16,6 +16,7 @@ import { PLATFORM_ID } from '@angular/core';
 export class SocketService {
   private socket;
   isBrowser = false;
+  pinger: Subscription;
   /// Event observables
 
   chat$ = new ReplaySubject<Object>();
@@ -42,6 +43,7 @@ export class SocketService {
     this.socket.onclose = (e) => {
         console.error('Chat socket closed unexpectedly');
         timer(1000).subscribe(() => {
+          this.pinger.unsubscribe();
           this.connect();
         })
     };
@@ -49,14 +51,16 @@ export class SocketService {
     this.socket.onopen = (e) => {
        console.log('Try connect!!!');
 
-       const ping = interval(10000).subscribe((v) => {
-            console.log(v);
-            this.socket.send(JSON.stringify({
-            type: 'ping',
-            message: 'this is me'
-            }));
+      //  this.pinger = interval(10000).subscribe((v) => {
+      //       console.log(v);
+      //       this.socket.send(JSON.stringify({message:
+      //         {
+      //           action: 'ping',
+      //           data: ['this is me']
+      //         }
+      //       }));
 
-       });
+      //  });
 
     };
   }
@@ -69,8 +73,9 @@ export class SocketService {
   dispacher(): void {
     this.socket.onmessage = event => {
        const message = JSON.parse(event.data);
-       console.log(message);
-       if (message.message.action === 'chat') {
+       console.log(message.message.message.action);
+       // ну че оно сука так то!!
+       if (message.message.message.action === 'broadcast') {
            this.chat$.next(message.message);
        }
 

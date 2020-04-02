@@ -10,26 +10,36 @@ import { SocketService } from './socket/socket.service';
 export class AppComponent {
 
   message = 'ssssssss';
+  messages = [];
 
  constructor(private socketService: SocketService) {
 
   this.socketService.chat$.subscribe((v) => {
-    console.log(v);
+    // console.log(v);
+    this.messages.push(v);
   });
 
   this.socketService.notifications$.subscribe((v) => {
-    console.log(v);
+    // console.log(v);
   });
 
  }
 
+   
 
    sendChat() {
      this.socketService.sendMessage({
-       action: 'send:message',
+       action: 'broadcast',
        data: this.message
      });
    }
+
+   sendBroad() {
+    this.socketService.sendMessage({
+      action: 'broadcast',
+      data: this.message
+    });
+  }
 
 
    sendNotify() {
