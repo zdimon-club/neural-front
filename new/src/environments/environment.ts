@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:8001',
+  apiUrl: 'http://localhost:8001',
   socketUrl: 'ws://localhost:8001',
   OPENVIDU_SERVER_URL: 'https://video.neuraldating.com:4443',
   OPENVIDU_SERVER_SECRET: 'SECRET',

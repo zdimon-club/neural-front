@@ -1,1 +1,55 @@
-<img width="800" src="/assets/design/login.jpg" />
+
+<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+
+    <div fxFlex="100%" fxLayout="column wrap">  
+    
+        <mat-tab-group>
+
+            <mat-tab label="SignIn"> 
+                <form [formGroup]="loginForm" fxLayout="column wrap">
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Username</mat-label>
+                      <input name="username" formControlName="username" matInput placeholder="login" required />
+                    </mat-form-field>
+                
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input name="password" type="password" formControlName="password" matInput placeholder="password" required />
+                    </mat-form-field>
+        
+                    <div>
+                        <button (click)="onSubmit()" mat-raised-button color="accent">Login</button>
+                    </div>
+        
+                  </form>
+            </mat-tab>
+
+            <mat-tab label="Registration for man"> 
+
+                <form [formGroup]="manForm" fxLayout="column wrap">
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Username</mat-label>
+                      <input name="username" formControlName="username" matInput placeholder="login" required />
+                    </mat-form-field>
+                
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input name="password" type="password" formControlName="password" matInput placeholder="password" required />
+                    </mat-form-field>
+        
+                    <div>
+                        <button  mat-raised-button color="accent">Login</button>
+                    </div>
+        
+                  </form>
+
+            </mat-tab>
+            <mat-tab label="Registration for woman"> For woman </mat-tab>
+        </mat-tab-group>
+
+
+    </div>
+
+</div>

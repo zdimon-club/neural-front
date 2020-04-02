@@ -8,12 +8,14 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    
+
   ],
   imports: [
     RouterModule,
@@ -25,6 +27,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatTabsModule,
     MatCardModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   entryComponents: [],
@@ -38,6 +42,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
   ]
 })

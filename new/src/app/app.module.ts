@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { SocketService } from './socket/socket.service';
+// http
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SessionService } from './auth/session.service';
@@ -17,6 +19,21 @@ import { AppStoreModule } from './store/store.module';
 import { SharedModule } from './shared.module';
 import { LayoutModule } from './layout/layout.module';
 
+// services
+
+import { SocketService } from './socket/socket.service';
+import { OnlineSocketService } from './socket/online.service';
+import { LoginService } from './auth/login.service';
+
+// init service
+import { APP_INITIALIZER } from '@angular/core';
+import { InitService } from './auth/init.service';
+export function init_app(initService: InitService) {
+  return () => initService.init();
+}
+
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -28,10 +45,20 @@ import { LayoutModule } from './layout/layout.module';
     LayoutModule,
     SharedModule,
     AppStoreModule,
+    HttpClientModule,
   ],
   providers: [
     SocketService,
-    SessionService
+    SessionService,
+    LoginService,
+    OnlineSocketService,
+    InitService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: init_app,
+      deps: [InitService],
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
   exports: [AppRoutingModule]
