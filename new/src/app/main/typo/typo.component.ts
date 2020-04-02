@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypoComponent implements OnInit {
 
+
+  message = "";
   constructor() { }
 
   ngOnInit() {
+  }
+
+  sendChat() {
+    
   }
 
 }
