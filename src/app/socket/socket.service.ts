@@ -43,7 +43,13 @@ export class SocketService {
     this.socket.onclose = (e) => {
         console.error('Chat socket closed unexpectedly');
         timer(1000).subscribe(() => {
-          this.pinger.unsubscribe();
+          // может и небыть
+          try {
+            this.pinger.unsubscribe();
+          } catch (error) {
+
+          }
+
           this.connect();
         })
     };
