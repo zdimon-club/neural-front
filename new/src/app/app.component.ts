@@ -27,7 +27,12 @@ export class AppComponent {
 
    
 
-
+   sendChat() {
+     this.socketService.sendMessage({
+       action: 'broadcast',
+       data: this.message
+     });
+   }
 
    sendBroad() {
     this.socketService.sendMessage({

@@ -5,6 +5,7 @@ import { interval, timer, pipe } from 'rxjs';
 
 import {filter} from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 import {isPlatformBrowser} from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
@@ -26,6 +27,7 @@ export class SocketService {
     @Inject(PLATFORM_ID) protected _platformId: Object,
 
   ) {
+
     if(this._platformId === 'browser') {
       this.connect();
     } else {
@@ -36,7 +38,7 @@ export class SocketService {
   }
 
   connect() {
-    this.socket = new WebSocket('ws://localhost:8001/chat/');
+    this.socket = new WebSocket(`${environment.socketUrl}/chat/`);
     this.dispacher();
 
 

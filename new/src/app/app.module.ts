@@ -7,9 +7,12 @@ import { AppComponent } from './app.component';
 import { SocketService } from './socket/socket.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { SessionService } from './auth/session.service';
 
+// root store
+import { AppStoreModule } from './store/store.module';
 
-// Приложение
+// app
 
 import { SharedModule } from './shared.module';
 import { LayoutModule } from './layout/layout.module';
@@ -24,9 +27,11 @@ import { LayoutModule } from './layout/layout.module';
     BrowserAnimationsModule,
     LayoutModule,
     SharedModule,
+    AppStoreModule,
   ],
   providers: [
-    SocketService
+    SocketService,
+    SessionService
   ],
   bootstrap: [AppComponent],
   exports: [AppRoutingModule]

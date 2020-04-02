@@ -1,5 +1,6 @@
 export const environment = {
-  production: true,
+  production: false,
+  hmr: false,
   apiUrl: 'https://api.neuro.webmonstr.com',
   socketUrl: 'https://api.neuro.webmonstr.com',
   OPENVIDU_SERVER_URL: 'https://video.neuraldating.com:4443',

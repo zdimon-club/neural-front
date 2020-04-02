@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://localhost:8001',
+  socketUrl: 'ws://localhost:8001',
+  OPENVIDU_SERVER_URL: 'https://video.neuraldating.com:4443',
+  OPENVIDU_SERVER_SECRET: 'SECRET',
+  GOOGLE_AUTH: '228193226064-4q2oavqmqd07qvma66umhadpjdvt6o6s.apps.googleusercontent.com',
 };
 
 /*

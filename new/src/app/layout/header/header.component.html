@@ -1,1 +1,51 @@
-<p>header works!</p>
+<div fxLayout="row" fxLayoutGap="32px" >
+    <div fxLayoutAlign="start center" fxFlex="50%" fxLayout="row" fxLayoutGap="10px">
+      <button [routerLink]="'index'" mat-fab aria-label="Example icon-button with a heart icon">
+          <mat-icon>favorite</mat-icon> 
+      </button>
+      <button mat-raised-button >NEURAL</button>
+      <button [routerLink]="'typo'" mat-raised-button color="primary">Typo</button>
+      
+        <form fxLayout="row">
+          <mat-form-field class="example-full-width">
+            <mat-label>id, name, tag</mat-label>
+            <span matPrefix>Search &nbsp;</span>
+            <input type="tel" matInput>
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </form>
+   
+
+    </div>
+    <div fxFlex="50%" fxLayoutAlign="end center" fxLayoutGap="10px">
+        <button [routerLink]="'login'" mat-raised-button color="accent">Login</button>
+        <button [routerLink]="'priv-chat'" mat-raised-button color="accent">Chat</button>
+         
+        <button mat-raised-button [routerLink]="'myprofile'" color="warn">Profile</button>
+        <button mat-fab mat-stroked-button> 
+          <mat-icon>
+          <img src="/assets/google.svg" />
+        </mat-icon>
+        </button>
+        <!--
+        -->
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>dialpad</mat-icon>
+              <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+              <mat-icon>voicemail</mat-icon>
+              <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>notifications_off</mat-icon>
+              <span>Disable alerts</span>
+            </button>
+          </mat-menu>
+    </div>
+</div>
