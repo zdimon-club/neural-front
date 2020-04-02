@@ -1,6 +1,5 @@
 
 import { Component } from '@angular/core';
-import { interval, timer } from 'rxjs';
 import { SocketService } from './socket/socket.service';
 
 @Component({
@@ -10,7 +9,8 @@ import { SocketService } from './socket/socket.service';
 })
 export class AppComponent {
 
- 
+  message = 'ssssssss';
+
  constructor(private socketService: SocketService) {
 
   this.socketService.chat$.subscribe((v) => {
@@ -26,8 +26,8 @@ export class AppComponent {
 
    sendChat() {
      this.socketService.sendMessage({
-       action: 'chat',
-       data: 'blabla'
+       action: 'send:message',
+       data: this.message
      });
    }
 

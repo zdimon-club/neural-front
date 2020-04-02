@@ -7,8 +7,19 @@ import { AppComponent } from './app.component';
 
 import { SocketService } from './socket/socket.service';
 
-import {MatButtonModule} from '@angular/material/button';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import {MatInputModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -18,10 +29,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    MatIconModule,
+    MatTabsModule,
+    MatCardModule
   ],
-  providers: [SocketService],
+  providers: [
+    SocketService
+  ],
   bootstrap: [AppComponent],
-  exports: [MatButtonModule]
+  exports: []
 })
 export class AppModule { }

@@ -25,14 +25,17 @@ export class SocketService {
     @Inject(PLATFORM_ID) protected _platformId: Object,
 
   ) {
-    if(this.isBrowser) {
+    if(this._platformId === 'browser') {
       this.connect();
+    } else {
+      console.log(this._platformId);
+      console.log(this.isBrowser);
     }
     const isBrowser = isPlatformBrowser(this._platformId);
   }
 
   connect() {
-    this.socket = new WebSocket('ws://localhost:8000/chat/');
+    this.socket = new WebSocket('ws://localhost:8001/chat/');
     this.dispacher();
 
 
@@ -46,14 +49,15 @@ export class SocketService {
     this.socket.onopen = (e) => {
        console.log('Try connect!!!');
 
-      //  const ping = interval(1000).subscribe((v) => {
-      //    console.log(v);
-      //   //  chatSocket.send(JSON.stringify({
-      //   //   'message': 'hello'
-      //   //   }));
+       const ping = interval(10000).subscribe((v) => {
+            console.log(v);
+            this.socket.send(JSON.stringify({
+            type: 'ping',
+            message: 'this is me'
+            }));
 
-      //  })
-    
+       });
+
     };
   }
 
