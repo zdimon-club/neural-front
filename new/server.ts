@@ -20,6 +20,12 @@ import 'zone.js/dist/zone-node';
 import * as express from 'express';
 import {join} from 'path';
 
+const domino = require('domino');
+
+const window = domino.createWindow('<h1>Hello world</h1>', 'http://example.com');
+const document = window.document;
+
+
 // Express server
 const app = express();
 
