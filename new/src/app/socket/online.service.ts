@@ -13,7 +13,8 @@ import { PLATFORM_ID } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as sessionActions from '../auth/store/session.action';
 import { SessionState } from '../auth/store/session.store';
-import { selectToken } from './../auth/store/session.selector';
+import { selectToken, selectIsAuth } from './../auth/store/session.selector';
+
 
 @Injectable({
   providedIn: "root"
@@ -23,6 +24,7 @@ export class OnlineSocketService {
   isBrowser = false;
   pinger: Subscription;
   token: string;
+  isAuth = false;
 
 
   /// Event observables
@@ -43,6 +45,9 @@ export class OnlineSocketService {
       this.sessionStore.select(selectToken).subscribe( (data: string) => {
         this.token = data;
       } );
+      this.sessionStore.select(selectIsAuth).subscribe( (data: boolean) => {
+        this.isAuth = data;
+      } );
     }
 
   }
@@ -57,38 +62,35 @@ export class OnlineSocketService {
       this.socket.onclose = (e) => {
           console.error('Chat socket closed unexpectedly');
           timer(1000).subscribe(() => {
-            // может и не быть
-            try {
-              this.pinger.unsubscribe();
-            } catch (error) {
-
-            }
-
+            this.clearTimers();
             this.connect();
           });
       };
 
       this.socket.onopen = (e) => {
-        this.login();
+        if (this.token) this.login();
       };
     }
   }
 
 
   setPinger(sid: string){
-         this.pinger = interval(10000).subscribe((v) => {
-              this.socket.send(JSON.stringify({message:
-                {
-                  action: 'ping',
-                  data: {
-                    sid,
-                    token: this.token,
-                    userAgent: window.navigator.userAgent
-                  }
-                }
-              }));
+    // Only if user are authorized!!!
+    if (this.isAuth) {
+      this.pinger = interval(10000).subscribe((v) => {
+          this.socket.send(JSON.stringify({message:
+            {
+              action: 'ping',
+              data: {
+                sid,
+                token: this.token,
+                userAgent: window.navigator.userAgent
+              }
+            }
+          }));
 
-         });
+      });
+    }
   }
 
   login(){
@@ -101,6 +103,21 @@ export class OnlineSocketService {
         }
       }
     }));
+  }
+
+
+  clearTimers() {
+    // может и небыть
+    try {
+      this.pinger.unsubscribe();
+    } catch (error) {
+
+    }
+  }
+
+  disconnect(){
+    this.socket.close();
+    this.clearTimers();
   }
 
   dispacher(): void {

@@ -10,7 +10,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

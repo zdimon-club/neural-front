@@ -7,10 +7,12 @@ import { environment } from '../../environments/environment';
 import { Store } from '@ngrx/store';
 import * as sessionActions from './store/session.action';
 import { SessionState } from './store/session.store';
+
 import { getSessionStateSelector } from './store/session.selector';
 import { User } from '../main/users/store/users.store';
 import { SessionService } from './session.service';
 import { Router } from '@angular/router';
+
 import { SocketService } from '../socket/socket.service';
 import { OnlineSocketService } from './../socket/online.service';
 
@@ -34,43 +36,43 @@ export class LoginService {
     private http: HttpClient,
     public injector: Injector,
     private router: Router,
-    private session_store: Store<SessionState>,
-    private session_service: SessionService,
+    private sessionStore: Store<SessionState>,
+    private sessionService: SessionService,
     private socketService: SocketService,
     private onlineSocketService: OnlineSocketService,
     // private registration_service: RegistrationService,
   ) {
-    this.session_store.select(getSessionStateSelector).subscribe((data: SessionState) => {
+    this.sessionStore.select(getSessionStateSelector).subscribe((data: SessionState) => {
       this.current_user = data.user;
     });
   }
 
+  startSocketListiners(){
+    // connect online consumer
+    this.onlineSocketService.connect();
+    // connect chat consumer
+    this.socketService.connect();
+  }
+
   // using http.post() for getting token
   login(user: { username: string, password: string, socket_id?: string }) {
-    this.session_service.removeToken();
-    user.socket_id = this.session_service.getSid();
-    this.http.post(`${environment.apiUrl}/api-token-auth/`, user)
+    this.sessionService.removeToken();
+    user.socket_id = this.sessionService.getSid();
+    this.http.post(`${environment.apiUrl}/account/login`, user)
       .subscribe((data: any) => {
           if (data.status === 1) {
             this._login_emmiter.next({ status: 1, title: 'Account blocked', message: data.message });
             return;
           }
-          this.session_service.setToken(data.token);
-          this.session_service.setLanguage(data.user.language);
-          this.session_store.dispatch(new sessionActions.LogIn(data));
+          this.sessionService.setToken(data.token);
+          this.sessionService.setLanguage(data.user.language);
+          this.sessionStore.dispatch(new sessionActions.LogIn(data));
+          this.startSocketListiners();
 
-          this.session_store.dispatch(new sessionActions.SetSid({
-            token: data.token,
-            socket_id: user.socket_id,
-          }));
-          // connect online consumer
-          this.onlineSocketService.connect();
-          // connect chat consumer
-          this.socketService.connect();
           this.router.navigate(['index']);
         },
         err => {
-          
+
           this.errors = err.error;
           this.login_error_emmiter.next({message: "Login or password incorrect!"});
         },
@@ -78,10 +80,10 @@ export class LoginService {
   }
 
   public logout() {
-    this.http.get(`${environment.apiUrl}/logout/`).subscribe((data) => {
-      this.session_service.removeToken();
-      /// this.socket_service.reconnect();
-      this.session_store.dispatch(new sessionActions.LogOut());
+    this.http.get(`${environment.apiUrl}/account/logout`).subscribe((data) => {
+      this.sessionService.removeToken();
+      this.onlineSocketService.clearTimers();
+      this.sessionStore.dispatch(new sessionActions.LogOut());
       this.router.navigate(['/login']);
       // this.registration_service.clearRegisterSuggestionPopupTimeout();
       // this.registration_service.handleInitRegisterSuggestionPopup();
@@ -90,13 +92,17 @@ export class LoginService {
   }
 
   public loginGoogle(user) {
-    this.session_service.removeToken();
-    user.socket_id = this.session_service.getSid();
-    this.http.post(`${environment.apiUrl}/authsocial/google/`, user).subscribe((data: any) => {
-      this.session_service.setToken(data.token);
-      this.session_service.setLanguage('en');
-      this.session_store.dispatch(new sessionActions.LogIn(data));
+    this.sessionService.removeToken();
+    user.socket_id = this.sessionService.getSid();
+    this.http.post(`${environment.apiUrl}/authsocial/google`, user).subscribe((data: any) => {
+      this.sessionService.setToken(data.token);
+      this.sessionService.setLanguage('en');
+      this.sessionStore.dispatch(new sessionActions.LogIn(data));
+      this.onlineSocketService.disconnect();
+      this.socketService.disconnect();
       this.router.navigate(['index']);
+      this.startSocketListiners();
+
       // window.location.reload();
     });
   }

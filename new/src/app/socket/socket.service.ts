@@ -7,7 +7,6 @@ import {filter} from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-import {isPlatformBrowser} from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 
 import { Store } from '@ngrx/store';
@@ -55,13 +54,7 @@ export class SocketService {
       this.socket.onclose = (e) => {
           console.error('Chat socket closed unexpectedly');
           timer(1000).subscribe(() => {
-            // может и небыть
-            try {
-              this.pinger.unsubscribe();
-            } catch (error) {
-
-            }
-
+            this.clearTimers();
             this.connect();
           });
       };
@@ -72,6 +65,21 @@ export class SocketService {
       };
     }
   }
+
+  clearTimers() {
+            // может и небыть
+            try {
+              this.pinger.unsubscribe();
+            } catch (error) {
+
+            }
+  }
+
+  disconnect(){
+    this.socket.close();
+    this.clearTimers();
+  }
+
 
   sendMessage(message: any) {
     this.socket.send(JSON.stringify({ message }));
