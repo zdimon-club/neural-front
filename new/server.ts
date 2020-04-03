@@ -20,10 +20,29 @@ import 'zone.js/dist/zone-node';
 import * as express from 'express';
 import {join} from 'path';
 
-const domino = require('domino');
-
-const window = domino.createWindow('<h1>Hello world</h1>', 'http://example.com');
-const document = window.document;
+/// emulate DOM objects
+import * as domino from 'domino';
+import * as fs from 'fs';
+const template = fs.readFileSync(join(process.cwd(), 'dist', 'browser', 'index.html')).toString();
+const win = domino.createWindow(template);
+Object.defineProperty(win, 'matchMedia', {
+  writable: true,
+  
+});
+global['window'] = win;
+global['document'] = win.document;
+global['dataLayer'] = ({
+  push: () => {
+  },
+});
+global['localStorage'] = win.localStorage;
+global['sessionStorage'] = win.sessionStorage;
+global['navigator'] = win.navigator;
+global['matchMedia'] = win.matchMedia;
+global['getScreenId'] =  (error, sourceId, screen_constraints) => {
+  return true;
+}
+//////
 
 
 // Express server
