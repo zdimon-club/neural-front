@@ -13,11 +13,13 @@ export class SessionService {
   constructor(  private http: HttpClient,
     @Inject(PLATFORM_ID) protected _platformId: Object,
     ) {
-    
-    this.storage = sessionStorage;
+
+
     if (this._platformId === 'browser') {
+      this.storage = sessionStorage;
       this.isBrowser = true;
     }
+
   }
 
   getToken(): string {

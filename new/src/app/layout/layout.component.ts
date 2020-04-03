@@ -15,7 +15,7 @@ import { selectIsAuth } from './../auth/store/session.selector';
 })
 export class LayoutComponent implements OnInit {
 
-  private isAuth: Observable<any>;
+  public isAuth: Observable<any>;
 
 
   constructor(
