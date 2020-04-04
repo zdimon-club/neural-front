@@ -4,12 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'index',
+    redirectTo: 'userlist',
     pathMatch: 'full',
   },
   {
     path: 'index',
-    loadChildren: './main/post/post.module#PostModule',
+    // loadChildren: './main/post/post.module#PostModule',
+    loadChildren: './pages/userlist/userlist.module#UserlistModule',
   },
   {
     path: 'typo',
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'priv-chat',
     loadChildren: './pages/priv-chat/priv-chat.module#PrivChatModule',
+  },
+
+  {
+    path: 'userlist',
+    loadChildren: './pages/userlist/userlist.module#UserlistModule',
   },
 
   // {

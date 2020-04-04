@@ -8,9 +8,13 @@
 
 ## Install requirements.
 
-    cd neural-front
+    cd front
     npm install
 
 ## Run dev server.
 
     ng serve
+
+## Run dev server for remote access.
+
+    ng serve -c remote

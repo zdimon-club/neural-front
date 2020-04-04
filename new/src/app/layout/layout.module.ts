@@ -6,9 +6,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 
 import { SharedModule } from './../shared.module';
+import { UserPanelComponent } from './user-panel/user-panel/user-panel.component';
 
 @NgModule({
-  declarations: [LayoutComponent, FooterComponent, HeaderComponent],
+  declarations: [LayoutComponent, FooterComponent, HeaderComponent, UserPanelComponent],
   imports: [
     CommonModule,
     SharedModule,

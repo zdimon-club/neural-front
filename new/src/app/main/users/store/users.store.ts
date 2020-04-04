@@ -1,3 +1,9 @@
+import { EntityState } from '@ngrx/entity';
+
+
+export interface UserState extends EntityState<User> {
+}
+
 export class User {
 
   constructor(public id: number  = 0,
@@ -23,14 +29,8 @@ export class User {
               public last_feed: string = null) {}
 }
 
-export interface UserState {
-  ids: number[];
-  results: { [id: number]: User };
-}
+
+
 
 export const defaultState = {
-  ids: [],
-  results: {},
 };
-
-

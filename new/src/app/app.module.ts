@@ -1,3 +1,4 @@
+
 /* author Dimitry Zharikov zdimon77@gmail.com */
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,6 +36,7 @@ import { LayoutModule } from './layout/layout.module';
 import { SocketService } from './socket/socket.service';
 import { OnlineSocketService } from './socket/online.service';
 import { LoginService } from './auth/login.service';
+import { UserlistService } from './main/userlist/userlist.service';
 
 // init service
 import { APP_INITIALIZER } from '@angular/core';
@@ -91,6 +93,7 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig,
     },
+    UserlistService,
   ],
   bootstrap: [AppComponent],
   exports: [AppRoutingModule]

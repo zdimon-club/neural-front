@@ -1,0 +1,12 @@
+<!-- {{ user | json}} -->
+<div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+    <a [routerLink]="'myprofile'" >
+        <img class="user-img" [src]="user.main_photo" />
+    </a>
+    <button 
+    mat-button 
+    color="accent">
+    {{ user.username }}
+    </button>
+
+</div>

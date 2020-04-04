@@ -1,3 +1,4 @@
+
 // import { UserEffects } from './../../main/users/store/users.effect';
 // import { FeedEffects } from './../../main/feed/store/feed.effect';
 
@@ -9,8 +10,11 @@
 // import {EventsEffects} from '../../main/notifications/events/store/events.effect';
 
 
+import { UserlistEffects } from './../../main/userlist/store/userlist.effect';
+
 export const effects: any[] = [
   // RouterEffects,
+  UserlistEffects
   // PhotoEffects,
   // OnlineEffects,
   // RoomEffects,

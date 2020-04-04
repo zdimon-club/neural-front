@@ -2,8 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { Injector } from '@angular/core';
-import { environment } from '../../environments/environment';
-
+import { apiUrls } from './../../environments/api.urls';
 import { Store } from '@ngrx/store';
 import * as sessionActions from './store/session.action';
 import { SessionState } from './store/session.store';
@@ -58,7 +57,7 @@ export class LoginService {
   login(user: { username: string, password: string, socket_id?: string }) {
     this.sessionService.removeToken();
     user.socket_id = this.sessionService.getSid();
-    this.http.post(`${environment.apiUrl}/account/login`, user)
+    this.http.post(apiUrls.login_post_form, user)
       .subscribe((data: any) => {
           if (data.status === 1) {
             this._login_emmiter.next({ status: 1, title: 'Account blocked', message: data.message });
@@ -80,7 +79,7 @@ export class LoginService {
   }
 
   public logout() {
-    this.http.get(`${environment.apiUrl}/account/logout`).subscribe((data) => {
+    this.http.get(apiUrls.logout_get).subscribe((data) => {
       this.sessionService.removeToken();
       this.onlineSocketService.clearTimers();
       this.sessionStore.dispatch(new sessionActions.LogOut());
@@ -94,7 +93,7 @@ export class LoginService {
   public loginGoogle(user) {
     this.sessionService.removeToken();
     user.socket_id = this.sessionService.getSid();
-    this.http.post(`${environment.apiUrl}/authsocial/google`, user).subscribe((data: any) => {
+    this.http.post(apiUrls.login_google, user).subscribe((data: any) => {
       this.sessionService.setToken(data.token);
       this.sessionService.setLanguage('en');
       this.sessionStore.dispatch(new sessionActions.LogIn(data));

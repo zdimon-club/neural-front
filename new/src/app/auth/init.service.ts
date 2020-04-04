@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-
+import { apiUrls } from './../../environments/api.urls';
 import { getSessionStateSelector } from './store/session.selector';
 import { Store } from '@ngrx/store';
 import { SessionService } from './session.service';
@@ -32,7 +31,7 @@ export class InitService {
   }
 
   public init() {
-    this.http.get(`${environment.apiUrl}/account/init`).subscribe(
+    this.http.get(apiUrls.init_get).subscribe(
       (data: any) => {
         if (data.status === 0) {
           /// set session user

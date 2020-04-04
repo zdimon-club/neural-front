@@ -7,36 +7,28 @@ export const getUserStateSelector = createFeatureSelector<UserState>('users');
 
 export const selectUsersIds = createSelector(getUserStateSelector, (state: UserState) => state.ids);
 
-export const selectUsersIDsList = createSelector(
+export const selectUsersObjsList = createSelector(
   getUserStateSelector,
-  (state: UserState) => state.results,
+  (state: UserState) => state.entities,
 );
 
-export const selectUserList = createSelector(selectUsersIds, selectUsersIDsList, (ids, users) => {
-  return ids.map((id) => users[id]);
-});
+// export const selectUserList = createSelector(selectUsersIds, selectUsersIDsList, (ids, users) => {
+//   return ids.map((id) => users[id]);
+// });
 
-export const selectGalleryUserList = (users: any) =>
-  createSelector(selectUsersIDsList, (storeItems) => {
-    const out = [];
-    for (const key of Object.keys(users)) {
-      out.push(storeItems[key]);
-    }
-    return out;
-  });
 
-export const getUserById = (id) =>
-  createSelector(selectUsersIDsList, (allItems) => {
-    if (allItems[id]) {
-      return allItems[id];
-    } else {
-      return false;
-    }
-  });
+// export const getUserById = (id) =>
+//   createSelector(selectUsersIDsList, (allItems) => {
+//     if (allItems[id]) {
+//       return allItems[id];
+//     } else {
+//       return false;
+//     }
+//   });
 
-export const getUsers = createSelector(selectUsersIDsList, (allItems) => {
-  return Object.values(allItems)
-});
+// export const getUsers = createSelector(selectUsersIDsList, (allItems) => {
+//   return Object.values(allItems)
+// });
 
 /*
 export const selectUserOnlineExludeContactList = createSelector(

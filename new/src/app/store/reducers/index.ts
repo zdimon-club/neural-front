@@ -1,4 +1,5 @@
 
+
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Params } from '@angular/router';
 import { createFeatureSelector, ActionReducerMap } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
@@ -8,6 +9,9 @@ import { UserState } from '../../main/users/store/users.store';
 
 import { SessionReduser } from '../../auth/store/session.reducer';
 import { SessionState } from '../../auth/store/session.store';
+
+import { UserlistState } from './../../main/userlist/store/userlist.store';
+import { UserlistReducer } from './../../main/userlist/store/userlist.reducer';
 
 // import { RoomReducer } from './../../main/chat/store/chat.reducer';
 // import { RoomState } from './../../main/chat/store/chat.store';
@@ -53,6 +57,7 @@ export interface State {
   routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
   users: UserState;
   session: SessionState;
+  userlist: UserlistState;
   // modal: ModalState;
   // chat: RoomState;
   // events: EventsState;
@@ -66,6 +71,7 @@ export const reducers: ActionReducerMap<State> = {
   routerReducer: fromRouter.routerReducer,
   users: UserReducer,
   session: SessionReduser,
+  userlist: UserlistReducer
   // modal: ModalReducer,
   // chat: RoomReducer,
   // events: EventsReducer,

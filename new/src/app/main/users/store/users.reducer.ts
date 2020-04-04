@@ -1,43 +1,23 @@
-import { UserActionsUnion, UserActionTypes } from './users.action';
+import { ActionsUnion, ActionTypes } from './../../../auth/store/session.action';
+import { UserActionsUnion, UserActionTypes, UpdateUsers } from './users.action';
 import { UserState, User, defaultState } from './users.store';
+import * as usersActions from './users.action';
 
+import {EntityAdapter, createEntityAdapter} from '@ngrx/entity';
 
+export const adapter: EntityAdapter<User> = createEntityAdapter<User>({});
 
+export const initialState: UserState = adapter.getInitialState();
 
-export function UserReducer(state: UserState = defaultState, action: UserActionsUnion) {
+export function UserReducer(state = initialState, action: usersActions.UserActionsUnion) {
+
   switch (action.type) {
-    case UserActionTypes.LoadSuccess:
-      return {
-        ...state,
-        ids: action.payload.ids,
-        results: action.payload.results,
-      };
 
-    case UserActionTypes.UpdateUsers:
-        const oldids = [...state.ids];
-        const arrUsers =  Object.keys(action.payload)
-          .reduce((acc, val) => {
-            acc.push(action.payload[val].id);
-            return acc;
-          }, []);
-        arrUsers.forEach((value) => {
-          if (oldids.indexOf(value) === -1) {
-            oldids.push(value);
-          }
-        });
+    case usersActions.UserActionTypes.UpdateUsers:
+      return adapter.addMany(action.payload, {...state});
 
-        return {
-          ...state,
-          ids: oldids,
-          results: Object.assign({}, state.results, action.payload)
-        };
-    /*
-    case UserActionTypes.Remove:
-      return {
-        ...state,
-        results: [...state.results.filter(item => item.id !== action.payload.id)]
-      };
-    */
+    // case usersActions.UserActionTypes.UpdateUsersDone:
+    //   return adapter.addMany(action.payload, {...state});
 
     default:
       return state;
