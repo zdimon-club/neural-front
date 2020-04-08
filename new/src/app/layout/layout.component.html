@@ -1,16 +1,22 @@
 
 <div fxLayoutGap="10px" fxLayout="column" class="container">
 
-  <app-header
+  <div fxFlex="10">
+    <app-header
     [isAuth] = "isAuth | async"
     [user] = "user | async"
-  ></app-header>
-
-	<div class="content" fxFlexFill fxFlex="98%">
-        <router-outlet></router-outlet>
+    ></app-header>
   </div>
 
-  <app-footer></app-footer>
+
+	<div class="content" fxFlex="80" fxFlexFill>
+    <router-outlet></router-outlet>
+  </div>
+
+  <div fxFlex="10">
+    <app-footer></app-footer>
+  </div>
+  
 </div>
 
 

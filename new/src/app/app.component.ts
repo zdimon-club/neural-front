@@ -1,6 +1,22 @@
+import { Observable } from 'rxjs';
+
+/* author Dmitry zdimon77@gmail.com skype zdimon77 */
 
 import { Component } from '@angular/core';
 import { SocketService } from './socket/socket.service';
+import { TranslateService } from '@ngx-translate/core';
+
+
+import { SpinnerService } from './core/services/spinner.service';
+
+import {
+  Event,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router
+} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,45 +25,45 @@ import { SocketService } from './socket/socket.service';
 })
 export class AppComponent {
 
-  message = 'ssssssss';
-  messages = [];
+  loading = false;
+  spinner: Observable<boolean>;
 
- constructor(private socketService: SocketService) {
+ constructor(
+  private _translateService: TranslateService,
+  private _spinnerService: SpinnerService,
+  private _router: Router
+   ) {
+    // Set the default language
+    this._translateService.setDefaultLang('en');
+    // Use a language
+    this._translateService.use('en');
 
-  this.socketService.chat$.subscribe((v) => {
-    // console.log(v);
-    this.messages.push(v);
-  });
+    this.spinner = this._spinnerService.visibility;
 
-  this.socketService.notifications$.subscribe((v) => {
-    // console.log(v);
-  });
+    this._router.events.subscribe((event: Event) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
+
+        case event instanceof NavigationEnd: {
+          this.loading = false;
+          break;
+        }
+
+        case event instanceof NavigationError: {
+          this.loading = false;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
 
  }
 
-   
-
-   sendChat() {
-     this.socketService.sendMessage({
-       action: 'broadcast',
-       data: this.message
-     });
-   }
-
-   sendBroad() {
-    this.socketService.sendMessage({
-      action: 'broadcast',
-      data: this.message
-    });
-  }
-
-
-   sendNotify() {
-    this.socketService.sendMessage({
-      action: 'notify',
-      data: 'Warrning!!!!'
-    });
-  }
 
 
 }

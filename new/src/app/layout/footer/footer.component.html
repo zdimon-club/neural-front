@@ -5,7 +5,16 @@
     </div>
 
     <div fxFlex="50%" fxFlexFill fxLayoutAlign="end center">
-      @Copyright zdimon77@gmail.com
+    
+      <div class="languages">
+        <button *ngIf="selectedLanguage !== 'en'" class="eu" (click)="setLanguage('en')">
+          <img src="/assets/icons/svg-icons/eu.svg" class="social-icon" alt=""/>
+        </button>
+        <button *ngIf="selectedLanguage !== 'ru'" class="ru" (click)="setLanguage('ru')">
+          <img src="/assets/icons/svg-icons/ru.svg" class="social-icon" alt=""/>
+        </button>
+      </div>
+
     </div>
 
   </div>

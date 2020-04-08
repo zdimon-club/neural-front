@@ -1,0 +1,9 @@
+<div class="user-item">
+
+  <span class="img user-item" [class.count]="2">
+    <span class="online" *ngIf="user.is_online"></span>
+    <span class="cam" *ngIf="user.is_camera"></span>
+    <img src="{{ user.main_photo }}" alt="" />
+  </span>
+  
+</div>

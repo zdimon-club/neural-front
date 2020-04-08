@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { MyprofileComponent } from './myprofile.component';
 
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../../shared.module'
+import { SharedModule } from '../../shared.module';
 import { InfoComponent } from './info/info.component';
 import { EditComponent } from './edit/edit.component';
 import { PostComponent } from './post/post.component';
 
-// определение дочерних маршрутов
+// child routes
+
 const itemRoutes: Routes = [
   { path: 'info', component: InfoComponent},
   { path: 'edit', component: EditComponent},

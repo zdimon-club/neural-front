@@ -1,0 +1,21 @@
+<div fxLayout="column wrap" fxLayoutGap="10px" fxLayoutAlign="center start" fxLayoutGap="10px">
+    <div *ngFor="let user of users" class="user-list-item" fxLayout="row" fxLayoutGap="10px">
+      <div style="width: 60px; height: 60px;">
+        <app-core-widget-user-photo
+        [user]="user"
+      ></app-core-widget-user-photo>
+      </div>
+
+
+      <div class="user-info" fxLayout="column" fxLayoutGap="10px">
+        <div class="username">
+          {{ user.username }}
+        </div>
+        <div>
+          {{ user.age }}
+        </div>
+        
+      </div>
+
+    </div>
+</div>

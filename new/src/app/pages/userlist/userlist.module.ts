@@ -6,7 +6,11 @@ import { FilterComponent } from './filter/filter/filter.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { SharedModule } from '../../shared.module';
+
+
+import { OnlineSideComponent } from './../../core/online-side/online-side/online-side.component';
 // children routs
+
 
 const itemRoutes: Routes = [
   { path: '', component: UserlistComponent},
@@ -21,7 +25,12 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [UserlistComponent, FilterComponent, ListComponent],
+  declarations: [
+    UserlistComponent,
+    FilterComponent,
+    ListComponent,
+    OnlineSideComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

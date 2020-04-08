@@ -1,3 +1,4 @@
+import { filter } from 'rxjs/operators';
 import { UserState } from './users.store';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 // import { getContactsIds } from '../../chat/store/chat.selector';
@@ -11,6 +12,14 @@ export const selectUsersObjsList = createSelector(
   getUserStateSelector,
   (state: UserState) => state.entities,
 );
+
+export const selectUsersOnlineObjsList = createSelector(
+  selectUsersIds,
+  selectUsersObjsList,
+  (ids: any, users: any) => {
+      return ids.map((id) => users[id]).filter((it) => it.is_online);
+    }
+  );
 
 // export const selectUserList = createSelector(selectUsersIds, selectUsersIDsList, (ids, users) => {
 //   return ids.map((id) => users[id]);

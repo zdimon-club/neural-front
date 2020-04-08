@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutGap="10px">
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link
+        [routerLink]="'login'"
+        routerLinkActive #rlal="routerLinkActive"
+        [active]="rlal.isActive"> Login </a>
+        <a mat-tab-link
+        [routerLink]="'man'"
+        routerLinkActive #rlam="routerLinkActive"
+        [active]="rlam.isActive"> Man registration </a>
+        <a mat-tab-link
+        [routerLink]="'woman'"
+        routerLinkActive #rlaw="routerLinkActive"
+        [active]="rlaw.isActive"> Woman registration </a>        
+        <a mat-tab-link
+        [routerLink]="'agency'"
+        routerLinkActive #rlaa="routerLinkActive"
+        [active]="rlaa.isActive"> Agency </a>
+    </nav>
+
+
+
+    <router-outlet></router-outlet>
+</div>
+
+
+

@@ -1,2 +1,11 @@
 
-<app-userlist-list [users]="users | async"></app-userlist-list>
+
+<div fxLayoutAlign="start start" fxLayout="row">
+    <div fxFlex="10" class="online-side">
+        <core-online-side [users]="users_online | async"></core-online-side>
+    </div>
+    <div fxFlex="90">
+        <app-pages-userlist-list [users]="users | async"></app-pages-userlist-list>
+    </div>
+    
+</div>

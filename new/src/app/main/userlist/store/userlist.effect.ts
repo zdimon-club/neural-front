@@ -30,11 +30,11 @@ export class UserlistEffects {
         .getUserlist(payload)
         .pipe(
           map((rez: any) => { 
-            const userIds = rez.reduce((accum, user) => {
+            const userIds = rez.results.reduce((accum, user) => {
               accum.push(user.id);
               return accum;
             }, []);
-            const userListObjsArray = rez.reduce((accum, user) => {
+            const userListObjsArray = rez.results.reduce((accum, user) => {
               accum.push(user);
               return accum;
             }, []);

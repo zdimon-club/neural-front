@@ -4,6 +4,12 @@ import { User } from '../../main/users/store/users.store';
 
 export const getSessionStateSelector = createFeatureSelector<SessionState>('session');
 
+
+export const selectSid = createSelector(
+  getSessionStateSelector,
+  (state: SessionState) => state.sid
+);
+
 export const selectIsAuth = createSelector(
     getSessionStateSelector,
     (state: SessionState) => state.is_auth

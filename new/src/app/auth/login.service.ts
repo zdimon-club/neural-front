@@ -1,3 +1,4 @@
+
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
@@ -7,7 +8,7 @@ import { Store } from '@ngrx/store';
 import * as sessionActions from './store/session.action';
 import { SessionState } from './store/session.store';
 
-import { getSessionStateSelector } from './store/session.selector';
+import { getSessionStateSelector, selectSid } from './store/session.selector';
 import { User } from '../main/users/store/users.store';
 import { SessionService } from './session.service';
 import { Router } from '@angular/router';
@@ -24,7 +25,7 @@ export class LoginService {
   public login_error_emmiter = new ReplaySubject();
   login$ = this._login_emmiter.asObservable();
   logout$ = this._logout_emmiter.asObservable();
-
+  sid: string;
   // current user
   public current_user: User;
 
@@ -43,6 +44,9 @@ export class LoginService {
   ) {
     this.sessionStore.select(getSessionStateSelector).subscribe((data: SessionState) => {
       this.current_user = data.user;
+    });
+    this.sessionStore.select(selectSid).subscribe( (data) => {
+      this.sid = data;
     });
   }
 
@@ -79,7 +83,11 @@ export class LoginService {
   }
 
   public logout() {
-    this.http.get(apiUrls.logout_get).subscribe((data) => {
+    const dt = {
+      sid: this.sid
+    };
+    console.log(dt);
+    this.http.post(apiUrls.logout_post,dt).subscribe((data) => {
       this.sessionService.removeToken();
       this.onlineSocketService.clearTimers();
       this.sessionStore.dispatch(new sessionActions.LogOut());

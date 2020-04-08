@@ -1,0 +1,33 @@
+
+.margin-bottom-1 {
+  margin-bottom: 1rem;
+}
+.title-block {
+  max-width: 20%;
+  border-bottom: 1px solid black;
+}
+.form-card {
+  border-radius: 4px;
+  padding: 10px;
+  
+}
+
+.form-card:hover {
+  box-shadow:         0px 0px 16px 0px rgba(109, 109, 109, 0.73);
+}
+
+.custom-select {
+  border-right: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+.form-card div.only-show-on-hover {
+  visibility: hidden;
+}
+.form-card:hover div.only-show-on-hover  {
+  visibility: visible;
+}
+.custom-color {
+  color: #6fb8f0;
+}

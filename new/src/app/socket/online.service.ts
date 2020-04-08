@@ -1,3 +1,4 @@
+
 import { Injectable, Inject } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
 
@@ -15,6 +16,8 @@ import * as sessionActions from '../auth/store/session.action';
 import { SessionState } from '../auth/store/session.store';
 import { selectToken, selectIsAuth } from './../auth/store/session.selector';
 
+import { UserState } from './../main/users/store/users.store';
+import * as userActions from './../main/users/store/users.action';
 
 @Injectable({
   providedIn: "root"
@@ -35,7 +38,7 @@ export class OnlineSocketService {
   constructor(
     @Inject(PLATFORM_ID) protected _platformId: Object,
     private sessionStore: Store<SessionState>,
-
+    private userStore: Store<UserState>
   ) {
 
 
@@ -76,21 +79,21 @@ export class OnlineSocketService {
 
   setPinger(sid: string){
     // Only if user are authorized!!!
-    if (this.isAuth) {
-      this.pinger = interval(10000).subscribe((v) => {
-          this.socket.send(JSON.stringify({message:
-            {
-              action: 'ping',
-              data: {
-                sid,
-                token: this.token,
-                userAgent: window.navigator.userAgent
-              }
-            }
-          }));
+    // if (this.isAuth) {
+    //   this.pinger = interval(10000).subscribe((v) => {
+    //       this.socket.send(JSON.stringify({message:
+    //         {
+    //           action: 'ping',
+    //           data: {
+    //             sid,
+    //             token: this.token,
+    //             userAgent: window.navigator.userAgent
+    //           }
+    //         }
+    //       }));
 
-      });
-    }
+    //   });
+    // }
   }
 
   login(){
@@ -123,11 +126,20 @@ export class OnlineSocketService {
   dispacher(): void {
     this.socket.onmessage = event => {
        const message = JSON.parse(event.data);
+       console.log(message);
 
-       if (message.message.message.action === 'set:sid') {
-         this.setPinger(message.message.message.sid);
-         this.sessionStore.dispatch(new sessionActions.SetSid(message.message.message.sid));
-       }
+      if (message.type === 'online:online.on' || message.type === 'online:online.off') {
+        this.userStore.dispatch(new userActions.UpdateUser(message.payload));
+      }
+
+      if (message.type === 'set:sid') {
+        this.sessionStore.dispatch(new sessionActions.SetSid(message.payload.sid));
+      }
+      
+      //  if (message.message.message.action === 'set:sid') {
+      //    this.setPinger(message.message.message.sid);
+      //    this.sessionStore.dispatch(new sessionActions.SetSid(message.message.message.sid));
+      //  }
 
     };
   }

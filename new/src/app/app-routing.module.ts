@@ -10,15 +10,17 @@ const routes: Routes = [
   {
     path: 'index',
     // loadChildren: './main/post/post.module#PostModule',
-    loadChildren: './pages/userlist/userlist.module#UserlistModule',
+    // loadChildren: './pages/userlist/userlist.module#UserlistModule',
+    loadChildren: () => import('./pages/userlist/userlist.module').then(mod => mod.UserlistModule)
   },
   {
     path: 'typo',
     loadChildren: './main/typo/typo.module#TypoModule',
   },
+  
   {
-    path: 'login',
-    loadChildren: './pages/login/login.module#LoginModule',
+    path: 'signin',
+    loadChildren: './pages/signin/signin.module#SigninModule',
   },
 
   {
@@ -34,6 +36,11 @@ const routes: Routes = [
   {
     path: 'userlist',
     loadChildren: './pages/userlist/userlist.module#UserlistModule',
+  },
+
+  {
+    path: 'common-chat',
+    loadChildren: './pages/common-chat/common-chat.module#CommonChatModule',
   },
 
   // {

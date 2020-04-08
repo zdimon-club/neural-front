@@ -106,6 +106,7 @@ export class SocketService {
        if (message.message.message.action === 'broadcast') {
            this.chat$.next(message.message);
        }
+       
 
        if (message.message.message.action === 'notify') {
         this.notifications$.next(message.message);

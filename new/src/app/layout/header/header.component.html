@@ -27,37 +27,40 @@
         <button 
         *ngIf="!isAuth"  
         color="primary" 
-        [routerLink]="'login'" 
+        [routerLink]="'signin'" 
         mat-raised-button>
           Login
         </button>
 
-        <button *ngIf="!isAuth" 
-        color="accent"  
-        mat-icon-button 
-        [matMenuTriggerFor]="as_menu" 
-        >
-          as <mat-icon>more_vert</mat-icon>
-        </button>
+        <ng-container *ngIf="!isAuth">
+          <button
+          color="accent"  
+          mat-icon-button 
+          [matMenuTriggerFor]="as_menu" 
+          >
+            as <mat-icon>more_vert</mat-icon>
+          </button>
+  
+            <mat-menu #as_menu="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="men">Men</button>
+              <button mat-menu-item [matMenuTriggerFor]="women">Women</button>
+            </mat-menu>
+            <mat-menu #men="matMenu">
+              <button mat-menu-item *ngFor="let man of allUsers.men"
+                      (click)="loginAs(man.value)">{{ man.name }}</button>
+            </mat-menu>
+            <mat-menu #women="matMenu">
+              <button mat-menu-item *ngFor="let woman of allUsers.women" (click)="loginAs(woman.value)">{{ woman.name }}
+              </button>
+            </mat-menu>
+        </ng-container>
+        
 
-          <mat-menu #as_menu="matMenu">
-            <button mat-menu-item [matMenuTriggerFor]="men">Men</button>
-            <button mat-menu-item [matMenuTriggerFor]="women">Women</button>
-          </mat-menu>
-          <mat-menu #men="matMenu">
-            <button mat-menu-item *ngFor="let man of allUsers.men"
-                    (click)="loginAs(man.value)">{{ man.name }}</button>
-          </mat-menu>
-          <mat-menu #women="matMenu">
-            <button mat-menu-item *ngFor="let woman of allUsers.women" (click)="loginAs(woman.value)">{{ woman.name }}
-            </button>
-          </mat-menu>
-
-
-        <app-user-panel 
+        <app-layout-user-panel 
+        (logoutEmitter)="doLogout(evt)"
         *ngIf="isAuth" 
         [user]="user">
-        </app-user-panel>
+        </app-layout-user-panel>
         
 
         <button 
@@ -70,31 +73,5 @@
             <img src="/assets/google.svg" />
           </mat-icon>
         </button>
-        <!--
-        -->
-
-          <button *ngIf="isAuth" 
-          color="accent"  
-          mat-icon-button 
-          [matMenuTriggerFor]="menu" 
-          >
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item [routerLink]="'myprofile'">
-              <mat-icon>dialpad</mat-icon>
-              <span>Profile</span>
-            </button>
-            <!-- 
-            <button mat-menu-item disabled>
-              <mat-icon>voicemail</mat-icon>
-              <span>Check voice mail</span>
-            </button>
-            -->
-            <button mat-menu-item (click)="doLogout()">
-              <mat-icon>notifications_off</mat-icon>
-              <span>Logout</span>
-            </button>
-          </mat-menu>
     </div>
 </div>

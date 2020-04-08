@@ -1,0 +1,352 @@
+<form  [formGroup]="personalFormInfo"
+       class="body">
+  <div *ngIf="personalArr.length" class="border-bottom mb-2" fxLayout="row" fxLayoutAlign="start center">
+    <h3>Personal</h3>
+  </div>
+
+  <div class="margin-bottom-1" fxLayout="row wrap" fxLayoutGap.lt-lg="25px" fxLayoutGap.lg="20px" fxLayoutGap.gt-xs="0" fxLayoutAlign="start center">
+
+    <div  *ngFor="let personal of p.controls; let i = index" fxFlex.gt-xs="100" fxFlex.lt-lg="46" fxFlex.sm="100" fxFlex.lg="23">
+      <div [formGroup]="personal"  class="form-group form-card">
+
+        <div  *ngIf="personalArr[i].type === 'text'">
+          <div class="mr-1"><img [src]="personalArr[i].icon" alt="icon"> <span class="ml-2 " style="text-overflow: clip">{{personalArr[i].title}}</span></div>
+          <mat-form-field class="example-form-field col-12">
+            <input matInput type="text" [formControlName]="personalArr[i].alias" [(ngModel)]="valuePers">
+            <button mat-button *ngIf="valuePers"  matSuffix mat-icon-button aria-label="Clear" (click)="valuePers = ''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button type="button" class="ml-2 custom-color"  mat-button (click)="sendFormValue(personal)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="personalArr[i].type === 'date'" >
+          <div><img [src]="personalArr[i].icon" alt="icon"> <span class="ml-2 ">{{personalArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <input matInput [formControlName]="personalArr[i].alias"  [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(personal)">Save</button>
+          </div>
+
+        </div>
+        <div  *ngIf="personalArr[i].type === 'one'" >
+          <div><img [src]="personalArr[i].icon" alt="icon">
+            <span class="ml-2 " style="text-overflow: clip">{{personalArr[i].title}}{{':'}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-label></mat-label>
+            <mat-select [formControlName]="personalArr[i].alias">
+              <mat-option *ngFor="let objOpt of personalArr[i].values"
+                          [value]="objOpt.value">{{objOpt.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(personal)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="personalArr[i].type === 'many'">
+          <div><img [src]="personalArr[i].icon" alt="icon"> <span class="ml-2 ">{{personalArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-select [formControlName]="personalArr[i].alias" multiple>
+              <mat-option *ngFor="let item of personalArr[i].values" [value]="item.value">{{item.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(personal)">Save</button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div *ngIf="bodyArr.length" class="border-bottom mb-2" fxLayout="row" fxLayoutAlign="start center">
+    <h3 [textContent]="'Body'"></h3>
+  </div>
+
+  <div  class="margin-bottom-1" fxLayout="row wrap" fxLayoutGap.lt-lg="25px" fxLayoutGap.lg="20px" fxLayoutGap.gt-xs="0" fxLayoutAlign="start center">
+    <div *ngFor="let body of b.controls; let i = index"  fxFlex.gt-xs="100" fxFlex.lt-lg="46" fxFlex.sm="100" fxFlex.lg="23">
+      <div [formGroup]="body" class="form-group form-card" >
+
+        <div  *ngIf="bodyArr[i].type === 'text'">
+          <div class="mr-1"><img [src]="bodyArr[i].icon" alt="icon"> <span class="ml-2 " style="text-overflow: clip">{{bodyArr[i].title}}</span></div>
+          <mat-form-field class="example-form-field col-12">
+            <input matInput type="text" [formControlName]="bodyArr[i].alias" [(ngModel)]="valueBody">
+            <button mat-button *ngIf="valueBody"  matSuffix mat-icon-button aria-label="Clear" (click)="valueBody = ''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button type="button" class="ml-2 custom-color"  mat-button (click)="sendFormValue(body)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="bodyArr[i].type === 'date'" >
+          <div><img [src]="bodyArr[i].icon" alt="icon"> <span class="ml-2 ">{{bodyArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <input matInput [formControlName]="bodyArr[i].alias"  [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(body)">Save</button>
+          </div>
+
+        </div>
+
+        <div  *ngIf="bodyArr[i].type === 'one'" >
+          <div><img [src]="bodyArr[i].icon" alt="icon">
+            <span class="ml-2 " style="text-overflow: clip">{{bodyArr[i].title}}{{':'}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-label></mat-label>
+            <mat-select [formControlName]="bodyArr[i].alias">
+              <mat-option *ngFor="let objOpt of bodyArr[i].values"
+                          [value]="objOpt.value">{{objOpt.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(body)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="bodyArr[i].type === 'many'">
+          <div><img [src]="bodyArr[i].icon" alt="icon"> <span class="ml-2 ">{{bodyArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-select [formControlName]="bodyArr[i].alias" multiple>
+              <mat-option *ngFor="let item of bodyArr[i].values" [value]="item.value">{{item.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(body)">Save</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="interestArr.length" class="border-bottom mb-2"  fxLayout="row" fxLayoutAlign="start center">
+    <h3 [textContent]="'Interest'"></h3>
+  </div>
+
+  <div class="margin-bottom-1" fxLayoutGap.lt-lg="25px" fxLayoutGap.lg="20px" fxLayoutGap.gt-xs="0" fxLayoutAlign="start center">
+    <div *ngFor="let hobby of h.controls; let i = index"  fxFlex.gt-xs="100" fxFlex.lt-lg="46" fxFlex.sm="100" fxFlex.lg="23">
+      <div [formGroup]="hobby" class="form-group form-card">
+
+        <div  *ngIf="hobbyArr[i].type === 'text'">
+          <div class="mr-1"><img [src]="hobbyArr[i].icon" alt="icon"> <span class="ml-2 " style="text-overflow: clip">{{hobbyArr[i].title}}</span></div>
+          <mat-form-field class="example-form-field col-12" >
+            <input matInput type="text" [formControlName]="hobbyArr[i].alias" [(ngModel)]="valueHobby">
+            <button mat-button *ngIf="valueHobby"  matSuffix mat-icon-button aria-label="Clear" (click)="valueHobby = ''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button type="button" class="ml-2 custom-color"  mat-button (click)="sendFormValue(hobby)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="hobbyArr[i].type === 'date'" >
+          <div><img [src]="hobbyArr[i].icon" alt="icon"> <span class="ml-2 ">{{hobbyArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <input matInput [formControlName]="hobbyArr[i].alias"  [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(hobby)">Save</button>
+          </div>
+
+        </div>
+
+        <div  *ngIf="hobbyArr[i].type === 'one'" >
+          <div><img [src]="hobbyArr[i].icon" alt="icon">
+            <span class="ml-2 " style="text-overflow: clip">{{hobbyArr[i].title}}{{':'}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-label></mat-label>
+            <mat-select [formControlName]="hobbyArr[i].alias">
+              <mat-option *ngFor="let objOpt of hobbyArr[i].values"
+                          [value]="objOpt.value">{{objOpt.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(hobby)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="hobbyArr[i].type === 'many'">
+          <div><img [src]="hobbyArr[i].icon" alt="icon"> <span class="ml-2 ">{{hobbyArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-select [formControlName]="hobbyArr[i].alias" multiple>
+              <mat-option *ngFor="let item of hobbyArr[i].values" [value]="item.value">{{item.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(hobby)">Save</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="margin-bottom-1" fxLayout="row wrap" fxLayoutGap.lg="20px" fxLayoutGap.gt-xs="0" fxLayoutAlign="start center">
+    <div *ngFor="let interest of i.controls; let i = index"  fxFlex.gt-xs="100" fxFlex.lt-lg="46" fxFlex.sm="100" fxFlex.lg="23">
+      <div [formGroup]="interest" class="form-group form-card">
+
+        <div  *ngIf="interestArr[i].type === 'text'">
+          <div class="mr-1"><img [src]="interestArr[i].icon" alt="icon"> <span class="ml-2 " >{{interestArr[i].title}}</span></div>
+          <mat-form-field class="example-form-field col-12" >
+            <input matInput type="text" [formControlName]="interestArr[i].alias" [(ngModel)]="valueInt">
+            <button mat-button *ngIf="valueInt"  matSuffix mat-icon-button aria-label="Clear" (click)="valueInt = ''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button type="button" class="ml-2 custom-color"  mat-button (click)="sendFormValue(interest)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="interestArr[i].type === 'date'" >
+          <div><img [src]="interestArr[i].icon" alt="icon"> <span class="ml-2 ">{{interestArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <input matInput [formControlName]="interestArr[i].alias"  [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(interest)">Save</button>
+          </div>
+
+        </div>
+
+        <div  *ngIf="interestArr[i].type === 'one'" >
+          <div><img [src]="interestArr[i].icon" alt="icon">
+            <span class="ml-2 " style="text-overflow: clip">{{interestArr[i].title}}{{':'}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-label></mat-label>
+            <mat-select [formControlName]="interestArr[i].alias">
+              <mat-option *ngFor="let objOpt of interestArr[i].values"
+                          [value]="objOpt.value">{{objOpt.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(interest)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="interestArr[i].type === 'many'">
+          <div><img [src]="interestArr[i].icon" alt="icon"> <span class="ml-2 ">{{interestArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-select [formControlName]="interestArr[i].alias" multiple>
+              <mat-option *ngFor="let item of interestArr[i].values" [value]="item.value">{{item.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(interest)">Save</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="contactArr.length" class="border-bottom mb-2"  fxLayout="row" fxLayoutAlign="start center">
+    <h3 [textContent]="'Contact'"></h3>
+  </div>
+
+  <div class="margin-bottom-1" fxLayout="row wrap" fxLayoutGap.lg="20px" fxLayoutGap.gt-xs="0" fxLayoutAlign="start center">
+    <div *ngFor="let contact of c.controls; let i = index"  fxFlex.gt-xs="100" fxFlex.lt-lg="46" fxFlex.sm="100" fxFlex.lg="23">
+      <div [formGroup]="contact" class="form-group form-card">
+
+        <div  *ngIf="contactArr[i].type === 'text'">
+          <div class="mr-1"><img [src]="contactArr[i].icon" alt="icon"> <span class="ml-2 " >{{contactArr[i].title}}</span></div>
+          <mat-form-field class="example-form-field col-12">
+            <input matInput [formControlName]="contactArr[i].alias" type="text" [(ngModel)]="valueCont">
+            <button mat-button *ngIf="valueCont"  matSuffix mat-icon-button aria-label="Clear" (click)="valueCont = ''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button type="button" class="ml-2 custom-color"  mat-button (click)="sendFormValue(contact)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="contactArr[i].type === 'date'" >
+          <div><img [src]="contactArr[i].icon" alt="icon"> <span class="ml-2 ">{{contactArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <input matInput [formControlName]="contactArr[i].alias"  [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(contact)">Save</button>
+          </div>
+
+        </div>
+
+        <div  *ngIf="contactArr[i].type === 'one'" >
+          <div><img [src]="contactArr[i].icon" alt="icon">
+            <span class="ml-2 " style="text-overflow: clip">{{contactArr[i].title}}{{':'}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-label></mat-label>
+            <mat-select [formControlName]="contactArr[i].alias">
+              <mat-option *ngFor="let objOpt of contactArr[i].values"
+                          [value]="objOpt.value">{{objOpt.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(contact)">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="contactArr[i].type === 'many'">
+          <div><img [src]="contactArr[i].icon" alt="icon"> <span class="ml-2 ">{{contactArr[i].title}}</span></div>
+          <mat-form-field class="col-12">
+            <mat-select [formControlName]="contactArr[i].alias" multiple>
+              <mat-option *ngFor="let item of contactArr[i].values" [value]="item.value">{{item.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="only-show-on-hover" fxLayout="row" fxLayoutAlign="end center">
+            <button  mat-button>Cancel</button>
+            <button class="ml-2 custom-color"  mat-button (click)="sendFormValue(contact)">Save</button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</form>

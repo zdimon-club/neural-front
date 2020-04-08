@@ -16,8 +16,8 @@ export function UserReducer(state = initialState, action: usersActions.UserActio
     case usersActions.UserActionTypes.UpdateUsers:
       return adapter.addMany(action.payload, {...state});
 
-    // case usersActions.UserActionTypes.UpdateUsersDone:
-    //   return adapter.addMany(action.payload, {...state});
+    case usersActions.UserActionTypes.UpdateUser:
+      return adapter.upsertOne(action.payload, {...state});
 
     default:
       return state;

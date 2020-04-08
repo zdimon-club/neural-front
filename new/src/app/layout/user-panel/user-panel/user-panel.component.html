@@ -1,12 +1,77 @@
 <!-- {{ user | json}} -->
 <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+
+
+    <img
+    src="/assets/icons/svg-icons/envelope.svg"
+    class="icon--color-grey m-0"
+    width="30"
+    height="30"
+    />
+
+    <img
+    src="/assets/icons/svg-icons/notification.svg"
+    class="icon--color-grey m-0"
+    width="30"
+    height="30"
+    />
+
+   
+
     <a [routerLink]="'myprofile'" >
         <img class="user-img" [src]="user.main_photo" />
     </a>
     <button 
     mat-button 
+    [matMenuTriggerFor]="menu"
     color="accent">
     {{ user.username }}
+        <img
+        class="header__dropdown-toggle hoverable"
+        src="/assets/icons/svg-icons/dropdown-toggle.svg"
+    />
     </button>
+
+    <ng-container *ngIf="user.gender=='male'">
+    
+
+        <div class="separator">&nbsp;</div>
+        <img
+        src="/assets/icons/svg-icons/credit.svg"
+        class="icon--color-grey m-0"
+        width="30"
+        height="30"
+        />
+        <button 
+        mat-button 
+        color="accent">
+
+
+        {{ user.account }} cr.
+        </button>
+
+    </ng-container>
+
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="'myprofile'">
+        <mat-icon>dialpad</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item [routerLink]="'common-chat'">
+        <mat-icon>dialpad</mat-icon>
+        <span>Common chat</span>
+      </button>
+      <!-- 
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      -->
+      <button mat-menu-item (click)="logoutEmitter.next(evt)">
+        <mat-icon>notifications_off</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
 
 </div>

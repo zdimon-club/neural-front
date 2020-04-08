@@ -13,6 +13,10 @@ import { SessionState } from '../../auth/store/session.store';
 import { UserlistState } from './../../main/userlist/store/userlist.store';
 import { UserlistReducer } from './../../main/userlist/store/userlist.reducer';
 
+import { UsersOnlineState } from './../../main/users/store/usersonline.store';
+import {UsersOnlineReducer} from './../../main/users/store/usersonline.reducer';
+
+
 // import { RoomReducer } from './../../main/chat/store/chat.reducer';
 // import { RoomState } from './../../main/chat/store/chat.store';
 
@@ -58,6 +62,7 @@ export interface State {
   users: UserState;
   session: SessionState;
   userlist: UserlistState;
+  users_online: UsersOnlineState;
   // modal: ModalState;
   // chat: RoomState;
   // events: EventsState;
@@ -71,7 +76,8 @@ export const reducers: ActionReducerMap<State> = {
   routerReducer: fromRouter.routerReducer,
   users: UserReducer,
   session: SessionReduser,
-  userlist: UserlistReducer
+  userlist: UserlistReducer,
+  users_online: UsersOnlineReducer,
   // modal: ModalReducer,
   // chat: RoomReducer,
   // events: EventsReducer,
