@@ -3,7 +3,7 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 @Component({
   selector: 'app-core-widget-user-photo',
   templateUrl: './user-photo.component.html',
-  styleUrls: ['./user-photo.component.css'],
+  styleUrls: ['./user-photo.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class UserPhotoComponent implements OnInit {

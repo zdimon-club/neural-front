@@ -40,8 +40,8 @@ export class InitService {
           this.onlineSocketService.connect();
           // connect chat consumer
           this.socketService.connect();
-          // set online users
-          // this.userState.dispatch(new UpdateUsers(data.users_online));
+          // update online users
+          this.userState.dispatch(new UpdateUsers(data.users_online));
         } else {
           this.sessionService.removeToken();
         }

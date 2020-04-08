@@ -1,0 +1,16 @@
+<div class="priv-chat-online-item" fxLayout="row" fxLayoutGap="10px">
+    <app-core-widget-user-photo
+    [user]="user"
+    ></app-core-widget-user-photo>
+
+    <div class="user-info" fxLayout="column" fxLayoutGap="10px">
+        <div class="username">
+          {{ user.username }}
+        </div>
+        <div>
+          {{ user.age }}
+        </div>
+      </div>
+
+</div>
+
