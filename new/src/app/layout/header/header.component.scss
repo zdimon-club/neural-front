@@ -3,3 +3,9 @@
     flex-direction: row;
     height: 60px;
 }
+
+@media screen and (max-width: 768px){
+    .hide-mobile{
+      display: none !important;
+    }
+  }

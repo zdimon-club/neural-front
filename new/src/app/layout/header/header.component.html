@@ -8,10 +8,11 @@
       </button>
 
       <!-- <button mat-raised-button >NEURO</button> -->
+    
 
-      <button [routerLink]="'typo'" mat-raised-button color="primary">Typo</button>
+        <button class="hide-mobile" [routerLink]="'typo'" mat-raised-button color="primary">Typo</button>
       
-        <form fxLayout="row">
+        <form class="hide-mobile" fxLayout="row">
           <mat-form-field class="example-full-width">
             <mat-label>id, name, tag</mat-label>
             <span matPrefix>Search &nbsp;</span>
@@ -19,6 +20,9 @@
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
         </form>
+ 
+
+
    
 
     </div>
